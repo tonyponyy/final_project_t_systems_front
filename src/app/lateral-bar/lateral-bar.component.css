@@ -1,0 +1,39 @@
+* {
+    border-radius: 5px;
+}
+
+.ztop {
+    z-index: 9999;
+}
+
+main {
+    min-height: 80vh;
+}
+
+[class*="container"] {
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-clip: content-box;
+}
+
+.row [class*="col"] {
+    background-clip: content-box;
+}
+
+.nav-item {
+    background-color: #eeeeff;
+    background-clip: content-box;
+}
+
+.filler {
+    width: 100%;
+}
+
+.pagination-link,
+.pagination-previous,
+.pagination-next {
+    background-color: white !important;
+}
+
+.is-current {
+    background-color: #485fc7 !important;
+}

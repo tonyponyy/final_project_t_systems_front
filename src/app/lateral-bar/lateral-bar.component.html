@@ -1,1 +1,157 @@
-<p>lateral-bar works!</p>
+<div class="thumb d-flex flex-column vh-100 overflow-hidden">
+  <header class="py-3 mb-2 border-bottom">
+    <div class="container-fluid align-items-center d-flex me-3 row">
+      <div class="col-1">
+        <a class="navbar-brand" href="#">
+          <img src="../../assets/img/bandaid.svg" alt="user" width="32" height="32" class="rounded-circle" />
+        </a>
+      </div>
+      <div class="flex-shrink-1 col-10">
+        <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none">
+          <i class="bi bi-bootstrap fs-2 text-dark"></i>
+        </a>
+      </div>
+      <div class="flex-grow-1 d-flex align-items-center col-1">
+        <div class="flex-shrink-0 dropdown">
+          <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img src="../../assets/img/bandaid.svg" alt="user" width="32" height="32" class="rounded-circle" />
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row overflow-auto">
+    <div class="row flex-grow-sm-1 flex-grow-0 filler">
+      <aside class="col-sm-2 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
+        <div class="bg-light border rounded-3 p-1 h-100 sticky-top">
+          <ul class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-truncate">
+                <i class="bi bi-house fs-5"><img src="../../assets/img/bandaid.svg" alt="user" width="32"
+                    height="32" /></i>
+                <span class="d-none d-sm-inline">Ofertas</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-2 text-truncate">
+                <i class="bi bi-house fs-5"><img src="../../assets/img/bandaid.svg" alt="user" width="32"
+                    height="32" /></i>
+                <span class="d-none d-sm-inline">Perfil</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <main class="col overflow-auto h-100">
+        <div class="filler bg-light border rounded-3 p-3">
+          <form class="d-flex me-1 row" role="search">
+            <div class="row">
+              <div class="col-5">
+                <!-- Espacio de separación barra búsqueda -->
+              </div>
+              <div class="col-5">
+                <input class="input" type="text" placeholder="Buscar" />
+              </div>
+              <div class="col-2">
+                <button class="button is-link">Search</button>
+              </div>
+            </div>
+          </form>
+          <br />
+
+          <h1 class="fw-bold xl mb-2">Oferta vista user</h1>
+          <!-- Oferta user -->
+
+          <div class="card is-4">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="../../assets/img/bandaid.svg" alt="user" width="32" height="32" />
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">Entrevista PhP</p>
+                  <p class="subtitle is-6">
+                    En esta entrevista miraremos el PHP o algo así
+                  </p>
+                </div>
+              </div>
+              <div class="content">
+                <button class="button is-success is-small is-light is-responsive">
+                  Css
+                </button>
+                <button class="button is-success is-small is-warning is-responsive">
+                  Html
+                </button>
+                <button class="button is-success is-small is-link is-responsive">
+                  Php
+                </button>
+              </div>
+
+              <div class="content">
+                <button class="button is-small is-link">Inscribirse</button>
+              </div>
+              <div class="content">
+                <time datetime="2016-01-01">11:09 PM - 1 Jan 2016</time>
+              </div>
+            </div>
+          </div>
+
+          <br />
+          <h1 class="fw-bold xl mb-2">Oferta vista RH</h1>
+          <!-- Oferta RH -->
+
+          <div class="card is-4">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="../../assets/img/bandaid.svg" alt="user" width="32" height="32" />
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">Entrevista PhP</p>
+                  <p class="subtitle is-6">
+                    En esta entrevista miraremos el PHP o algo así
+                  </p>
+                </div>
+              </div>
+
+              <div class="content">
+                <button class="button is-success is-small is-light is-responsive">
+                  Css
+                </button>
+                <button class="button is-success is-small is-warning is-responsive">
+                  Html
+                </button>
+                <button class="button is-success is-small is-link is-responsive">
+                  Php
+                </button>
+              </div>
+
+              <div class="content">
+                <button class="button is-small is-link">Ver</button>
+                <button class="button is-small is-link is-success">Editar</button>
+                <button class="button is-small is-link is-danger">Eliminar</button>
+              </div>
+
+              <div class="content">
+                <time datetime="2016-01-01">11:09 PM - 1 Jan 2016</time>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
