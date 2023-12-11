@@ -14,6 +14,10 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
+        path:'',
+        component: LoginComponent
+    },
+    {
         path:'interview/:id',
         component: InterviewComponent
     },
