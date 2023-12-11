@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
 
 @Component({
   selector: 'app-interview',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule,LateralBarComponent],
   templateUrl: './interview.component.html',
   styleUrl: './interview.component.css',
 })

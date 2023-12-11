@@ -1,0 +1,81 @@
+<app-lateral-bar>
+<h1>Entrevistas :</h1>
+@for (item of items; track $index) {
+<br>
+<div class="card is-4">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <i class="fa-solid fa-briefcase"  style="font-size: 48px;"></i>
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">Entrevista PhP</p>
+          <p class="subtitle is-6">
+            En esta entrevista miraremos el PHP o algo así
+          </p>
+        </div>
+      </div>
+      <div class="content">
+        <button
+          class="button is-success is-small is-light is-responsive"
+        >
+          Css
+        </button>
+        <button
+          class="button is-success is-small is-warning is-responsive"
+        >
+          Html
+        </button>
+        <button
+          class="button is-success is-small is-link is-responsive"
+        >
+          Php
+        </button>
+      </div>
+      <div class="content">
+          <button class="button is-small is-link">Inscribirse</button>
+      </div>
+      <div class="content">
+        <time datetime="2016-01-01">11:09 PM - 1 Jan 2016</time>
+      </div>
+    </div>
+  </div>
+}
+<br>
+<div class="center">
+    <nav
+      class="pagination is-small"
+      role="navigation"
+      aria-label="pagination"
+    >
+      <a class="pagination-previous">Previous</a>
+      <a class="pagination-next">Next page</a>
+      <ul class="pagination-list">
+        <li>
+          <a class="pagination-link" aria-label="Goto page 1">1</a>
+        </li>
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        <li>
+          <a class="pagination-link" aria-label="Goto page 45">45</a>
+        </li>
+        <li>
+          <a
+            class="pagination-link is-current"
+            aria-label="Page 46"
+            aria-current="page"
+            >46</a
+          >
+        </li>
+        <li>
+          <a class="pagination-link" aria-label="Goto page 47">47</a>
+        </li>
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        <li>
+          <a class="pagination-link" aria-label="Goto page 86">86</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</app-lateral-bar>
