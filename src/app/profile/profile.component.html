@@ -1,3 +1,194 @@
 <app-lateral-bar>
-<h1> Esto es un test </h1>
+    <div class="card w-85 mx-auto">
+        <div class="card-content">
+            <div class="content">
+            <div
+                id="photo_profile"
+                class="d-flex align-items-center justify-content-center"
+            >
+            <!-- foto usuario -->
+                <img
+                class="photo_frame rounded-circle"
+                src="../../assets/img/profile.jpg"
+                alt="user"
+                width="150"
+                height="150"
+                />
+            </div>
+            <div class="field">
+                <div class="file is-small">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="resume" />
+                    <span class="file-cta">
+                    <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label"> Upload Photo </span>
+                    </span>
+                </label>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control has-icons-left has-icons-right">
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="userName"
+                    value="userName"
+                />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+                </div>
+                <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
+                <p class="help is-danger"></p>
+            </div>
+
+            <div class="field">
+                <label class="label">Lastname</label>
+                <div class="control has-icons-left has-icons-right">
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="userLastName"
+                    value="userLastName"
+                />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+                </div>
+                <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
+                <p class="help is-danger"></p>
+            </div>
+            <div class="field">
+                <label class="label">Second Lastname</label>
+                <div class="control has-icons-left has-icons-right">
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="Optional second lastname"
+                    value="userLastName2"
+                />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+                </div>
+                <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
+                <p class="help is-danger"></p>
+            </div>
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left has-icons-right">
+                <input
+                    class="input"
+                    type="email"
+                    placeholder="Email input"
+                    value="example@email.com"
+                />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <!-- Aquí va el icono a la derecha -->
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+                </div>
+                <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
+                <p class="help is-danger"></p>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                <input
+                    class="input"
+                    type="password"
+                    placeholder="password input"
+                    value="*******"
+                />
+                <span class="icon is-small is-left">
+                    <i class="fa-solid fa-lock"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <!-- Aquí va el icono a la derecha -->
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+                </div>
+                <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
+                <p class="help is-danger"></p>
+            </div>
+            <div class="field">
+                <label class="label">Confirm Password</label>
+                <div class="control has-icons-left has-icons-right">
+                <input
+                    class="input"
+                    type="password"
+                    placeholder="password input"
+                    value="*******"
+                />
+                <span class="icon is-small is-left">
+                    <i class="fa-solid fa-lock"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <!-- Aquí va el icono a la derecha -->
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+                </div>
+                <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
+                <p class="help is-danger"></p>
+            </div>
+
+            <div class="field">
+                <label class="label">Skills</label>
+                <div class="content">
+                <span class="tag is-success">
+                    CSS
+                    <button class="delete is-small"></button>
+                </span>
+                <span class="tag is-warning">
+                    HTML
+                    <button class="delete is-small"></button>
+                </span>
+                </div>
+                <button class="button is-link is-small is-responsive">
+                Añadir skill
+                </button>
+            </div>
+
+            <div id="files" class="row">
+                <div class="field">
+                <label class="label">Añadir curriculum</label>
+                <div class="file is-small">
+                    <label class="file-label">
+                    <input class="file-input" type="file" name="resume" />
+                    <span class="file-cta">
+                        <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label"> Elige un archivo </span>
+                    </span>
+                    </label>
+                </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link">Guardar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 </app-lateral-bar>
