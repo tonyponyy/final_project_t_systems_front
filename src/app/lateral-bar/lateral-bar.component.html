@@ -2,8 +2,8 @@
   <header class="py-3 mb-2 border-bottom">
     <div class="container-fluid align-items-center d-flex me-3 row">
       <div class="col-1">
-        <a class="navbar-brand" href="#">
-          <img src="../../assets/img/bandaid.svg" alt="user" width="32" height="32" class="rounded-circle" />
+        <a class="navbar-brand" [routerLink]="['/interviews']">
+          <img src="../../assets/img/dcs.png" alt="user" width="80" height="45" class="rounded-circle" />
         </a>
       </div>
       <div class="flex-shrink-1 col-10">
@@ -18,11 +18,11 @@
             <img src="../../assets/img/bandaid.svg" alt="user" width="32" height="32" class="rounded-circle" />
           </a>
           <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/profile']">Profile</a></li>
             <li>
               <hr class="dropdown-divider" />
             </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/login']">Sign out</a></li>
           </ul>
         </div>
       </div>
@@ -35,19 +35,48 @@
         <div class="bg-light border rounded-3 p-1 h-100 sticky-top">
           <ul class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
             <li class="nav-item">
-              <a href="#" class="nav-link px-2 text-truncate">
-                <i class="bi bi-house fs-5"><img src="../../assets/img/bandaid.svg" alt="user" width="32"
+              <a [routerLink]="['/interviews']" class="nav-link px-2 text-truncate">
+                <i class="bi bi-house fs-5"><img src="../../assets/img/file-circle-exclamation-solid.svg" alt="user" width="28"
                     height="32" /></i>
-                <span class="d-none d-sm-inline">Ofertas</span>
+                <span class="d-none d-sm-inline"> Interview</span>
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-2 text-truncate">
-                <i class="bi bi-house fs-5"><img src="../../assets/img/bandaid.svg" alt="user" width="32"
+              <a [routerLink]="['/myinterviews']" class="nav-link px-2 text-truncate">
+                <i class="bi bi-house fs-5"><img src="../../assets/img/file-circle-check-solid.svg" alt="user" width="28"
                     height="32" /></i>
-                <span class="d-none d-sm-inline">Perfil</span>
+                <span class="d-none d-sm-inline"> My Interview</span>
               </a>
             </li>
+            <li>
+              <a [routerLink]="['/new_interview']" class="nav-link px-2 text-truncate">
+                <i class="bi bi-house fs-5"><img src="../../assets/img/file-circle-plus-solid.svg" alt="user" width="28"
+                    height="32" /></i>
+                <span class="d-none d-sm-inline"> New Interview</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/profile']" class="nav-link px-2 text-truncate">
+                <i class="bi bi-house fs-5"><img src="../../assets/img/user-solid.svg" alt="user" width="25"
+                    height="32" /></i>
+                <span class="d-none d-sm-inline"> Profile</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/skills']" class="nav-link px-2 text-truncate">
+                <i class="bi bi-house fs-5"><img src="../../assets/img/address-card-solid.svg" alt="user" width="28"
+                    height="32" /></i>
+                <span class="d-none d-sm-inline"> Skills</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/admin']" class="nav-link px-2 text-truncate">
+                <i class="bi bi-house fs-5"><img src="../../assets/img/user-tie-solid.svg" alt="user" width="25"
+                    height="32" /></i>
+                <span class="d-none d-sm-inline"> Admin</span>
+              </a>
+            </li>
+            
           </ul>
         </div>
       </aside>
