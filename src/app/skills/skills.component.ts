@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
 import { SkillComponent } from '../skill/skill.component';
-import { SkillModalComponent } from '../skill-modal/skill-modal.component';
+import { SkillModalComponent } from '../modals/skill-modal/skill-modal.component';
 
 @Component({
   selector: 'app-skills',
