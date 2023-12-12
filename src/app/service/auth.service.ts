@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 
 const AUTH_API = "https://finalprojecttsystemsback-production.up.railway.app/auth/"
-const httpOptions = {headers: new HttpHeaders({"Content-Type":"application/json",'Access-Control-Allow-Origin':'*'})};
+const httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json','Access-Control-Allow-Origin':'*'})};
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,7 @@ const httpOptions = {headers: new HttpHeaders({"Content-Type":"application/json"
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-
-  login(username :string, password :string) :Observable<any>{
-    return this.http.post(AUTH_API+"login",{username,password},httpOptions);
+  login(data:any) :Observable<any>{
+    return this.http.post(AUTH_API+"login",data);
   }
 }
