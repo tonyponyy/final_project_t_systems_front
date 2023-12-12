@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { NewInterviewComponent } from './new-interview/new-interview.component';
 import { EditInterviewComponent } from './edit-interview/edit-interview.component';
+import { SkillsComponent } from './skills/skills.component';
 
 export const routes: Routes = [
     {
@@ -41,6 +42,10 @@ export const routes: Routes = [
         path:'edit_interview',
         component: EditInterviewComponent
     } ,
+    {
+        path:'skills',
+        component: SkillsComponent
+    },
     {
         path:'**',
         component: NotFoundComponent

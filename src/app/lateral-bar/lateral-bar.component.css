@@ -5,7 +5,9 @@
 .ztop {
     z-index: 9999;
 }
-
+.sticky-top {
+    z-index: 40;
+}
 main {
     min-height: 80vh;
 }
