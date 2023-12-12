@@ -1,1 +1,74 @@
-<p>admin-view works!</p>
+<app-lateral-bar>
+  <h1>Usuarios :</h1>
+  <br />
+  <div class="table-responsive-xl">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th class="d-none d-lg-block" scope="col" >Imagen</th>
+          <th >Nombre</th>
+          <th >Apellido</th>
+          <th >Rol</th>
+          <th  class="text-center">Aplicar rol</th>
+          <th class="text-center">Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of items; track $index) {
+        <tr>
+          <th scope="row"><b>1</b></th>
+          <td class="d-none d-lg-block" >
+            <img class="photo_a_u" src="../../assets/img/profile.jpg" />
+          </td>
+          <td >Otto</td>
+          <td >Mambo Merienda</td>
+          <td ><b>User</b></td>
+          <td  class="text-center">
+            <button class="button is-link is-small">Recursos Humanos</button>
+            <button class="button is-warning is-small">Administrador</button>
+          </td>
+          <td class="text-center mx-auto">
+            <button class=" text-center button is-danger is-small">Eliminar</button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <div class="center">
+      <nav
+        class="pagination is-small"
+        role="navigation"
+        aria-label="pagination"
+      >
+        <a class="pagination-previous">Previous</a>
+        <a class="pagination-next">Next page</a>
+        <ul class="pagination-list">
+          <li>
+            <a class="pagination-link" aria-label="Goto page 1">1</a>
+          </li>
+          <li><span class="pagination-ellipsis">&hellip;</span></li>
+          <li>
+            <a class="pagination-link" aria-label="Goto page 45">45</a>
+          </li>
+          <li>
+            <a
+              class="pagination-link is-current"
+              aria-label="Page 46"
+              aria-current="page"
+              >46</a
+            >
+          </li>
+          <li>
+            <a class="pagination-link" aria-label="Goto page 47">47</a>
+          </li>
+          <li><span class="pagination-ellipsis">&hellip;</span></li>
+          <li>
+            <a class="pagination-link" aria-label="Goto page 86">86</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+</app-lateral-bar>

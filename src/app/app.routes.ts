@@ -8,6 +8,8 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
 import { NewInterviewComponent } from './new-interview/new-interview.component';
 import { EditInterviewComponent } from './edit-interview/edit-interview.component';
 import { SkillsComponent } from './skills/skills.component';
+import { InterviewsComponent } from './interviews/interviews.component';
+import { MyInterviewsComponent } from './my-interviews/my-interviews.component';
 
 export const routes: Routes = [
     {
@@ -17,6 +19,14 @@ export const routes: Routes = [
     {
         path:'',
         component: LoginComponent
+    },
+    {
+        path:'myinterviews',
+        component: MyInterviewsComponent
+    },
+    {
+        path:'interviews',
+        component: InterviewsComponent
     },
     {
         path:'interview/:id',
