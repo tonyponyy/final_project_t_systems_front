@@ -2,3 +2,11 @@
     border: 3px solid black; 
     border-radius: 99px; 
 }
+.pencil_icon{
+    margin-bottom: 123px;
+    background-color:#485fc7;
+    padding: 12px;
+    border-radius: 99px;
+    color:white;
+    margin-left: -42px;
+}

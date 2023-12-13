@@ -1,18 +1,14 @@
 .pagination-link,.pagination-previous,.pagination-next{
     background-color: white !important; } .is-current{
     background-color: #485fc7 !important; }
-.flex{
-    display: flex;
-}    
+
 .flex {
     display: flex;
     justify-content: space-between; 
   }
-  
   .align-right {
     justify-content: space-between; 
   }
   .card button{
     margin-right: 3px;
-
   }

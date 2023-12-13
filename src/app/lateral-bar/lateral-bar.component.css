@@ -43,3 +43,10 @@ main {
     border: 3px solid black; 
     border-radius: 99px; 
 }
+.nav-link{
+    color: #363636;
+}
+
+.margin-link{
+    margin-left: 6px;
+}
