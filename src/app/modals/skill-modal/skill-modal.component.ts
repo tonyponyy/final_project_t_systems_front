@@ -25,6 +25,7 @@ export class SkillModalComponent {
       this.request.add_skills(this.skillForm.value).subscribe(
         (result) => {
           console.log('Skill añadida correctamente');
+          this.closeModal();
           
         }, (error) => {
           // añadir mensaje de error
