@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
-import { HttpService } from '../http.service';
-
+import { RequestService } from '../service/request.service';
 @Component({
   selector: 'app-interviews',
   standalone: true,
@@ -10,13 +9,14 @@ import { HttpService } from '../http.service';
   styleUrl: './interviews.component.css'
 })
 export class InterviewsComponent {
-constructor(public httpservice: HttpService){}
+constructor(public requestservice: RequestService){}
 items :number[]=[1,2,3,4,5,6]
 
 ngOnInit() {
-  this.httpservice.Test().subscribe((data: any) => {
-    console.log(data);
+  this.requestservice.get_interviews().subscribe((data: any) => {
+    console.warn(data);
   });
+
 }
 
 }

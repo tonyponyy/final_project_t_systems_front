@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {
   FormBuilder,
   FormControl,
@@ -23,7 +23,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private tokenService : TokenService
+    private tokenService : TokenService,
+    private router: Router
   ) {
     this.formGroup = this.formBuilder.group({
       userName: ['', Validators.required],
@@ -39,10 +40,13 @@ export class LoginComponent {
         (result) => {
           console.log(result);
           this.tokenService.saveToken(result.token);
-          console.log(this.tokenService.getToken());
+          // que se guarde el rol
+          
+          this.router.navigate(['/interviews'])
         },
         (error) => {
-          console.log('problemon');
+          // añadir mensaje de error
+          alert('problemon');
         }
       );
     }
