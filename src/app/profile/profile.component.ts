@@ -15,5 +15,6 @@ export class ProfileComponent {
 
   ngOnInit():void {
     this.profile=this.tokenService.getUser();
+    console.log(this.profile);
   }
 }
