@@ -1,18 +1,19 @@
 <app-lateral-bar>
-
   <form class="d-flex me-1 row" role="search">
-
     <div class="row justify-content-end">
       <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="d-flex">
-          <input class="form-control flex-grow-1 mr-2" type="text" placeholder="Buscar" />
+          <input
+            class="form-control flex-grow-1 mr-2"
+            type="text"
+            placeholder="Buscar"
+          />
           <button class="button is-small is-link mt-1">Find</button>
         </div>
       </div>
     </div>
-    
   </form>
-  @for (item of items; track $index) {
+  @for (interview of interviews; track $index) {
   <br />
   <div class="card is-4">
     <div class="card-content">
@@ -23,64 +24,102 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4">Entrevista PhP</p>
-          <p class="subtitle is-6">
-            En esta entrevista miraremos el PHP o algo así
-          </p>
+          <p class="title is-4">{{ interview.title }}</p>
         </div>
       </div>
       <div class="content">
-        <button class="button is-success is-small is-light is-responsive">
-          Css
+        @for (skill of interview.skills; track $index) {
+
+        <button
+          class="button {{
+            class[interview.id % 5]
+          }} is-small is-light is-responsive"
+        >
+          {{ skill.skill_name }}
         </button>
-        <button class="button is-success is-small is-warning is-responsive">
-          Html
-        </button>
-        <button class="button is-success is-small is-link is-responsive">
-          Php
-        </button>
+        }
       </div>
       <div class="flex align-right">
         <div class="content">
-          <button class="button is-small is-link">View position</button>
+          <button
+            [routerLink]="['/interview', interview.id]"
+            class="button is-small is-link"
+          >
+            View position
+          </button>
         </div>
         <div class="content center">
           <i class="fa-regular fa-calendar"></i>
-          <time datetime="2016-01-01">11:09 PM - 1 Jan 2016</time>
+          <time datetime="2016-01-01">{{
+            interview.end_date | date : "dd-MM-yyyy"
+          }}</time>
         </div>
       </div>
     </div>
   </div>
   }
   <br />
+  @if (pagination.total_pages > 1) {
   <div class="center">
     <nav class="pagination is-small" role="navigation" aria-label="pagination">
-      <a class="pagination-previous">Previous</a>
-      <a class="pagination-next">Next page</a>
+      @if (pagination.current_page !=0 ){
+      <a (click)="get_page(pagination.current_page - 1)" class="pagination-previous">Previous</a>
+      } @if (pagination.current_page != pagination.total_pages ){
+      <a (click)="get_page(pagination.current_page + 1)" class="pagination-next">Next page</a>
+      }
       <ul class="pagination-list">
+        @if (pagination.current_page > 0 ){
         <li>
-          <a class="pagination-link" aria-label="Goto page 1">1</a>
+          <a
+            (click)="get_page(0)"
+            class="pagination-link"
+            aria-label="Goto first"
+            >1</a
+          >
         </li>
+
         <li><span class="pagination-ellipsis">&hellip;</span></li>
+        @if (pagination.current_page != 1){
         <li>
-          <a class="pagination-link" aria-label="Goto page 45">45</a>
+          <a
+            class="pagination-link"
+            (click)="get_page(pagination.current_page - 1)"
+            aria-label="Goto previous"
+            >{{ pagination.current_page }}</a
+          >
         </li>
+        } }
         <li>
           <a
             class="pagination-link is-current"
-            aria-label="Page 46"
+            aria-label="current page"
             aria-current="page"
-            >46</a
+            >{{ pagination.current_page + 1 }}</a
           >
         </li>
+        @if (pagination.current_page+1 != pagination.total_pages ){
         <li>
-          <a class="pagination-link" aria-label="Goto page 47">47</a>
+          <a
+            (click)="get_page(pagination.current_page + 1)"
+            class="pagination-link"
+            aria-label="Goto next"
+            >{{ pagination.current_page + 2 }}</a
+          >
         </li>
+        } @if (pagination.current_page+2 != pagination.total_pages ){ @if
+        (pagination.current_page+1 != pagination.total_pages ){
         <li><span class="pagination-ellipsis">&hellip;</span></li>
         <li>
-          <a class="pagination-link" aria-label="Goto page 86">86</a>
+          <a
+            (click)="get_page(pagination.total_pages - 1)"
+            class="pagination-link"
+            aria-label="Last page"
+            >{{ pagination.total_pages }}</a
+          >
         </li>
+        } }
       </ul>
     </nav>
   </div>
+  }
 </app-lateral-bar>

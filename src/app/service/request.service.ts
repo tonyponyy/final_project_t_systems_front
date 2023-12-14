@@ -13,8 +13,9 @@ export class RequestService {
   protected http = inject(HttpClient);
   constructor() { }
 
-  get_interviews() {
-    let url: string = this.api_url+'interviews/paginated_interviews?page=0&size=2';
+
+  get_interviews(number_page :number) {
+    let url: string = this.api_url+'interviews/paginated_interviews'+'?page='+number_page+'&size=5';
     return this.http.get<any[]>(url);
   }
 
