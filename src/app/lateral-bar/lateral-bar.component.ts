@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { TokenService } from '../service/token.service';
 
 @Component({
   selector: 'app-lateral-bar',
@@ -9,5 +10,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './lateral-bar.component.css'
 })
 export class LateralBarComponent {
-
+  constructor(public tokenService:TokenService){}
+  singOut(){
+    console.log("me desconecto");
+    this.tokenService.singOut();
+  }
 }

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
 import { RequestService } from '../service/request.service';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-interviews',
   standalone: true,
-  imports: [LateralBarComponent],
+  imports: [LateralBarComponent,RouterLink],
   templateUrl: './interviews.component.html',
   styleUrl: './interviews.component.css'
 })

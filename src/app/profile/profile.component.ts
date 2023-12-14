@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
+import { TokenService } from '../service/token.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,5 +10,10 @@ import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
+  constructor(public tokenService:TokenService){}
+  protected profile: any;
 
+  ngOnInit():void {
+    this.profile=this.tokenService.getUser();
+  }
 }

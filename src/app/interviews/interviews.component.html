@@ -5,7 +5,7 @@
     <div class="row justify-content-end">
       <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="d-flex">
-          <input class="form-control flex-grow-1 mr-2" type="text" placeholder="Buscar" />
+          <input class="form-control flex-grow-1 mr-2" type="text" placeholder="Search" />
           <button class="button is-small is-link mt-1">Find</button>
         </div>
       </div>
@@ -42,7 +42,7 @@
       </div>
       <div class="flex align-right">
         <div class="content">
-          <button class="button is-small is-link">View position</button>
+          <button [routerLink]="['/interview/:id']" class="button is-small is-link">View position</button>
         </div>
         <div class="content center">
           <i class="fa-regular fa-calendar"></i>

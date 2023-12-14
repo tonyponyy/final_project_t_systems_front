@@ -40,6 +40,7 @@ export class LoginComponent {
         (result) => {
           console.log(result);
           this.tokenService.saveToken(result.token);
+          this.tokenService.saveUser(result.user);
           // que se guarde el rol
           
           this.router.navigate(['/interviews'])
