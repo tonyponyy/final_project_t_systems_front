@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SkillComponent } from '../../skill/skill.component';
 import { SkillsAddComponent } from '../../skills-add/skills-add.component';
+import { RequestService } from '../../service/request.service';
 
 @Component({
   selector: 'app-interview-skills',
@@ -10,6 +10,15 @@ import { SkillsAddComponent } from '../../skills-add/skills-add.component';
   styleUrl: './interview-skills.component.css'
 })
 export class InterviewSkillsComponent {
+
+  skills : any[] = [];
+  constructor(public request: RequestService){}
+
+  ngOnInit(){
+    this.request.get_skills().subscribe((data : any) =>{
+      this.skills = data;
+    })
+  }
   openModal() {
     console.log('abriendo modal');
     

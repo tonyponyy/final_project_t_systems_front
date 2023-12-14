@@ -33,7 +33,6 @@ export class LoginComponent {
   }
 
   send_login() {
-    console.log('login');
 
     if (this.formGroup.valid) {
       this.authService.login(this.formGroup.value).subscribe(
