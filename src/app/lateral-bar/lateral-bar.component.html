@@ -1,12 +1,15 @@
 <div class="thumb d-flex flex-column vh-100 overflow-hidden">
   <header class="py-3 mb-2 border-bottom">
     <div class="container-fluid align-items-center d-flex me-3 row">
-      <div class="col-1">
-        <a class="navbar-brand" [routerLink]="['/interviews']">
-          <img src="../../assets/img/dcs.png" alt="user" width="80" height="45" class="rounded-circle" />
-        </a>
-      </div>
-      <div class="flex-shrink-1 col-10">
+        <div class="flex-grow-1 d-flex align-items-center col-1">
+          <div class="flex-shrink-0 dropdown">
+            <a [routerLink]="['/interviews']" class="d-block link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="../../assets/img/dcs.png" alt="user" width="75" height="40" class=" rounded-circle" />
+            </a>
+          </div>
+        </div>
+      <div class="flex-shrink-1 col-9">
         <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none">
           <i class="bi bi-bootstrap fs-2 text-dark"></i>
         </a>
