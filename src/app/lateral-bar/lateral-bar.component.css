@@ -44,9 +44,22 @@ main {
     border-radius: 99px; 
 }
 .nav-link{
-    color: #363636;
+    color: #d6d6db;
 }
 
 .margin-link{
     margin-left: 6px;
+}
+
+.upbarcolor, .lateralcolor{
+    background-color: #363636;
+}
+
+.lateralbar{
+    border-radius: 12px!important;
+
+}
+
+aside img{
+    filter: invert(100%) brightness(100%);
 }

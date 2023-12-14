@@ -1,5 +1,5 @@
 <div class="thumb d-flex flex-column vh-100 overflow-hidden">
-  <header class="py-3 mb-2 border-bottom">
+  <header class="py-3 mb-2 border-bottom text-light upbarcolor">
     <div class="container-fluid align-items-center d-flex me-3 row">
         <div class="flex-grow-1 d-flex align-items-center col-1">
           <div class="flex-shrink-0 dropdown">
@@ -34,8 +34,8 @@
   <div class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row overflow-auto">
 
     <div class="row flex-grow-sm-1 flex-grow-0 filler">
-      <aside class="col-sm-2 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
-        <div class="bg-light border rounded-3 p-1 h-100 sticky-top">
+      <aside class="col-sm-2 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3  lateralbar">
+        <div class="lateralcolor rounded-3 p-1 h-100 sticky-top lateralbar ">
           <ul class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
             <li>
               <a [routerLink]="['/interviews']" class="nav-link px-2 text-truncate">
@@ -86,7 +86,7 @@
 
       <main class="col overflow-auto h-100">
         
-        <div class="filler bg-light border rounded-3 p-3">
+        <div class="filler p-3">
           <ng-content>
 
           </ng-content>
