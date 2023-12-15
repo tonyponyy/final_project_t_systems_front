@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { SkillsAddComponent } from '../../skills-add/skills-add.component';
 import { RequestService } from '../../service/request.service';
 
 @Component({
   selector: 'app-interview-skills',
   standalone: true,
-  imports: [SkillsAddComponent],
+  imports: [],
   templateUrl: './interview-skills.component.html',
   styleUrl: './interview-skills.component.css'
 })

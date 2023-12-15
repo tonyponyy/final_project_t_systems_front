@@ -2,7 +2,7 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Añadir Skill</p>
+      <p class="modal-card-title">Add Skill</p>
       <button class="delete" aria-label="close" (click)="closeModal()"></button>
     </header>
     <section class="modal-card-body">
@@ -10,24 +10,24 @@
       <form class="form" [formGroup]="skillForm">
         <div class="mx-5 my-3">
           <div class="field">
-            <label class="label">Nombre Skill</label>
+            <label class="label">Name Skill</label>
             <div class="control">
               <input class="input" type="text" formControlName="skill_name"/>
             </div>
             @if (isNotValid==true && skillForm.get("skill_name")?.hasError("required")) {
-              <p class="has-text-danger">Campo obligatorio</p>
+              <p class="has-text-danger">Required field</p>
             }
           </div>
 
           
   
           <div class="field">
-            <label class="label">Descripcion Skill</label>
+            <label class="label">Description</label>
             <div class="control">
               <textarea class="textarea" formControlName="description"></textarea>
             </div>
             @if (isNotValid==true && skillForm.get("description")?.hasError("required")) {
-              <p class="has-text-danger">Campo obligatorio</p>
+              <p class="has-text-danger">Required field</p>
             }
           </div>
         </div>
@@ -41,4 +41,4 @@
   </div>
 </div>
 
-<button class="button is-link" (click)="openModal()">Añadir skill</button>
+<button class="button is-link" (click)="openModal()">Add skill</button>

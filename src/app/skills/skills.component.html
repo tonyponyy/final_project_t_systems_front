@@ -14,8 +14,8 @@
                     <p class="subtitle is-6">{{item.description}}</p>
                 </div>
                 <div class="mx-5 my-3">
-                    <button class="button is-small is-link is-success mx-1" (click)="openModal(item)">Editar</button>
-                    <button class="button is-small is-link is-danger mx-1" (click)="deleteSkill(item)">Borrar</button>
+                    <button class="button is-small is-link is-success mx-1" (click)="openModal(item)">Edit</button>
+                    <button class="button is-small is-link is-danger mx-1" (click)="deleteSkill(item)">Delete</button>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">Editar Skill</p>
+                    <p class="modal-card-title">Edit Skill</p>
                     <button class="delete" aria-label="close" (click)="closeModal()"></button>
                 </header>
                 <section class="modal-card-body">
@@ -32,14 +32,14 @@
                     <form class="form" [formGroup]="skillForm">
                         <div class="mx-5 my-3">
                             <div class="field">
-                                <label class="label">Nombre Skill</label>
+                                <label class="label">Skill Name</label>
                                 <div class="control">
                                     <input class="input" type="text" formControlName="skill_name" />
                                 </div>
                             </div>
 
                             <div class="field">
-                                <label class="label">Descripcion Skill</label>
+                                <label class="label">Description</label>
                                 <div class="control">
                                     <textarea class="textarea" formControlName="description"></textarea>
                                 </div>
