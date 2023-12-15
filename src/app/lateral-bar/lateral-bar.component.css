@@ -57,6 +57,12 @@ ul .active a {
     border-radius:6px;
   }
 
+  ul li :hover {
+    font-weight:bolder; 
+    background-color:#648696;
+    border-radius:6px;
+  }
+
 .header-color{
     background-color: #7e89bd;
     border-radius: 0px !important;

@@ -10,7 +10,9 @@ import { TokenService } from '../service/token.service';
   styleUrl: './lateral-bar.component.css'
 })
 export class LateralBarComponent {
+  protected role = "user"
   constructor(public tokenService:TokenService){}
+
   singOut(){
     console.log("me desconecto");
     this.tokenService.singOut();
