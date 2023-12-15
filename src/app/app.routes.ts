@@ -10,6 +10,7 @@ import { EditInterviewComponent } from './edit-interview/edit-interview.componen
 import { SkillsComponent } from './skills/skills.component';
 import { InterviewsComponent } from './interviews/interviews.component';
 import { MyInterviewsComponent } from './my-interviews/my-interviews.component';
+import { logedGuard } from './guards/loged.guard';
 
 export const routes: Routes = [
     {
@@ -22,15 +23,18 @@ export const routes: Routes = [
     },
     {
         path:'myinterviews',
-        component: MyInterviewsComponent
+        component: MyInterviewsComponent,
+        canActivate: [logedGuard]
     },
     {
         path:'interviews',
-        component: InterviewsComponent
+        component: InterviewsComponent,
+        canActivate: [logedGuard]
     },
     {
         path:'interview/:id',
-        component: InterviewComponent
+        component: InterviewComponent,
+        canActivate: [logedGuard]
     },
     {
         path:'register',
@@ -38,27 +42,32 @@ export const routes: Routes = [
     },
     {
         path:'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [logedGuard]
     } ,
     {
         path:'admin',
-        component: AdminViewComponent
+        component: AdminViewComponent,
+        canActivate: [logedGuard]
     } ,
     {
         path:'new_interview',
-        component: NewInterviewComponent
+        component: NewInterviewComponent,
+        canActivate: [logedGuard]
     } ,
     {
         path:'edit_interview',
-        component: EditInterviewComponent
+        component: EditInterviewComponent,
+        canActivate: [logedGuard]
     } ,
     {
         path:'skills',
-        component: SkillsComponent
+        component: SkillsComponent,
+        canActivate: [logedGuard]
     },
     {
         path:'**',
-        component: NotFoundComponent
+        component: NotFoundComponent,
     },
     
 ];
