@@ -19,6 +19,9 @@ import { TokenService } from '../service/token.service';
 })
 export class LoginComponent {
   formGroup: FormGroup;
+  emailNotValid : boolean = false;
+  passwordNotValid : boolean = false;
+  errorMessage : string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,14 +30,20 @@ export class LoginComponent {
     private router: Router
   ) {
     this.formGroup = this.formBuilder.group({
-      userName: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
 
   send_login() {
-
+    if (this.formGroup.get('userName')?.invalid){
+      this.emailNotValid = true;
+    } else {
+      this.emailNotValid= false;
+    }
     if (this.formGroup.valid) {
+      this.passwordNotValid = false;
+      this.emailNotValid = false;
       this.authService.login(this.formGroup.value).subscribe(
         (result) => {
           console.log(result);
@@ -45,10 +54,20 @@ export class LoginComponent {
           this.router.navigate(['/interviews'])
         },
         (error) => {
-          // añadir mensaje de error
-          alert('problemon');
+          if (error.status === 401) {
+            this.errorMessage = 'Usuario o contraseña incorrecta';
+            this.formGroup.get('password')?.reset();
+          } else {
+            this.errorMessage = 'Error en la autenticación';
+            console.log(error);
+            
+            this.formGroup.reset();
+
+          }
         }
       );
+    } else {
+      this.passwordNotValid = true;
     }
   }
 }

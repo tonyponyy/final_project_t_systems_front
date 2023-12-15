@@ -11,13 +11,22 @@ import { RequestService } from '../../service/request.service';
 })
 export class InterviewSkillsComponent {
 
-  skills : any[] = [];
+  protected skills : any[] = [];
+  protected pagination={current_page: 0,total_pages: 0, total_items: 0};
+
   constructor(public request: RequestService){}
 
   ngOnInit(){
-    this.request.get_skills().subscribe((data : any) =>{
-      this.skills = data;
-    })
+    this.get_page(0);
+  }
+
+  get_page(n_page : number){
+    this.request.get_skills(n_page).subscribe((data: any) => {
+      this.skills = data.skills;
+      this.pagination.current_page = data.currentPage
+      this.pagination.total_pages = data.totalPages
+      this.pagination.total_items = data.totalItems
+    });
   }
   openModal() {
     console.log('abriendo modal');

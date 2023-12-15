@@ -12,34 +12,34 @@
                 </div> -->
                 <form class="form" [formGroup]="formGroup" (submit)="send_login()">
                     <div class="field">
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="text" placeholder="Username" formControlName="userName"/>
+                        <div class="control has-icons-left">
+                            <input class="input" type="email" placeholder="Email" formControlName="userName" />
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
                         </div>
+                        @if (emailNotValid == true) {
+                            <p class="has-text-danger">Email incorrecto</p>
+                        }
                     </div>
 
                     <div class="field">
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="password" placeholder="Password" formControlName="password"/>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" placeholder="Password" formControlName="password" />
                             <span class="icon is-small is-left">
                                 <i class="fa-solid fa-lock"></i>
                             </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
                         </div>
+                        @if (passwordNotValid == true) {
+                            <p class="has-text-danger">Campo obligatorio</p>
+                            }
                     </div>
-
+                    @if(errorMessage != ''){
+                        <p class="has-text-danger mb-3">{{errorMessage}}</p>
+                    }
                     <div class="field text-center">
                         <div class="control">
-
                             <button type="submit" class="button is-link ">Login</button>
-
                         </div>
                     </div>
 
