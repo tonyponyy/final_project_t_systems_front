@@ -4,64 +4,99 @@
             <div class="column is-two-thirds">
                 <app-skill-modal></app-skill-modal>
             </div>
-            <div class="column d-flex gap-1">
-                <input class="input is-link" type="text" placeholder="Buscar por skill">
-                <button class="button is-link">Buscar</button>
-            </div>
         </div>
 
         @for (item of skills; track $index) {
-            <div class="card mt-3">
-                <div class="card-body d-md-flex justify-content-between align-items-center">
-                    <div class="mx-5 my-3">
-                        <p class="title is-4">{{item.skill_name}}</p>
-                        <p class="subtitle is-6">{{item.description}}</p>
-                    </div>
-                    <div class="mx-5 my-3">
-                        <button class="button is-small is-link is-success mx-1" (click)="openModal(item)">Editar</button>
-                        <button class="button is-small is-link is-danger mx-1" (click)="deleteSkill(item)">Borrar</button>
-                    </div>
+        <div class="card mt-3">
+            <div class="card-body d-md-flex justify-content-between align-items-center">
+                <div class="mx-5 my-3">
+                    <p class="title is-4">{{item.skill_name}}</p>
+                    <p class="subtitle is-6">{{item.description}}</p>
+                </div>
+                <div class="mx-5 my-3">
+                    <button class="button is-small is-link is-success mx-1" (click)="openModal(item)">Editar</button>
+                    <button class="button is-small is-link is-danger mx-1" (click)="deleteSkill(item)">Borrar</button>
                 </div>
             </div>
+        </div>
 
-            <div class="modal" id="editModal">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Editar Skill</p>
-                        <button class="delete" aria-label="close" (click)="closeModal()"></button>
-                    </header>
-                    <section class="modal-card-body">
-            
-                        <form class="form" [formGroup]="skillForm">
-                            <div class="mx-5 my-3">
-                                <div class="field">
-                                    <label class="label">Nombre Skill</label>
-                                    <div class="control">
-                                        <input class="input" type="text" formControlName="skill_name" />
-                                    </div>
-                                </div>
-            
-                                <div class="field">
-                                    <label class="label">Descripcion Skill</label>
-                                    <div class="control">
-                                        <textarea class="textarea" formControlName="description"></textarea>
-                                    </div>
+        <div class="modal" id="editModal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Editar Skill</p>
+                    <button class="delete" aria-label="close" (click)="closeModal()"></button>
+                </header>
+                <section class="modal-card-body">
+
+                    <form class="form" [formGroup]="skillForm">
+                        <div class="mx-5 my-3">
+                            <div class="field">
+                                <label class="label">Nombre Skill</label>
+                                <div class="control">
+                                    <input class="input" type="text" formControlName="skill_name" />
                                 </div>
                             </div>
-                        </form>
-            
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button is-success" (click)="editSkill()">Editar cambios</button>
-                        <button class="button" (click)="closeModal()">Cancel</button>
-                    </footer>
-                </div>
+
+                            <div class="field">
+                                <label class="label">Descripcion Skill</label>
+                                <div class="control">
+                                    <textarea class="textarea" formControlName="description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" (click)="editSkill()">Editar cambios</button>
+                    <button class="button" (click)="closeModal()">Cancel</button>
+                </footer>
             </div>
+        </div>
         }
     </div>
+
+    @if (pagination.total_pages > 1) {
+    <div class="center">
+        <nav class="pagination is-small" role="navigation" aria-label="pagination">
+            @if (pagination.current_page !=0 ){
+            <a (click)="get_page(pagination.current_page - 1)" class="pagination-previous">Previous</a>
+            } @if (pagination.current_page != pagination.total_pages ){
+            <a (click)="get_page(pagination.current_page + 1)" class="pagination-next">Next page</a>
+            }
+            <ul class="pagination-list">
+                @if (pagination.current_page > 0 ){
+                <li>
+                    <a (click)="get_page(0)" class="pagination-link" aria-label="Goto first">1</a>
+                </li>
+
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+                @if (pagination.current_page != 1){
+                <li>
+                    <a class="pagination-link" (click)="get_page(pagination.current_page - 1)"
+                        aria-label="Goto previous">{{ pagination.current_page }}</a>
+                </li>
+                } }
+                <li>
+                    <a class="pagination-link is-current" aria-label="current page" aria-current="page">{{
+                        pagination.current_page + 1 }}</a>
+                </li>
+                @if (pagination.current_page+1 != pagination.total_pages ){
+                <li>
+                    <a (click)="get_page(pagination.current_page + 1)" class="pagination-link" aria-label="Goto next">{{
+                        pagination.current_page + 2 }}</a>
+                </li>
+                } @if (pagination.current_page+2 != pagination.total_pages ){ 
+                    @if(pagination.current_page+1 != pagination.total_pages ){
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+                <li>
+                    <a (click)="get_page(pagination.total_pages - 1)" class="pagination-link" aria-label="Last page">{{
+                        pagination.total_pages }}</a>
+                </li>
+                } }
+            </ul>
+        </nav>
+    </div>
+    }
 </app-lateral-bar>
-
-
-
-

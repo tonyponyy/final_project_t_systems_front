@@ -29,10 +29,8 @@ export class RequestService {
     return this.http.get<any[]>(url);
   }
 
-
-  //skills
-  get_skills(){
-    let url: string = this.api_url+'skills/paginated_skills?page=0&size=2';
+  get_skills(number_page :number){
+    let url: string = this.api_url+'skills/paginated_skills?page='+number_page+'&size=5';
     return this.http.get<any[]>(url);
   }
 
