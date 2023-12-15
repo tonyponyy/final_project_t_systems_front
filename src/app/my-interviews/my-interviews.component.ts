@@ -14,34 +14,20 @@ import { DatePipe } from '@angular/common';
 })
 export class MyInterviewsComponent {
 constructor(public requestservice: RequestService){}
-protected interviews :any[] =[];
+protected positions :any[] =[];
+protected user_tests :any[] = [];
 protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
 protected pagination={current_page: 0,total_pages: 0, total_items: 0};
+protected states :string[] =['You have not passed the process','You are enrolled','First interview','In selection process','Hired']
 
 ngOnInit() {
-this.get_page(0);
-}
-
-get_page(n_page : number){
-  this.requestservice.get_interviews(n_page).subscribe((data: any) => {
-    this.interviews = data.interviews;
-    this.pagination.current_page = data.currentPage
-    this.pagination.total_pages = data.totalPages
-    this.pagination.total_items = data.totalItems
+  this.requestservice.get_user_interviews().subscribe((data: any) => {
+    console.log(data);
+    this.positions = data.interviews;
+    this.user_tests = data.user_test;
+    console.info(this.user_tests);
   });
 }
-  search(query :string){
-    if (query == ""){
-      this.get_page(0);
-    }else{
-      this.requestservice.search_interviews(query).subscribe((data: any) => {
-        console.log(data)
-        this.interviews = data.interviews;
-        this.pagination.current_page = data.currentPage
-        this.pagination.total_pages = data.totalPages
-        this.pagination.total_items = data.totalItems
-      });
-    }
-  }
+
 
 }

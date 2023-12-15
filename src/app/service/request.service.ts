@@ -13,6 +13,7 @@ export class RequestService {
   protected http = inject(HttpClient);
   constructor() { }
 
+  //positions
   search_interviews(query :string){
     let url: string = this.api_url+"interviews/search_by/"+query
     return this.http.get<any[]>(url);
@@ -20,6 +21,11 @@ export class RequestService {
 
   get_interviews(number_page :number) {
     let url: string = this.api_url+'interviews/paginated_interviews'+'?page='+number_page+'&size=6';
+    return this.http.get<any[]>(url);
+  }
+  //user_position 
+  get_user_interviews() {
+    let url: string = this.api_url+'userinterviews/user_interviews';
     return this.http.get<any[]>(url);
   }
 
