@@ -1,13 +1,33 @@
 .pagination-link,.pagination-previous,.pagination-next{
-    background-color: white !important; } .is-current{
-    background-color: #485fc7 !important; }
-    .flex {
-        display: flex;
-        justify-content: space-between; 
-      }
-      .align-right {
-        justify-content: space-between; 
-      }
-      .card button{
-        margin-right: 3px;
-      }
+  background-color: white !important; } .is-current{
+  background-color: #485fc7 !important; }
+
+.flex {
+  display: flex;
+  justify-content: space-between; 
+}
+.align-right {
+  justify-content: space-between; 
+}
+.card button{
+  margin-right: 3px;
+}
+
+.card-separation{
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  }
+
+.card-header{
+  background-color: #ffdf89;
+}
+.content-right {
+  text-align: right;
+  display: block;
+}
+
+header i{
+  margin-right: 12px;
+}

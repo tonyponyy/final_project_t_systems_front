@@ -13,6 +13,10 @@ export class RequestService {
   protected http = inject(HttpClient);
   constructor() { }
 
+  search_interviews(query :string){
+    let url: string = this.api_url+"interviews/search_by/"+query
+    return this.http.get<any[]>(url);
+  }
 
   get_interviews(number_page :number) {
     let url: string = this.api_url+'interviews/paginated_interviews'+'?page='+number_page+'&size=6';
