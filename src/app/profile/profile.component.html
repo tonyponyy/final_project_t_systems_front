@@ -28,19 +28,17 @@
 
             <div class="field">
                 <label class="label">Name</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                 <input
                     class="input"
                     type="text"
                     placeholder="userName"
-                    value="userName"
+                    value="{{user.name}}"
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                </span>
+                
                 </div>
                 <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
                 <p class="help is-danger"></p>
@@ -48,37 +46,32 @@
 
             <div class="field">
                 <label class="label">Lastname</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                 <input
                     class="input"
                     type="text"
                     placeholder="userLastName"
-                    value="userLastName"
+                    value="{{user.lastname}}"
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                </span>
+                
                 </div>
                 <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
                 <p class="help is-danger"></p>
             </div>
             <div class="field">
                 <label class="label">Second Lastname</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                 <input
                     class="input"
                     type="text"
                     placeholder="Optional second lastname"
-                    value="userLastName2"
+                    value="{{user.lastname2}}"
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
-                </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
                 </span>
                 </div>
                 <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
@@ -87,60 +80,51 @@
 
             <div class="field">
                 <label class="label">Email</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                 <input
                     class="input"
                     type="email"
                     placeholder="Email input"
-                    value="example@email.com"
+                    value="{{user.email}}"
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                 </span>
-                <span class="icon is-small is-right">
-                    <!-- Aquí va el icono a la derecha -->
-                    <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                
                 </div>
                 <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
                 <p class="help is-danger"></p>
             </div>
             <div class="field">
                 <label class="label">Password</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                 <input
                     class="input"
                     type="password"
-                    placeholder="password input"
-                    value="*******"
+                    placeholder="Change Password"
+                    value=""
                 />
                 <span class="icon is-small is-left">
                     <i class="fa-solid fa-lock"></i>
                 </span>
-                <span class="icon is-small is-right">
-                    <!-- Aquí va el icono a la derecha -->
-                    <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                
                 </div>
                 <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
                 <p class="help is-danger"></p>
             </div>
             <div class="field">
                 <label class="label">Confirm Password</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                 <input
                     class="input"
                     type="password"
-                    placeholder="password input"
-                    value="*******"
+                    placeholder="Confirm Password"
+                    value=""
                 />
                 <span class="icon is-small is-left">
                     <i class="fa-solid fa-lock"></i>
                 </span>
-                <span class="icon is-small is-right">
-                    <!-- Aquí va el icono a la derecha -->
-                    <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                
                 </div>
                 <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
                 <p class="help is-danger"></p>

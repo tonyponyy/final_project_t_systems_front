@@ -48,4 +48,10 @@ export class RequestService {
     let url: string = this.api_url+'skills/editSkill/'+item.id;
     return this.http.put<any[]>(url,item);
   }
+
+  //datos del usuario
+  get_user(){
+    let url: string = this.api_url+'users/current_user/info';
+    return this.http.get<any[]>(url);
+  }
 }

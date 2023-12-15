@@ -17,19 +17,19 @@
                 <div class="header text-center py-3">
                 <h1 class="fw-bold title">Register</h1>
                 </div>
-                <div class="form">
+                <div class="form mx-6 my-5">
                     <div class="field">
-                        <div class="control has-icons-left has-icons-right">
+                        <div class="control has-icons-left">
                         <input class="input" type="text" placeholder="Name" />
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                        
                         </div>
                     </div>
-                    <div class="field">
+                    <!-- 
+                        primer y segundo apellido, se podran añadir luego en el perfil
+                        <div class="field">
                         <div class="control has-icons-left has-icons-right">
                         <input class="input" type="text" placeholder="Lastname" />
                         <span class="icon is-small is-left">
@@ -50,8 +50,10 @@
                             <i class="fas fa-check"></i>
                         </span>
                         </div>
-                    </div>
-                    <!-- <div class="field">
+                    </div> -->
+                    <!-- 
+                        eleccion de genero [no lo usamos en ningun momento]
+                        <div class="field">
                         <label class="label">Gender</label>
                         <div class="control">
                             <div class="select">
@@ -63,7 +65,9 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="field">
+                    <!-- 
+                        nombre de usuario [no lo utilizamos en ningun momento]
+                        <div class="field">
                         <div class="control has-icons-left has-icons-right">
                         <input class="input" type="text" placeholder="Username" />
                         <span class="icon is-small is-left">
@@ -73,41 +77,37 @@
                             <i class="fas fa-check"></i>
                         </span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="field">
-                        <div class="control has-icons-left has-icons-right">
+                        <div class="control has-icons-left ">
                         <input class="input" type="text" placeholder="Email" />
                         <span class="icon is-small is-left">
                             <i class="fa-regular fa-envelope"></i>
                         </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                        
                         </div>
                     </div>
                     <div class="field">
-                        <div class="control has-icons-left has-icons-right">
+                        <div class="control has-icons-left ">
                         <input class="input" type="password" placeholder="Password" />
                         <span class="icon is-small is-left">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                        
                         </div>
                     </div>
                     <div class="field">
-                        <div class="control has-icons-left has-icons-right">
+                        <div class="control has-icons-left">
                         <input class="input" type="password" placeholder="Repeat Password" />
                         <span class="icon is-small is-left">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                        
                         </div>
                     </div>
-                    <div class="field">
+                    <!-- 
+                        añadir foto
+                        <div class="field">
                         <label class="label">Add Photo Profile</label>
                         <div class="file is-small">
                             <label class="file-label">
@@ -121,6 +121,8 @@
                             </label>
                         </div>
                         </div>
+
+                        añadir curriculum
                     <div class="field">
                         <label class="label">Add Curriculum</label>
                         <div class="file is-small">
@@ -134,7 +136,7 @@
                             </span>
                             </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="field text-center mt-5">
                         <div class="control">
                         <button [routerLink]="['/profile']" class="button is-link ">Register new Account</button>
