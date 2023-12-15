@@ -12,3 +12,22 @@
   .card button{
     margin-right: 3px;
   }
+
+  .card-separation{
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    }
+
+  .card-header{
+    background-color: #ffdf89;
+  }
+  .content-right {
+    text-align: right;
+    display: block;
+  }
+
+  header i{
+    margin-right: 12px;
+  }

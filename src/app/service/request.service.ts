@@ -15,7 +15,7 @@ export class RequestService {
 
 
   get_interviews(number_page :number) {
-    let url: string = this.api_url+'interviews/paginated_interviews'+'?page='+number_page+'&size=5';
+    let url: string = this.api_url+'interviews/paginated_interviews'+'?page='+number_page+'&size=6';
     return this.http.get<any[]>(url);
   }
 

@@ -1,5 +1,5 @@
 <div class="thumb d-flex flex-column vh-100 overflow-hidden">
-  <header class="py-3 mb-2 border-bottom text-light upbarcolor">
+  <header class="header-color py-3 mb-2 border-bottom">
     <div class="container-fluid align-items-center d-flex me-3 row">
         <div class="flex-grow-1 d-flex align-items-center col-1">
           <div class="flex-shrink-0 dropdown">
@@ -9,7 +9,7 @@
             </a>
           </div>
         </div>
-      <div class="flex-shrink-1 col-10">
+      <div class="flex-shrink-1 col-9">
         <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none">
           <i class="bi bi-bootstrap fs-2 text-dark"></i>
         </a>
@@ -21,11 +21,11 @@
             <img src="../../assets/img/profile.jpg" alt="user" width="42" height="42" class=" photo_frame rounded-circle" />
           </a>
           <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" [routerLink]="['/profile']">Profile</a></li>
+            <li><a class="dropdown-item " [routerLink]="['/profile']">Profile</a></li>
             <li>
               <hr class="dropdown-divider" />
             </li>
-            <li><a class="dropdown-item" [routerLink]="['/login']" (click)="singOut()">Sign out</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/login']">Sign out</a></li>
           </ul>
         </div>
       </div>
@@ -34,11 +34,11 @@
   <div class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row overflow-auto">
 
     <div class="row flex-grow-sm-1 flex-grow-0 filler">
-      <aside class="col-sm-2 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3  lateralbar">
-        <div class="lateralcolor rounded-3 p-1 h-100 sticky-top lateralbar ">
-          <ul class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
-            <li>
-              <a [routerLink]="['/interviews']" class="nav-link px-2 text-truncate">
+      <aside class="col-sm-2 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
+        <div class="bar-color border rounded-2 p-1 h-100 sticky-top">
+          <ul class="nav  nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
+            <li class="active">
+              <a [routerLink]="['/interviews']" class="  nav-link px-2 text-truncate">
                 <i class="bi bi-house fs-5"><img src="../../assets/img/file-circle-exclamation-solid.svg" alt="user" width="28"
                     height="32" /></i>
                 <span class="d-none d-sm-inline margin-link"> Interview</span>
@@ -86,7 +86,7 @@
 
       <main class="col overflow-auto h-100">
         
-        <div class="filler p-3">
+        <div class="filler container-color border rounded-3 p-3">
           <ng-content>
 
           </ng-content>

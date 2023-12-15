@@ -1,7 +1,12 @@
 <app-lateral-bar>
+
+
   <form class="d-flex me-1 row" role="search">
+    
     <div class="row justify-content-end">
+
       <div class="col-lg-3 col-md-6 col-sm-12">
+        
         <div class="d-flex">
           <input
             class="form-control flex-grow-1 mr-2"
@@ -12,60 +17,63 @@
         </div>
       </div>
     </div>
+    <p class="title text-center">Positions:</p><br>
   </form>
-  @for (interview of interviews; track $index) {
-  <br />
-  <div class="card is-4">
-    <div class="card-content">
-      <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <i class="fa-solid fa-briefcase" style="font-size: 48px"></i>
-          </figure>
-        </div>
-        <div class="media-content">
-          <p class="title is-4">{{ interview.title }}</p>
-        </div>
-      </div>
-      <div class="content">
-        @for (skill of interview.skills; track $index) {
+  <div class="row ">
+    @for (interview of interviews; track $index) {
+      <div class="col-12 col-md-6">
+      <div class=" card  card-separation ">
+        <div class="pad-card" >
+        <header class="card-header ">
+          <p class="card-header-title">
+            <i class="fa-solid fa-briefcase"></i>
+            {{ interview.title }}
+          </p>
 
-        <button
-          class="button {{
-            class[skill.id % 5]
-          }} is-small is-light is-responsive"
-        >
-          {{ skill.skill_name }}
-        </button>
-        }
-      </div>
-      <div class="flex align-right">
-        <div class="content">
-          <button
-            [routerLink]="['/interview', interview.id]"
-            class="button is-small is-link"
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <b>Description: </b><p>{{interview.description}}</p>
+            @for (skill of interview.skills; track $index) {
+              <button
+                class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
+              >
+                {{ skill.skill_name }}
+              </button>
+            }
+            <div class=" content-right">
+              <i class="fa-regular fa-calendar"></i>
+              <time datetime="">{{
+                interview.end_date | date : "dd-MM-yyyy"
+              }}</time>
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a [routerLink]="['/interview', interview.id]" class="card-footer-item"
+            >View position</a
           >
-            View position
-          </button>
-        </div>
-        <div class="content center">
-          <i class="fa-regular fa-calendar"></i>
-          <time datetime="2016-01-01">{{
-            interview.end_date | date : "dd-MM-yyyy"
-          }}</time>
-        </div>
+        </footer>
       </div>
     </div>
   </div>
-  }
+    }
+  </div>
+  
   <br />
   @if (pagination.total_pages > 1) {
   <div class="center">
     <nav class="pagination is-small" role="navigation" aria-label="pagination">
       @if (pagination.current_page !=0 ){
-      <a (click)="get_page(pagination.current_page - 1)" class="pagination-previous">Previous</a>
+      <a
+        (click)="get_page(pagination.current_page - 1)"
+        class="pagination-previous"
+        >Previous</a
+      >
       } @if (pagination.current_page != pagination.total_pages ){
-      <a (click)="get_page(pagination.current_page + 1)" class="pagination-next">Next page</a>
+      <a (click)="get_page(pagination.current_page + 1)" class="pagination-next"
+        >Next page</a
+      >
       }
       <ul class="pagination-list">
         @if (pagination.current_page > 0 ){
