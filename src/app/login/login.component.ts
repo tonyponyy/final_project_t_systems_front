@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { TokenService } from '../service/token.service';
+import { ImageService } from '../service/image.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private tokenService : TokenService,
-    private router: Router
+    private router: Router,
+    private iservice: ImageService
   ) {
     this.formGroup = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.email]],
@@ -47,6 +49,7 @@ export class LoginComponent {
       this.authService.login(this.formGroup.value).subscribe(
         (result) => {
           console.log(result);
+          this.iservice.destroy_image();
           this.tokenService.saveToken(result.token);
           this.tokenService.saveRole(result.role);          
           // que se guarde el rol

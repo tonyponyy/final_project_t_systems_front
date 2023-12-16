@@ -22,7 +22,7 @@
             @if (user.photo  == null){
               <img class="photo_a_u" src="../../assets/img/profile.jpg" />
             }@else{
-              <img class="photo_a_u" src="{{user.photo}}" />
+              <img class="photo_a_u" src="data:image/jpeg;base64,{{user.photo}}" />
             }
           </td>
           <td >{{user.name}}</td>
@@ -40,7 +40,9 @@
             }
           </td>
           <td class="text-center mx-auto">
+            @if (user.role.name != "admin"){
             <button (click)="delete_user(user.id)" class=" text-center button is-danger is-small">Delete</button>
+            }
           </td>
         </tr>
         }

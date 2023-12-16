@@ -57,7 +57,8 @@ export class RequestService {
   upload_photo(file : any){
     console.log(file)
     let url: string = this.api_url+'users/photo';
-    return this.http.put<any[]>(url,file);
+    //return this.http.put<any[]>(url,file);
+    return this.http.put(url,file, { responseType: 'text' });
   }
 
   get_users(number_page :number) {

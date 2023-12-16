@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
 import { RequestService } from '../service/request.service';
+import { ImageService } from '../service/image.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ import { RequestService } from '../service/request.service';
 })
 export class ProfileComponent {
   user:any;
-  constructor(public request:RequestService){}
+  constructor(public request:RequestService, public iservice:ImageService){}
   protected profile: any;
   protected selectedFile: any ;
 
@@ -30,10 +31,16 @@ export class ProfileComponent {
 
       this.request.upload_photo(this.selectedFile).subscribe(
         (res) => {
-        console.log("bien")
+          //añadir spinner ??
+          this.request.get_user().subscribe((data:any)=>{
+            this.user.photo = data.photo;
+            this.iservice.save_image(data.photo);
+          },error =>{
+            console.log("error")
+          });
         },
         (err) => {
-          console.log("problemon-->"+err)
+          console.log("error-->"+err)
         })
   }
 }

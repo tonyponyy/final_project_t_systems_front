@@ -18,7 +18,11 @@
         <div class="flex-shrink-0 dropdown">
           <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown"
             aria-expanded="false">
-            <img src="../../assets/img/profile.jpg" alt="user" width="42" height="42" class=" photo_frame rounded-circle" />
+            @if (image == null || image == "default_image"){
+                          <img src="../../assets/img/profile.jpg" alt="user" width="42" height="42" class=" photo_frame rounded-circle" />
+            }@else {
+              <img src="data:image/jpeg;base64,{{image}}" alt="user" width="42" height="42" class=" photo_frame rounded-circle" />
+            }
           </a>
           <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
             <li><a class="dropdown-item " [routerLink]="['/profile']">Profile</a></li>
