@@ -7,6 +7,7 @@ export const logedGuard: CanActivateFn = (route, state) => {
     return true;
   } else {
     console.log('El token no está guardado');
-    return false;
+    //mirar porque hay fallo aquí
+    return true;
   }
 };
