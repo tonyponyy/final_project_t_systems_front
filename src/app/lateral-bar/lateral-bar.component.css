@@ -57,10 +57,8 @@ ul .active a {
     border-radius:6px;
   }
 
-  ul li :hover {
-    font-weight:bolder; 
-    background-color:#648696;
-    border-radius:6px;
+  .left-bar ul li :hover {
+    background-color:#6E75A4;
   }
 
 .header-color{

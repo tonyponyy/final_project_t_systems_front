@@ -9,7 +9,7 @@
             </a>
           </div>
         </div>
-      <div class="flex-shrink-1 col-9">
+      <div class="flex-shrink-1 col-10">
         <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none">
           <i class="bi bi-bootstrap fs-2 text-dark"></i>
         </a>
@@ -35,7 +35,7 @@
       </div>
     </div>
   </header>
-  <div class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row overflow-auto">
+  <div class="left-bar  container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row overflow-auto">
 
     <div class="row flex-grow-sm-1 flex-grow-0 filler">
       <aside class="col-sm-2 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
@@ -45,7 +45,7 @@
 
             @if (role == "admin") {
               <li>
-                <a [routerLink]="['/admin']" class="nav-link px-2 text-truncate">
+                <a [routerLink]="['/admin']"  class="nav-link px-2 text-truncate">
                   <i class="bi bi-house fs-5"><img src="../../assets/img/user-tie-solid.svg" alt="user" width="25"
                       height="32" /></i>
                   <span class="d-none d-sm-inline margin-link"> Admin</span>
@@ -65,7 +65,7 @@
           
             @if (role == "user") {
               <li>
-                <a [routerLink]="['/myinterviews']" class="nav-link px-2 text-truncate">
+                <a [routerLink]="['/myinterviews']"  class="nav-link px-2 text-truncate">
                   <i class="bi bi-house fs-5"><img src="../../assets/img/file-circle-check-solid.svg" alt="user" width="28"
                       height="32" /></i>
                   <span class="d-none d-sm-inline margin-link"> My Interview</span>
@@ -75,7 +75,7 @@
           
             @if (role == "hr") {
               <li>
-                <a [routerLink]="['/new_interview']" class="nav-link px-2 text-truncate">
+                <a [routerLink]="['/new_interview']"  class="nav-link px-2 text-truncate">
                   <i class="bi bi-house fs-5"><img src="../../assets/img/file-circle-plus-solid.svg" alt="user" width="28"
                       height="32" /></i>
                   <span class="d-none d-sm-inline margin-link"> New Interview</span>
@@ -85,7 +85,7 @@
 
             @if (role == "hr") {
               <li>
-                <a [routerLink]="['/skills']" class="nav-link px-2 text-truncate">
+                <a [routerLink]="['/skills']"  class="nav-link px-2 text-truncate">
                   <i class="bi bi-house fs-5"><img src="../../assets/img/address-card-solid.svg" alt="user" width="28"
                       height="32" /></i>
                   <span class="d-none d-sm-inline margin-link"> Skills</span>
@@ -95,7 +95,7 @@
           
             @if (role == "user" || role == "hr" || role == "admin") {
               <li>
-                <a [routerLink]="['/profile']" class="nav-link px-2 text-truncate">
+                <a [routerLink]="['/profile']"   class="nav-link px-2 text-truncate">
                   <i class="bi bi-house fs-5"><img src="../../assets/img/user-solid.svg" alt="user" width="25"
                       height="32" /></i>
                   <span class="d-none d-sm-inline margin-link"> Profile</span>
