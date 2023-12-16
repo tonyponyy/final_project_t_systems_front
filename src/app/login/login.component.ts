@@ -48,10 +48,13 @@ export class LoginComponent {
         (result) => {
           console.log(result);
           this.tokenService.saveToken(result.token);
-          this.tokenService.saveUser(result.user);
+          this.tokenService.saveRole(result.role);          
           // que se guarde el rol
-          
-          this.router.navigate(['/interviews'])
+          if(result.role == 'admin'){
+            this.router.navigate(['/admin'])
+          } else {
+            this.router.navigate(['/interviews'])
+          }
         },
         (error) => {
           if (error.status === 401) {

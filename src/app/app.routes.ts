@@ -11,6 +11,8 @@ import { SkillsComponent } from './skills/skills.component';
 import { InterviewsComponent } from './interviews/interviews.component';
 import { MyInterviewsComponent } from './my-interviews/my-interviews.component';
 import { logedGuard } from './guards/loged.guard';
+import { userRoleGuard } from './guards/user-role.guard';
+import { userHrRoleGuard } from './guards/user-hr-role.guard';
 
 export const routes: Routes = [
     {
@@ -24,12 +26,12 @@ export const routes: Routes = [
     {
         path:'myinterviews',
         component: MyInterviewsComponent,
-        canActivate: [logedGuard]
+        canActivate: [logedGuard,userRoleGuard]
     },
     {
         path:'interviews',
         component: InterviewsComponent,
-        canActivate: [logedGuard]
+        canActivate: [logedGuard,userHrRoleGuard]
     },
     {
         path:'interview/:id',
