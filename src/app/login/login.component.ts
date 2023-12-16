@@ -50,6 +50,7 @@ export class LoginComponent {
         (result) => {
           console.log(result);
           this.iservice.destroy_image();
+          console.log("saving token--->"+result.token)
           this.tokenService.saveToken(result.token);
           this.tokenService.saveRole(result.role);          
           // que se guarde el rol
