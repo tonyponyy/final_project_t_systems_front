@@ -8,3 +8,7 @@
   .pagination-link,.pagination-previous,.pagination-next{
     background-color: white !important; } .is-current{
     background-color: #485fc7 !important; }
+
+  table button{
+    margin-left:3px;
+  }

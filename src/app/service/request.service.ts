@@ -54,4 +54,26 @@ export class RequestService {
     let url: string = this.api_url+'users/current_user/info';
     return this.http.get<any[]>(url);
   }
+  upload_photo(file : any){
+    console.log(file)
+    let url: string = this.api_url+'users/photo';
+    return this.http.put<any[]>(url,file);
+  }
+
+  get_users(number_page :number) {
+    let url: string = this.api_url+'users/paginated_users'+'?page='+number_page+'&size=6';
+    return this.http.get<any[]>(url);
+  }
+
+  //admin
+  delete_user(id_user :number){
+    let url: string = this.api_url+'users/deleteUser/'+id_user;
+    return this.http.delete<any[]>(url);
+
+  }
+  set_role(id_user :number, role_name :string){
+    let url: string = this.api_url+'users/change_role/'+id_user+"/"+role_name;
+    return this.http.put(url, "{}", { responseType: 'text' });
+  }
+
 }

@@ -17,7 +17,7 @@
                 <div class="field">
 
                     <label class="file-label pencil_icon">
-                        <input class="file-input" type="file" name="resume" />
+                        <input class="file-input" #image_input  (change)="upload_image($event)" type="file" name="resume" />
 
                             <i class="fa-solid fa-pencil"></i>
 

@@ -1,5 +1,5 @@
 <app-lateral-bar>
-  <h1>Usuarios :</h1>
+  <p class="title text-center">Users:</p><br>
   <br />
   <div class="table-responsive-xl">
     <table class="table table-striped">
@@ -15,21 +15,32 @@
         </tr>
       </thead>
       <tbody>
-        @for (item of items; track $index) {
+        @for (user of all_users; track $index) {
         <tr>
-          <th scope="row"><b>1</b></th>
+          <th scope="row"><b>{{user.id}}</b></th>
           <td class="d-none d-lg-block" >
-            <img class="photo_a_u" src="../../assets/img/profile.jpg" />
+            @if (user.photo  == null){
+              <img class="photo_a_u" src="../../assets/img/profile.jpg" />
+            }@else{
+              <img class="photo_a_u" src="{{user.photo}}" />
+            }
           </td>
-          <td >Otto</td>
-          <td >Mambo Merienda</td>
-          <td ><b>User</b></td>
+          <td >{{user.name}}</td>
+          <td >{{user.lastname}} {{user.lastname2}}</td>
+          <td ><b>{{ user.role.name | titlecase}}</b></td>
           <td  class="text-center">
-            <button class="button is-link is-small">Human resources</button>
-            <button class="button is-warning is-small">Administrator</button>
+            @if (user.role.name != "user"){
+              <button (click)="change_role(user.id,'user')" class="button is-link is-small">User</button>
+            }
+            @if (user.role.name != "hr"){
+              <button (click)="change_role(user.id,'hr')" class="button is-info is-small">Human resources</button>
+            }
+            @if (user.role.name != "admin"){
+              <button (click)="change_role(user.id,'admin')" class="button is-warning is-small">Administrator</button>
+            }
           </td>
           <td class="text-center mx-auto">
-            <button class=" text-center button is-danger is-small">Delete</button>
+            <button (click)="delete_user(user.id)" class=" text-center button is-danger is-small">Delete</button>
           </td>
         </tr>
         }
@@ -37,38 +48,73 @@
     </table>
   </div>
   <br>
-  <div class="center">
-      <nav
-        class="pagination is-small"
-        role="navigation"
-        aria-label="pagination"
-      >
-        <a class="pagination-previous">Previous</a>
-        <a class="pagination-next">Next page</a>
+  @if (pagination.total_pages > 1) {
+    <div class="center">
+      <nav class="pagination is-small" role="navigation" aria-label="pagination">
+        @if (pagination.current_page !=0 ){
+        <a
+          (click)="get_page(pagination.current_page - 1)"
+          class="pagination-previous"
+          >Previous</a
+        >
+        } @if (pagination.current_page != pagination.total_pages ){
+        <a (click)="get_page(pagination.current_page + 1)" class="pagination-next"
+          >Next page</a
+        >
+        }
         <ul class="pagination-list">
+          @if (pagination.current_page > 0 ){
           <li>
-            <a class="pagination-link" aria-label="Goto page 1">1</a>
+            <a
+              (click)="get_page(0)"
+              class="pagination-link"
+              aria-label="Goto first"
+              >1</a
+            >
           </li>
+  
           <li><span class="pagination-ellipsis">&hellip;</span></li>
+          @if (pagination.current_page != 1){
           <li>
-            <a class="pagination-link" aria-label="Goto page 45">45</a>
+            <a
+              class="pagination-link"
+              (click)="get_page(pagination.current_page - 1)"
+              aria-label="Goto previous"
+              >{{ pagination.current_page }}</a
+            >
           </li>
+          } }
           <li>
             <a
               class="pagination-link is-current"
-              aria-label="Page 46"
+              aria-label="current page"
               aria-current="page"
-              >46</a
+              >{{ pagination.current_page + 1 }}</a
             >
           </li>
+          @if (pagination.current_page+1 != pagination.total_pages ){
           <li>
-            <a class="pagination-link" aria-label="Goto page 47">47</a>
+            <a
+              (click)="get_page(pagination.current_page + 1)"
+              class="pagination-link"
+              aria-label="Goto next"
+              >{{ pagination.current_page + 2 }}</a
+            >
           </li>
+          } @if (pagination.current_page+2 != pagination.total_pages ){ @if
+          (pagination.current_page+1 != pagination.total_pages ){
           <li><span class="pagination-ellipsis">&hellip;</span></li>
           <li>
-            <a class="pagination-link" aria-label="Goto page 86">86</a>
+            <a
+              (click)="get_page(pagination.total_pages - 1)"
+              class="pagination-link"
+              aria-label="Last page"
+              >{{ pagination.total_pages }}</a
+            >
           </li>
+          } }
         </ul>
       </nav>
     </div>
+    }
 </app-lateral-bar>
