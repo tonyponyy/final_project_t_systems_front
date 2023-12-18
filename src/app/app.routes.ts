@@ -44,7 +44,7 @@ export const routes: Routes = [
     {
         path:'interview_hr/:id',
         component: InterviewHrComponent,
-        canActivate: [logedGuard,HrRoleGuard]
+        canActivate: [logedGuard,hrRoleGuard]
     },
     {
         path:'register',
