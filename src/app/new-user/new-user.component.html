@@ -94,9 +94,12 @@
                                 <i class="fa-solid fa-lock"></i>
                             </span>
                         </div>
-                        @if (registerForm.get('newPassword')?.invalid && registerForm.get('newPassword')?.touched && registerForm.get('newPassword')?.value !== registerForm.get('newPassword')?.value && registerForm.get('newPassword')?.touched) {
+                        @if (registerForm.get('newPassword')?.invalid && registerForm.get('newPassword')?.touched) {
                             <p class="has-text-danger">Campo obligatorio</p>
-                        
+                        } @else {
+                            @if (registerForm.get('password')?.value !== registerForm.get('newPassword')?.value) {
+                                <p class="has-text-danger">Las contraseñas no coinciden</p>
+                            }
                         }
                         
                     </div>

@@ -20,9 +20,8 @@ import { ImageService } from '../service/image.service';
 })
 export class LoginComponent {
   formGroup: FormGroup;
-  emailNotValid : boolean = false;
-  passwordNotValid : boolean = false;
   errorMessage : string = '';
+  notFound : boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,14 +37,7 @@ export class LoginComponent {
   }
 
   send_login() {
-    if (this.formGroup.get('userName')?.invalid){
-      this.emailNotValid = true;
-    } else {
-      this.emailNotValid= false;
-    }
     if (this.formGroup.valid) {
-      this.passwordNotValid = false;
-      this.emailNotValid = false;
       this.authService.login(this.formGroup.value).subscribe(
         (result) => {
           console.log(result);
@@ -71,8 +63,6 @@ export class LoginComponent {
           }
         }
       );
-    } else {
-      this.passwordNotValid = true;
-    }
+    } 
   }
 }
