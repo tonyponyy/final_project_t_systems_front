@@ -33,11 +33,11 @@ export class LateralBarComponent {
       this.http.get_user().subscribe((data:any)=>{
         if (data.photo == null){
           this.image ="default_image"
+          this.iservice.save_image("default_image");
         }else{
           this.iservice.save_image(data.photo);
           this.image = data.photo;
         }
-        console.log("peticion 1")
       },error =>{
         console.log("error")
       });
