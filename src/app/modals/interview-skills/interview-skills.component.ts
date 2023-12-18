@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RequestService } from '../../service/request.service';
 
 @Component({
@@ -9,8 +9,10 @@ import { RequestService } from '../../service/request.service';
   styleUrl: './interview-skills.component.css'
 })
 export class InterviewSkillsComponent {
+  @Output() arrayEnviado = new EventEmitter<any[]>();
 
   protected skills : any[] = [];
+   interviewSkills : any[] = []
   protected pagination={current_page: 0,total_pages: 0, total_items: 0};
 
   constructor(public request: RequestService){}
@@ -35,7 +37,21 @@ export class InterviewSkillsComponent {
       modalElement.classList.add('is-active');
     }
   }
-  
+
+  addSkill(item: any) {
+    if (!this.interviewSkills.includes(item)) {
+      this.interviewSkills.push(item);
+      console.log(this.interviewSkills);
+    } else {
+      console.log('El item ya está en el array.');
+    }
+  }
+
+  enviarArray() {
+    this.arrayEnviado.emit(this.interviewSkills);
+    this.closeModal();
+  }
+
   closeModal() {
     const modalElement = document.getElementById('myModal');
     if (modalElement) {

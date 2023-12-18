@@ -16,7 +16,7 @@
                             <p class="subtitle is-6">{{item.description}}</p>
                         </div>
                         <div class="mx-5 my-3">
-                            <button class="button is-small is-link is-link mx-1">Add</button>
+                            <button class="button is-small is-link is-link mx-1" (click)="addSkill(item)">Add</button>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                 }
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-success">Save changes</button>
+            <button class="button is-success" (click)="enviarArray()">Save changes</button>
             <button class="button" (click)="closeModal()">Cancel</button>
         </footer>
     </div>
