@@ -7,7 +7,7 @@
                 class="d-flex align-items-center justify-content-center"
             >
             <!-- foto usuario -->
-            @if (user.photo == null){
+            @if (user?.photo == null){
                 <img
                 class="photo_frame rounded-circle"
                 src="../../assets/img/profile.jpg"
@@ -18,7 +18,7 @@
             }@else{
                 <img
                 class="photo_frame rounded-circle"
-                src="data:image/jpeg;base64,{{user.photo}}"
+                src="data:image/jpeg;base64,{{user?.photo}}"
                 alt="user"
                 width="150"
                 height="150"
@@ -44,7 +44,7 @@
                     class="input"
                     type="text"
                     placeholder="userName"
-                    value="{{user.name}}"
+                    value="{{user?.name}}"
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
@@ -62,7 +62,7 @@
                     class="input"
                     type="text"
                     placeholder="userLastName"
-                    value="{{user.lastname}}"
+                    value="{{user?.lastname}}"
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
@@ -79,7 +79,7 @@
                     class="input"
                     type="text"
                     placeholder="Optional second lastname"
-                    value="{{user.lastname2}}"
+                    value="{{user?.lastname2}}"
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
@@ -96,7 +96,7 @@
                     class="input"
                     type="email"
                     placeholder="Email input"
-                    value="{{user.email}}"
+                    value="{{user?.email}}"
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
