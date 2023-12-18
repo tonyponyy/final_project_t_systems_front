@@ -29,16 +29,16 @@
                 <div class="control">
                     <app-interview-skills (arrayEnviado)="recibirArray($event)"></app-interview-skills>
                 </div>
-                <div class="content">
-                    @for (skill of arraySkills; track $index) {
-                        <button class="button {{ class[skill.id % 5] }} is-small is-light is-responsive">
-                            {{ skill.skill_name }}
-                        </button>
-                        }
-                </div>
-               
             </div>
 
+            <div class="content">
+                @for (skill of arraySkills; track $index) {
+                <span class="button {{ class[skill.id % 5] }} is-small is-light me-1">
+                    <p class="mt-3">{{ skill.skill_name }}</p>
+                    <button class="delete is-small" (click)="deleteSkill(skill)"></button>
+                </span>
+                }
+            </div>
 
             <div class="field is-grouped">
                 <div class="control">

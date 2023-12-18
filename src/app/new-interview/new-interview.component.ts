@@ -53,6 +53,19 @@ export class NewInterviewComponent {
     
   }
 
+  deleteSkill(skillDelete : any){
+    const indexToDelete = this.arraySkills.findIndex(skill => skill.id === skillDelete.id);
+
+    if (indexToDelete !== -1) {
+      this.arraySkills.splice(indexToDelete, 1);
+      console.log(this.arraySkills);
+      
+    } else {
+        console.log('error');
+    }
+
+  }
+
   recibirArray(array: any[]) {
     this.arraySkills = array;
     console.log(this.arraySkills);
