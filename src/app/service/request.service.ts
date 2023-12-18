@@ -87,4 +87,14 @@ export class RequestService {
     return this.http.put(url, "{}", { responseType: 'text' });
   }
 
+  new_interview(data:any){
+    let url: string = this.api_url+'interviews/addInterview';
+    return this.http.post<any[]>(url,data);
+  }
+
+  add_skill_interview(id_interview : number, id_skill : number){
+    let url: string = this.api_url+'interviews_skills/add_by_ids/'+id_interview+'/'+id_skill;
+    return this.http.post<any[]>(url,{ responseType: 'text'});
+  }
+
 }

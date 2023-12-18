@@ -1,35 +1,50 @@
 <app-lateral-bar>
-    <div class="mx-5 my-3">
-        <div class="field">
-            <label class="label">Position title</label>
-            <div class="control">
-                <input class="input" type="text">
+    <form [formGroup]="newInterview">
+        <div class="mx-5 my-3">
+            <div class="field">
+                <label class="label">Position title</label>
+                <div class="control">
+                    <input class="input" type="text" formControlName="title">
+                </div>
             </div>
-        </div>
-    
-        <div class="field">
-            <label class="label">Description</label>
-            <div class="control">
-                <textarea class="textarea"></textarea>
-            </div>
-        </div>
-    
-        <div class="field is-grouped is-centered my-5">
-            <div class="control has-text-centered is-flex">
-                <p class="m-auto fw-bolder">SKILLS</p>
-            </div>
-            <div class="control">
-                <app-interview-skills></app-interview-skills>
-            </div>
-        </div>
-        
-    
-        <div class="field is-grouped">
-            <div class="control">
-                <button class="button is-link is-sma">Save position</button>
-            </div>
-        </div>
-    </div>
-    
 
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="textarea" formControlName="description"></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">End Date</label>
+                <div class="control">
+                    <input class="input" type="date" formControlName="end_date">
+                </div>
+            </div>
+
+            <div class="field is-grouped is-centered my-5">
+                <div class="control has-text-centered is-flex">
+                    <p class="m-auto fw-bolder">SKILLS</p>
+                </div>
+                <div class="control">
+                    <app-interview-skills (arrayEnviado)="recibirArray($event)"></app-interview-skills>
+                </div>
+                <div class="content">
+                    @for (skill of arraySkills; track $index) {
+                        <button class="button {{ class[skill.id % 5] }} is-small is-light is-responsive">
+                            {{ skill.skill_name }}
+                        </button>
+                        }
+                </div>
+               
+            </div>
+
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link is-sma" (click)="onSubmit()">Save position</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </app-lateral-bar>
