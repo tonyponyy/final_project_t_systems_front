@@ -23,12 +23,23 @@ export class RequestService {
     let url: string = this.api_url+'interviews/paginated_interviews'+'?page='+number_page+'&size=6';
     return this.http.get<any[]>(url);
   }
+
+  get_user_interview(id_interview :number){
+    let url: string = this.api_url+'interviews/show_interview_user/'+id_interview
+    return this.http.get<any[]>(url);
+  }
   //user_position 
   get_user_interviews() {
     let url: string = this.api_url+'userinterviews/user_interviews';
     return this.http.get<any[]>(url);
   }
 
+  user_enroll_interview(id_interview :number){
+    let url: string = this.api_url+'userinterviews/user_join_interview/'+id_interview;
+    return this.http.post(url, "{}", { responseType: 'text' });
+  }
+
+  //skills
   get_skills(number_page :number){
     let url: string = this.api_url+'skills/paginated_skills?page='+number_page+'&size=5';
     return this.http.get<any[]>(url);
@@ -57,7 +68,6 @@ export class RequestService {
   upload_photo(file : any){
     console.log(file)
     let url: string = this.api_url+'users/photo';
-    //return this.http.put<any[]>(url,file);
     return this.http.put(url,file, { responseType: 'text' });
   }
 

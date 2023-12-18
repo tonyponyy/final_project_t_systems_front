@@ -44,3 +44,18 @@ export class ProfileComponent {
         })
   }
 }
+// export interface user{
+//   id: number;
+//   name: string;
+//   lastname: string;
+//   lastname2: string;
+//   email: string;
+//   password: string;
+//   photo: string;
+//   resume: string;
+//   role: {
+//     id : number;
+//     name: string;
+//   }
+//   skills: [];
+// }

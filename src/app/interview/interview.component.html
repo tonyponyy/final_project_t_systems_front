@@ -1,66 +1,80 @@
 <app-lateral-bar>
-    <div class="text-center">
-    <h1 class="title">Junior PHP ID:{{interview_id}}</h1>
-    </div>
-    <br>
-<p><b>Descripción :</b></p>       
-<p>Esta es la entrevista de php Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, iste nam eaque reiciendis magnam et ab molestiae odio rerum quidem vitae assumenda tempora pariatur perspiciatis quia, eveniet atque quos ex!</p>
-<br>
-<div class="skill_boxes">
+  @if (loaded == true){
+  <div class="text-center">
+    <h1 class="title">{{ interview?.title }}</h1>
+  </div>
+  <br />
+  <p><b>Description :</b></p>
+  <p>{{ interview?.description }}</p>
+  <br />
+  <div class="skill_boxes">
+    @for (skill of interview?.skills; track $index) {
     <button
-      class="button is-success is-small is-light is-responsive"
+      class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
     >
-      Css
+      {{ skill.skill_name }}
     </button>
-    <button
-      class="button is-success is-small is-warning is-responsive"
-    >
-      Html
-    </button>
-    <button
-      class="button is-success is-small is-link is-responsive"
-    >
-      Php
-    </button>
-  </div>    
-<br>
-    <button class="button is-link is-small">Inscribirse</button>
-    <br><br>
-<article class="message is-link">
+    }
+  </div>
+  @if ( user_interview == null){
+  <button (click)="enroll()" class="button is-link is-small">Enroll</button>
+  } @else{
+  <button class="button is-link is-small" disabled>Already enrolled</button>
+  }
+
+  <br /><br />
+  @if ( user_interview != null){
+  <article class="message is-link">
     <div class="message-body">
-        <p><b><i class="fa-solid fa-briefcase"></i> Mi candidatura :</b></p>
-        <br>
-        <p><b>Estado:</b> Se ha inscrito en la oferta.</p>
-        <progress class="progress is-primary" value="15" max="100">15%</progress>
-        <br>
+      <p>
+        <b><i class="fa-solid fa-briefcase"></i> My position :</b>
+      </p>
+      <br />
+      <p><b>State :</b>{{ states[user_interview?.state] }}</p>
 
-        <p><b><i class="fa-solid fa-laptop-code"></i> Pruevas tecnicas :</b></p>
-        <br>
-        <article class="message is-info">
-            <div class="message-header">
-              <p>Prueba tecnica Java Basica</p>
-            </div>
-            <div class="message-body">
-                La prueba tecnica consiste en diseñar un backend funcional en <b>Java</b> con las siguientes especificaciones : Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, deserunt error voluptas repellendus facere fugiat tempora iusto vero sint similique eaque culpa libero fugit aliquam reprehenderit non pariatur consequuntur recusandae. 
-            </div>
-            <div class="date_interviews"> <i class="fa-regular fa-calendar"></i> Fecha limite: 10/12/2024</div>
-          </article>
-        <br>
-        <article class="message is-info">
-            <div class="message-header">
-              <p>Prueba tecnica Java Basica</p>
-            </div>
-            <div class="message-body">
-                La prueba tecnica consiste en diseñar un backend funcional en <b>Java</b> con las siguientes especificaciones : Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, deserunt error voluptas repellendus facere fugiat tempora iusto vero sint similique eaque culpa libero fugit aliquam reprehenderit non pariatur consequuntur recusandae. 
-                <br>
-                <p><b>Calificación :</b> 8,5</p>
-                <p><b>Hecho el :</b> 09/12/2024 17:00</p>
-            </div>
-            <div class="date_interviews"> <i class="fa-regular fa-calendar"></i> Fecha limite: 10/12/2024 17:00</div>
-          </article>  
-
+      <progress
+        class="progress is-primary"
+        value="{{ user_interview?.state }}"
+        max="4"
+      >
+        {{ user_interview?.state }}
+      </progress>
+      <br />
+      @if (user_tests?.length > 0){
+      <p>
+        <b><i class="fa-solid fa-laptop-code"></i> Pruevas tecnicas :</b>
+      </p>
+      <br/>
+      @for (test of user_tests; track $index) {
+      <article class="message is-info">
+        <div class="message-header">
+          <p>{{test.test.name}}</p>
+        </div>
+        <div class="message-body">
+         {{test.test.description}}
+        @if (test.do_at !=null){
+          
+          <p><b>Do at: </b> {{test.do_at | date : "dd-MM-yyyy"}}<br></p>
+        }
+        @if (test.calification !=null){
+          <p><b>Calification: </b> {{test.calification}}</p>
+        }
+      </div>
+        <div class="date_interviews">
+          <i class="fa-regular fa-calendar"></i> Fecha limite: 10/12/2024
+        </div>
+      </article>
+      <br />
+    }
+    }
     </div>
+    <br />
+    @if (user_interview.internal_comment != null){
+    <p><b>Comments :</b></p>
+    {{ user_interview?.internal_comment }}
+    }
   </article>
-
-
+  } }@else{
+  <div>Loading...</div>
+  }
 </app-lateral-bar>
