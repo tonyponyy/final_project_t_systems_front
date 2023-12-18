@@ -18,9 +18,9 @@
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
-                        @if (emailNotValid == true) {
+                        @if (formGroup.get('userName')?.invalid && formGroup.get('userName')?.touched) {
                             <p class="has-text-danger">Email incorrecto</p>
-                        }
+                            }
                     </div>
 
                     <div class="field">
@@ -30,11 +30,11 @@
                                 <i class="fa-solid fa-lock"></i>
                             </span>
                         </div>
-                        @if (passwordNotValid == true) {
-                            <p class="has-text-danger">Campo obligatorio</p>
+                        @if (formGroup.get('password')?.invalid && formGroup.get('password')?.touched && errorMessage == '') {
+                            <p class="has-text-danger">Campo Obligatorio</p>
                             }
                     </div>
-                    @if(errorMessage != ''){
+                    @if(errorMessage != '' && formGroup.get('password')?.invalid){
                         <p class="has-text-danger mb-3">{{errorMessage}}</p>
                     }
                     <div class="field text-center">
