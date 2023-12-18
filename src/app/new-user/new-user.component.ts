@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RequestService } from '../service/request.service';
 import { AuthService } from '../service/auth.service';
 
@@ -19,7 +19,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class NewUserComponent {
   registerForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private request: AuthService) {
+  constructor(private formBuilder: FormBuilder, private request: AuthService, private router: Router) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -41,6 +41,7 @@ export class NewUserComponent {
       this.request.register(register).subscribe(
         (data: any) => {
           console.log('loged');
+          this.router.navigate(['/login']);
         },
         (error) => {
           console.log('error' + error);
