@@ -13,6 +13,8 @@ import { MyInterviewsComponent } from './my-interviews/my-interviews.component';
 import { logedGuard } from './guards/loged.guard';
 import { userRoleGuard } from './guards/user-role.guard';
 import { userHrRoleGuard } from './guards/user-hr-role.guard';
+import { adminRoleGuard } from './guards/admin-role.guard';
+import { hrRoleGuard } from './guards/hr-role.guard';
 
 export const routes: Routes = [
     {
@@ -36,7 +38,7 @@ export const routes: Routes = [
     {
         path:'interview/:id',
         component: InterviewComponent,
-        canActivate: [logedGuard]
+        canActivate: [logedGuard,userHrRoleGuard]
     },
     {
         path:'register',
@@ -50,12 +52,12 @@ export const routes: Routes = [
     {
         path:'admin',
         component: AdminViewComponent,
-        canActivate: [logedGuard]
+        canActivate: [logedGuard,adminRoleGuard]
     } ,
     {
         path:'new_interview',
         component: NewInterviewComponent,
-        canActivate: [logedGuard]
+        canActivate: [logedGuard,hrRoleGuard]
     } ,
     {
         path:'edit_interview',
@@ -65,7 +67,7 @@ export const routes: Routes = [
     {
         path:'skills',
         component: SkillsComponent,
-        canActivate: [logedGuard]
+        canActivate: [logedGuard,hrRoleGuard]
     },
     {
         path:'**',

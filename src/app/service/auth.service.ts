@@ -17,7 +17,7 @@ export class AuthService {
     return this.http.post(AUTH_API+"login",data);
   }
   register(data:any) :Observable<any>{
-    return this.http.post(AUTH_API+"register",data);
+    return this.http.post(AUTH_API+"signup",data);
   }
 
 }
