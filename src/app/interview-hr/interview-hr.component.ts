@@ -16,7 +16,6 @@ export class InterviewHrComponent {
   protected interview_id: any;
   protected interview:any
   protected user_interview:any;
-  protected users:any;
   protected tests :any;
   protected loaded :boolean = false;
   public states :string[] =['You have not passed the process','You are enrolled','First interview','In selection process','Hired'];
@@ -34,7 +33,7 @@ get_interview(id_interview :any) {
   this.requestservice.get_hr_interview(id_interview).subscribe((data: any) => {
     console.log(data);
     this.interview = data.interview;
-    this.user_interview = data.user_interview;
+    this.user_interview = data.users;
     this.tests = data.tests;
     this.loaded = true;
   });

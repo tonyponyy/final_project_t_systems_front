@@ -72,7 +72,7 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                  Users
+                  Users enrolled
                 </button>
               </h2>
               <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
@@ -82,23 +82,47 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th scope="col">Id</th>
                               <th class="d-none d-lg-block" scope="col" >Image</th>
                               <th >Name</th>
-                              <th >Surname</th>
-                              <th >Role</th>
+                              <th >skills</th>
+                              <th >Resume</th>
                               <th  class="text-center">Actions</th>
                             </tr>
                           </thead>
                           <tbody>
+                            @for (user of user_interview; track $index) {
                             <tr>
-                                <th >Name</th>
-                                <th >Name</th>
-                                <th >Name</th>
-                                <th >Name</th>
-                                <th >Name</th>
-                                <th >Name</th>
+                                <td >
+                                @if (user.user.photo  == null){
+                                    <img class="photo_a_u" src="../../assets/img/profile.jpg" />
+                                  }@else{
+                                    <img class="photo_a_u" src="data:image/jpeg;base64,{{user.user.photo}}" />
+                                  }
+                                </td>
+                                <td >{{user.user.name}}  {{user.user.lastname}} {{user.user.lastname2}}</td>
+                                <td >
+                                        @for (skill of user.user.skills; track $index) {
+                                        <button
+                                          class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
+                                        >
+                                          {{ skill.skill_name }}
+                                        </button>
+                                        }
+                                </td>
+                                <td >
+                                    @if(user.user.resume !=null) {
+                                        <button (click)="edit(interview.id)" class="button is-info is-small">View resume</button>
+                                    }@else {
+                                        <button  class="button is-info is-small" disabled>View resume</button>
+                                    }
+                                </td>
+                                <td class="action_buttons" >
+                                    <button  (click)="edit(interview.id)" class="button is-info is-small" >Add comment</button>
+                                    <button  (click)="edit(interview.id)" class="button is-success is-small" >Change state</button>
+                                    <button  (click)="edit(interview.id)" class="button is-link is-small" >Assign test</button>
+                                </td>
                             </tr>
+                        }
                         </tbody>
                         </table>
                     </div>
