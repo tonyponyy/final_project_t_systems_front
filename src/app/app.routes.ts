@@ -10,6 +10,7 @@ import { EditInterviewComponent } from './edit-interview/edit-interview.componen
 import { SkillsComponent } from './skills/skills.component';
 import { InterviewsComponent } from './interviews/interviews.component';
 import { MyInterviewsComponent } from './my-interviews/my-interviews.component';
+import { InterviewHrComponent } from './interview-hr/interview-hr.component';
 import { logedGuard } from './guards/loged.guard';
 import { userRoleGuard } from './guards/user-role.guard';
 import { userHrRoleGuard } from './guards/user-hr-role.guard';
@@ -39,6 +40,11 @@ export const routes: Routes = [
         path:'interview/:id',
         component: InterviewComponent,
         canActivate: [logedGuard,userHrRoleGuard]
+    },
+    {
+        path:'interview_hr/:id',
+        component: InterviewHrComponent,
+        canActivate: [logedGuard,hrRoleGuard]
     },
     {
         path:'register',

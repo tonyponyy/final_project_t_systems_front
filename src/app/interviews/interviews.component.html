@@ -51,9 +51,16 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a [routerLink]="['/interview', interview.id]" class="card-footer-item"
+          @if (role == "hr"){
+            <a [routerLink]="['/interview_hr', interview.id]" class="card-footer-item"
             >View position</a
           >
+          }@else {
+            <a [routerLink]="['/interview', interview.id]" class="card-footer-item"
+            >View position</a
+          >
+          }
+         
         </footer>
       </div>
     </div>

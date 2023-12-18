@@ -28,6 +28,11 @@ export class RequestService {
     let url: string = this.api_url+'interviews/show_interview_user/'+id_interview
     return this.http.get<any[]>(url);
   }
+
+  get_hr_interview(id_interview :number){
+    let url: string = this.api_url+'interviews/show_interview_rh/'+id_interview
+    return this.http.get<any[]>(url);
+  }
   //user_position 
   get_user_interviews() {
     let url: string = this.api_url+'userinterviews/user_interviews';

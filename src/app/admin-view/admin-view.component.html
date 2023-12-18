@@ -10,8 +10,7 @@
           <th >Name</th>
           <th >Surname</th>
           <th >Role</th>
-          <th  class="text-center">Apply role</th>
-          <th class="text-center">Delete</th>
+          <th  class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -30,16 +29,14 @@
           <td ><b>{{ user.role.name | titlecase}}</b></td>
           <td  class="text-center">
             @if (user.role.name != "user"){
-              <button (click)="change_role(user.id,'user')" class="button is-link is-small">User</button>
+              <button (click)="change_role(user.id,'user')" class="button is-link is-small">Set to ser</button>
             }
             @if (user.role.name != "hr"){
-              <button (click)="change_role(user.id,'hr')" class="button is-info is-small">Human resources</button>
+              <button (click)="change_role(user.id,'hr')" class="button is-info is-small">Set to Human resources</button>
             }
             @if (user.role.name != "admin"){
-              <button (click)="change_role(user.id,'admin')" class="button is-warning is-small">Administrator</button>
+              <button (click)="change_role(user.id,'admin')" class="button is-warning is-small">Set to Administrator</button>
             }
-          </td>
-          <td class="text-center mx-auto">
             @if (user.role.name != "admin"){
             <button (click)="delete_user(user.id)" class=" text-center button is-danger is-small">Delete</button>
             }

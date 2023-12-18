@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
 import { RequestService } from '../service/request.service';
 import { RouterLink } from '@angular/router';
+import { TokenService } from '../service/token.service';
 
 import { DatePipe } from '@angular/common';
 
@@ -13,12 +14,14 @@ import { DatePipe } from '@angular/common';
   styleUrl: './interviews.component.css'
 })
 export class InterviewsComponent {
-constructor(public requestservice: RequestService){}
+constructor(public requestservice: RequestService, public tokenservice: TokenService){}
 protected interviews :any[] =[];
 protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
 protected pagination={current_page: 0,total_pages: 0, total_items: 0};
+public role :string ="";
 
 ngOnInit() {
+this.role = this.tokenservice.getUser();  
 this.get_page(0);
 }
 
