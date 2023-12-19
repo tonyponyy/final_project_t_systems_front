@@ -6,6 +6,9 @@
                 <div class="control">
                     <input class="input" type="text" formControlName="title">
                 </div>
+                @if (newInterview.get('title')?.invalid && newInterview.get('title')?.touched ) {
+                    <p class="has-text-danger">Required field</p>
+                    }
             </div>
 
             <div class="field">
@@ -13,6 +16,9 @@
                 <div class="control">
                     <textarea class="textarea" formControlName="description"></textarea>
                 </div>
+                @if (newInterview.get('title')?.invalid && newInterview.get('title')?.touched ) {
+                    <p class="has-text-danger">Required field</p>
+                    }
             </div>
 
             <div class="field">
@@ -20,6 +26,9 @@
                 <div class="control">
                     <input class="input" type="date" formControlName="end_date">
                 </div>
+                @if (newInterview.get('title')?.invalid && newInterview.get('title')?.touched ) {
+                    <p class="has-text-danger">Required field</p>
+                    }
             </div>
 
             <div class="field is-grouped is-centered my-5">

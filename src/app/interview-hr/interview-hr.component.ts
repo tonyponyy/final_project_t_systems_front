@@ -3,22 +3,23 @@ import { LateralBarComponent } from '../lateral-bar/lateral-bar.component';
 import {
   ActivatedRoute,
   Router,
-  RouterLink,
   RouterModule,
 } from '@angular/router';
 import { RequestService } from '../service/request.service';
 import { DatePipe } from '@angular/common';
 import { FileserviceService } from '../service/fileservice.service';
 import { CommentComponent } from '../modals/comment/comment.component';
+import { CreateTestComponent } from '../modals/create-test/create-test.component';
 
 @Component({
   selector: 'app-interview-hr',
   standalone: true,
   templateUrl: './interview-hr.component.html',
   styleUrl: './interview-hr.component.css',
-  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent],
+  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent, CreateTestComponent],
 })
 export class InterviewHrComponent {
+
   constructor(
     private route: ActivatedRoute,
     private requestservice: RequestService,
