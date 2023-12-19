@@ -148,9 +148,9 @@
                                 </td>
                                 <td >
                                     @if(user.user.resume !=null) {
-                                        <button (click)="edit(interview.id)" class="button is-info is-small">View resume</button>
+                                        <button (click)="view_resume(user.user.id,user.user.name)" class="button is-info is-small">View resume</button>
                                     }@else {
-                                        <button  class="button is-info is-small" disabled>View resume</button>
+                                        <button  class="button is-info is-small" disabled>No resume available</button>
                                     }
                                 </td>
                                 <td class="action_buttons" >

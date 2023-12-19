@@ -95,7 +95,7 @@
                     class="input"
                     type="email"
                     placeholder="Email input"
-                    value="{{user?.email}}"
+                    value="{{user?.email}}" readonly
                 />
                 <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
@@ -105,41 +105,7 @@
                 <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
                 <p class="help is-danger"></p>
             </div>
-            <div class="field">
-                <label class="label">Password</label>
-                <div class="control has-icons-left">
-                <input
-                    class="input"
-                    type="password"
-                    placeholder="Change Password"
-                    value=""
-                />
-                <span class="icon is-small is-left">
-                    <i class="fa-solid fa-lock"></i>
-                </span>
-                
-                </div>
-                <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
-                <p class="help is-danger"></p>
-            </div>
-            <div class="field">
-                <label class="label">Confirm Password</label>
-                <div class="control has-icons-left">
-                <input
-                    class="input"
-                    type="password"
-                    placeholder="Confirm Password"
-                    value=""
-                />
-                <span class="icon is-small is-left">
-                    <i class="fa-solid fa-lock"></i>
-                </span>
-                
-                </div>
-                <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
-                <p class="help is-danger"></p>
-            </div>
-
+            @if (current_role == "user"){
             <div class="field">
                 <label class="label">Skills</label>
                 <div class="content">
@@ -159,19 +125,29 @@
                 <label class="label">Añadir curriculum</label>
                 <div class="file is-small">
                     <label class="file-label">
-                    <input class="file-input" type="file" name="resume" />
+                    <input class="file-input" #resume_input  (change)="upload_resume($event)" type="file"  name="resume" />
                     <span class="file-cta">
                         <span class="file-icon">
                         <i class="fas fa-upload"></i>
                         </span>
                         <span class="file-label"> Elige un archivo </span>
                     </span>
+                    @if (user?.resume !=null){
+                        <div class="control">
+                        <button class="button is-small is-success  mx-1" (click)="view_resume()">View resume</button>
+                        </div>    
+                    }
                     </label>
+                    
                 </div>
                 </div>
+                @if (resume_succes){
+                    <p class="help is-success">Resume added succesfull</p>
+                }
+
             </div>
             <br />
-
+        }
             <div class="field is-grouped">
                 <div class="control">
                     <button class="button is-link">Guardar</button>

@@ -71,13 +71,22 @@ export class RequestService {
     return this.http.get<any[]>(url);
   }
   upload_photo(file : any){
-    console.log(file)
     let url: string = this.api_url+'users/photo';
+    return this.http.put(url,file, { responseType: 'text' });
+  }
+
+  upload_resume(file : any){
+    let url: string = this.api_url+'users/resume';
     return this.http.put(url,file, { responseType: 'text' });
   }
 
   get_users(number_page :number) {
     let url: string = this.api_url+'users/paginated_users'+'?page='+number_page+'&size=6';
+    return this.http.get<any[]>(url);
+  }
+
+  get_user_resume(user_id:number){
+    let url: string = this.api_url+'users/user_resume/'+user_id;
     return this.http.get<any[]>(url);
   }
 

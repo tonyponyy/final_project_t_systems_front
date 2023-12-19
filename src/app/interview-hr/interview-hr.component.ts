@@ -3,6 +3,7 @@ import { LateralBarComponent } from "../lateral-bar/lateral-bar.component";
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RequestService } from '../service/request.service';
 import { DatePipe } from '@angular/common';
+import { FileserviceService } from '../service/fileservice.service';
 
 @Component({
     selector: 'app-interview-hr',
@@ -12,7 +13,7 @@ import { DatePipe } from '@angular/common';
     imports: [LateralBarComponent,DatePipe]
 })
 export class InterviewHrComponent {
-  constructor(private route: ActivatedRoute,private requestservice: RequestService) {}
+  constructor(private route: ActivatedRoute,private requestservice: RequestService,private f_service:FileserviceService) {}
 
   protected interview_id: any;
   protected interview:any
@@ -45,6 +46,12 @@ console.log("edit -->"+id_interview)
 }
 delete(id_interview :number){
 console.log("delete -->"+id_interview)
+}
+view_resume(id_user:number,name :string){
+  this.requestservice.get_user_resume(id_user).subscribe((data: any) => {
+    this.f_service.get_base64_file(data.resume.resume,id_user+name+".pdf")
+  });
+
 }
 
 }
