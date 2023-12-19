@@ -141,8 +141,11 @@
                     
                 </div>
                 </div>
+                @if (!file_validation){
+                    <p class="help is-danger">The file must be an pdf.</p>
+                }
                 @if (resume_succes){
-                    <p class="help is-success">Resume added succesfull</p>
+                    <p class="help is-success">Resume added succesfull.</p>
                 }
 
             </div>

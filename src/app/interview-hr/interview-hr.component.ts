@@ -83,19 +83,19 @@ view_resume(id_user:number,name :string){
   stateId(item: string): number {
     switch (item) {
       case 'You have not passed the process':
-        return 4;
+        return 0;
         break;
       case 'You are enrolled':
         return 1;
         break;
       case 'First interview':
-        return 3;
-        break;
-      case 'In selection process':
         return 2;
         break;
+      case 'In selection process':
+        return 3;
+        break;
       case 'Hired':
-        return 5;
+        return 4;
         break;
         default:
         return 0 ;
