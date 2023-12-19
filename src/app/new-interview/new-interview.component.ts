@@ -17,7 +17,6 @@ export class NewInterviewComponent {
   arraySkills : any[] = [];
   protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
 
-
   constructor(private formBuilder: FormBuilder, private request : RequestService, private router : Router) {
     this.newInterview = this.formBuilder.group({
       title: ['', Validators.required],

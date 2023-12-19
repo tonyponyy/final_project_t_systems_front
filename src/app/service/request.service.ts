@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Skill } from '../skills/skills.component';
+import { Interview } from '../edit-interview/edit-interview.component';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,11 @@ export class RequestService {
     return this.http.put<any[]>(url,item);
   }
 
+  edit_interview(interview : Interview) {
+    let url: string = this.api_url+'interviews/editInterview/'+interview.id;
+    return this.http.put<any[]>(url,interview);
+  }
+
   //datos del usuario
   get_user(){
     let url: string = this.api_url+'users/current_user/info';
@@ -110,5 +116,17 @@ export class RequestService {
     let url: string = this.api_url+'interviews_skills/add_by_ids/'+id_interview+'/'+id_skill;
     return this.http.post<any[]>(url,{ responseType: 'text'});
   }
+
+  delete_interview(id_interview: number){
+    let url: string = this.api_url+'interviews/deleteInterview/'+id_interview;
+    return this.http.delete<any[]>(url);
+  }
+
+  change_state(id_ui : number, state : number){
+    let url: string = this.api_url+'userinterviews/changeState/'+id_ui+'/'+state;
+    
+    return this.http.put(url, "{}", { responseType: 'text' });
+  }
+
 
 }

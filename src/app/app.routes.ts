@@ -66,7 +66,7 @@ export const routes: Routes = [
         canActivate: [logedGuard,hrRoleGuard]
     } ,
     {
-        path:'edit_interview',
+        path:'edit_interview/:id',
         component: EditInterviewComponent,
         canActivate: [logedGuard]
     } ,
