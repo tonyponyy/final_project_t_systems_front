@@ -26,7 +26,7 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                 Meetings / Test
+                  Meetings / Test
                 </button>
               </h2>
               <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
@@ -121,9 +121,9 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th>Image</th>
+                              <th class="d-none d-lg-block">Image</th>
                               <th >Name</th>
-                              <th >skills</th>
+                              <th class="d-none d-lg-block">skills</th>
                               <th >Resume</th>
                               <th >Actions</th>
                             </tr>
@@ -131,7 +131,7 @@
                           <tbody>
                             @for (user of user_interview; track $index) {
                             <tr>
-                                <td >
+                                <td class="d-none d-lg-block">
                                 @if (user.user.photo  == null){
                                     <img class="photo_a_u" src="../../assets/img/profile.jpg" />
                                   }@else{
@@ -139,7 +139,7 @@
                                   }
                                 </td>
                                 <td >{{user.user.name}}  {{user.user.lastname}} {{user.user.lastname2}}</td>
-                                <td >
+                                <td class="d-none d-lg-block">
                                         @for (skill of user.user.skills; track $index) {
                                         <button
                                           class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
