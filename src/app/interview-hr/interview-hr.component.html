@@ -26,7 +26,7 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                 Test
+                 Meetings / Test
                 </button>
               </h2>
               <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
@@ -51,7 +51,7 @@
 
                     }
                   }@else {
-                    <p>This position doesn't have test</p>
+                    <p>This position doesn't have meetings</p>
                   }
                   <button (click)="delete(interview.id)" class="button is-success is-small">Create test</button>
                 </div>
@@ -60,12 +60,49 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  User test
+                  User meetings / tests
                 </button>
               </h2>
               <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  @if (tests.length > 0){
+
+                    @for (user_test of tests; track $index) {
+                        <article class="message is-link ">
+                          <div class="message-header">
+                            @if (user_test.user.photo  == null){
+                              <img class="photo_a_u" src="../../assets/img/profile.jpg" />
+                            }@else{
+                              <img class="photo_a_u" src="data:image/jpeg;base64,{{user_test.user.photo}}" />
+                            }
+                            <p>{{user_test.test.name}}</p>
+                          </div>
+                          <div class="message-body">
+                            <b>Description: </b> {{user_test.test.description}}<p>
+                            <br>
+                    
+                            <p><b>Assigned to:</b> {{user_test.user.name}} {{user_test.user.lastname}} {{user_test.user.lastname2}} </p>
+                            @if (user_test.do_at !=null){
+                              <b>Do at:</b> {{user_test.do_at | date : "dd-MM-yyyy"}}<br>
+                            }
+                            @if (user_test.calification !=null){
+                              <b>Calification:</b> {{user_test.calification}}
+                            }
+                            <br><br>
+                            <button  (click)="edit(interview.id)" class=" user-meets-button button is-info is-small" >Set day</button>
+                            <button  (click)="edit(interview.id)" class=" user-meets-button button is-success is-small" >Calificate</button>
+                            <button  (click)="edit(interview.id)" class=" user-meets-button button is-danger is-small" >Cancel meet</button>
+                  
+                          </div>
+                        </article>
+                      }
+
+                  }@else {
+                    <div>
+                      <p> No meetings assigned to users</p>
+                    </div>
+                  }
+
                 </div>
               </div>
             </div>
@@ -82,11 +119,11 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th class="d-none d-lg-block" scope="col" >Image</th>
+                              <th>Image</th>
                               <th >Name</th>
                               <th >skills</th>
                               <th >Resume</th>
-                              <th  class="text-center">Actions</th>
+                              <th >Actions</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -119,7 +156,7 @@
                                 <td class="action_buttons" >
                                     <button  (click)="edit(interview.id)" class="button is-info is-small" >Add comment</button>
                                     <button  (click)="edit(interview.id)" class="button is-success is-small" >Change state</button>
-                                    <button  (click)="edit(interview.id)" class="button is-link is-small" >Assign test</button>
+                                    <button  (click)="edit(interview.id)" class="button is-link is-small" >Assign meeting / test</button>
                                 </td>
                             </tr>
                         }

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { LateralBarComponent } from "../lateral-bar/lateral-bar.component";
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RequestService } from '../service/request.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-interview-hr',
     standalone: true,
     templateUrl: './interview-hr.component.html',
     styleUrl: './interview-hr.component.css',
-    imports: [LateralBarComponent]
+    imports: [LateralBarComponent,DatePipe]
 })
 export class InterviewHrComponent {
   constructor(private route: ActivatedRoute,private requestservice: RequestService) {}
