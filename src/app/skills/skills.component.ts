@@ -19,8 +19,9 @@ export class SkillsComponent {
   skillForm: FormGroup = new FormGroup({});
   editId : number = -1;
   protected pagination={current_page: 0,total_pages: 0, total_items: 0};
-
+  protected loaded = false;
   constructor(public request: RequestService, private formBuilder: FormBuilder, private modalSkill: ModalSkillService){
+    
     this.skillForm = this.formBuilder.group({
       skill_name: [''],
       description: ['']
@@ -41,7 +42,9 @@ export class SkillsComponent {
       this.pagination.current_page = data.currentPage
       this.pagination.total_pages = data.totalPages
       this.pagination.total_items = data.totalItems
+      this.loaded = true;
     });
+    
   }
 
   deleteSkill(item : any){

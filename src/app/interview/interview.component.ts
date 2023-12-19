@@ -32,7 +32,6 @@ export class InterviewComponent {
 }
 get_interview(id_interview :any) {
   this.requestservice.get_user_interview(id_interview).subscribe((data: any) => {
-    console.log(data);
     this.interview = data.interview;
     this.user_interview = data.user_interview;
     this.user_tests = data.tests;

@@ -32,8 +32,10 @@ export class ProfileComponent {
       console.log(this.current_role)
       this.user = data;
       this.skillsa=data.skills;
-      this.resume = this.user.resume.resume
-      console.log(this.resume);
+      if (this.user.resume !=null){
+        this.resume = this.user.resume.resume
+      }
+
     },error =>{
       console.log("error")
     });
