@@ -27,7 +27,7 @@
           <td >{{user.name}}</td>
           <td >{{user.lastname}} {{user.lastname2}}</td>
           <td ><b>{{ user.role.name | titlecase}}</b></td>
-          <td  class="text-center">
+          <td  class="text-end">
             @if (user.role.name != "user"){
               <button (click)="change_role(user.id,'user')" class="button is-link is-small">Set to ser</button>
             }
