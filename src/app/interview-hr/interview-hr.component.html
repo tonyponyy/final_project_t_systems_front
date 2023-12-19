@@ -18,7 +18,7 @@
           </div>
           <br>
           <div class="actions">
-          <button (click)="edit(interview.id)" class="button is-warning is-small">Edit</button>
+          <button [routerLink]="['/edit_interview', interview.id]" class="button is-warning is-small">Edit</button>
           <button (click)="delete(interview.id)" class="button is-danger is-small">Delete</button>
           </div>
           <br>
@@ -155,7 +155,13 @@
                                 </td>
                                 <td class="action_buttons" >
                                     <button  (click)="edit(interview.id)" class="button is-info is-small" >Add comment</button>
-                                    <button  (click)="edit(interview.id)" class="button is-success is-small" >Change state</button>
+                                    <button class="button is-success is-small"  id="dropdownUser2" data-bs-toggle="dropdown">Change state</button>
+                                    <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
+                                      @for (item of states; track $index) {
+                                        <li><a class="dropdown-item" (click)="changeState(user,item)">{{item}}</a></li>
+                                        <li><hr class="dropdown-divider" /></li>
+                                      }
+                                    </ul>
                                     <button  (click)="edit(interview.id)" class="button is-link is-small" >Assign meeting / test</button>
                                 </td>
                             </tr>
