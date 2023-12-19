@@ -19,6 +19,7 @@ export class ProfileComponent {
   user:any;
   constructor(public request:RequestService, public iservice:ImageService, public t_service: TokenService, public f_service :FileserviceService ){}
   protected profile: any;
+  protected file_validation: boolean = true;
   protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
   protected selectedFile: any ;
   protected resume :any;
@@ -31,8 +32,10 @@ export class ProfileComponent {
       console.log(this.current_role)
       this.user = data;
       this.skillsa=data.skills;
-      this.resume = this.user.resume.resume
-      console.log(this.resume);
+      if (this.user.resume !=null){
+        this.resume = this.user.resume.resume
+      }
+
     },error =>{
       console.log("error")
     });
@@ -40,9 +43,12 @@ export class ProfileComponent {
 
   upload_resume(event :any){
     this.selectedFile = event.target.files[0]
+    console.log(event.target.files[0].name)
+    let file_extension = event.target.files[0].name.split(".")[1].toUpperCase()
+   if (file_extension == "PDF"){
+    this.file_validation = true;
     const uploadData = new FormData();
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-
       this.request.upload_resume(this.selectedFile).subscribe(
         (res) => {
           this.resume_succes = true
@@ -50,6 +56,9 @@ export class ProfileComponent {
         (err) => {
           console.log("error-->"+err)
         })
+      }else{
+        this.file_validation = false;
+      }
   }
 
   view_resume(){
@@ -85,18 +94,3 @@ export class ProfileComponent {
     console.log(this.skillsa)
   }
 }
-// export interface user{
-//   id: number;
-//   name: string;
-//   lastname: string;
-//   lastname2: string;
-//   email: string;
-//   password: string;
-//   photo: string;
-//   resume: string;
-//   role: {
-//     id : number;
-//     name: string;
-//   }
-//   skills: [];
-// }

@@ -78,7 +78,7 @@
         class="pagination-previous"
         >Previous</a
       >
-      } @if (pagination.current_page != pagination.total_pages ){
+      } @if (pagination.current_page+1 != pagination.total_pages ){
       <a (click)="get_page(pagination.current_page + 1)" class="pagination-next"
         >Next page</a
       >

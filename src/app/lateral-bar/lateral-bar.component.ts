@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TokenService } from '../service/token.service';
 import { RequestService } from '../service/request.service';
 import { ImageService } from '../service/image.service';
@@ -14,13 +14,19 @@ import { ImageService } from '../service/image.service';
 export class LateralBarComponent {
   protected role : string | null = '';
   protected image :string | null = '';
-  constructor(public tokenService:TokenService,public http:RequestService,public iservice: ImageService){}
+  protected route :string = "";
+  constructor(public tokenService:TokenService,public http:RequestService,public iservice: ImageService,private router: Router){}
 
   ngOnInit() {
+    this.get_route();
     this.role = this.tokenService.getUser();
-    this.get_image()
+    this.get_image();
+    
   }
 
+  get_route(){
+    this.route = this.router.url.split("/")[1];
+  }
   singOut(){
     console.log("me desconecto");
     this.tokenService.singOut();

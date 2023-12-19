@@ -1,4 +1,5 @@
 <app-lateral-bar>
+    @if (loaded == true){
     <div class="container-fluid">
         <div class="columns mt-2">
             <div class="column is-two-thirds">
@@ -62,7 +63,7 @@
         <nav class="pagination is-small" role="navigation" aria-label="pagination">
             @if (pagination.current_page !=0 ){
             <a (click)="get_page(pagination.current_page - 1)" class="pagination-previous">Previous</a>
-            } @if (pagination.current_page != pagination.total_pages ){
+            } @if (pagination.current_page+1 != pagination.total_pages ){
             <a (click)="get_page(pagination.current_page + 1)" class="pagination-next">Next page</a>
             }
             <ul class="pagination-list">
@@ -99,4 +100,11 @@
         </nav>
     </div>
     }
+}@else {
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+}
 </app-lateral-bar>

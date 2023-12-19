@@ -19,6 +19,7 @@ protected interviews :any[] =[];
 protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
 protected pagination={current_page: 0,total_pages: 0, total_items: 0};
 public role :string ="";
+protected loaded :boolean = false;
 
 ngOnInit() {
 this.role = this.tokenservice.getUser();  
@@ -31,6 +32,7 @@ get_page(n_page : number){
     this.pagination.current_page = data.currentPage
     this.pagination.total_pages = data.totalPages
     this.pagination.total_items = data.totalItems
+    this.loaded = true;
   });
 }
   search(query :string){
