@@ -8,11 +8,7 @@ import {
 } from '@angular/router';
 import { RequestService } from '../service/request.service';
 import { DatePipe } from '@angular/common';
-<<<<<<< HEAD
 import { FileserviceService } from '../service/fileservice.service';
-=======
-import { state } from '@angular/animations';
->>>>>>> 0de3242deb5b94057b46e0df13f1e85339921fd5
 
 @Component({
   selector: 'app-interview-hr',
@@ -22,15 +18,7 @@ import { state } from '@angular/animations';
   imports: [LateralBarComponent, DatePipe, RouterModule],
 })
 export class InterviewHrComponent {
-<<<<<<< HEAD
-  constructor(private route: ActivatedRoute,private requestservice: RequestService,private f_service:FileserviceService) {}
-=======
-  constructor(
-    private route: ActivatedRoute,
-    private requestservice: RequestService,
-    private router: Router
-  ) {}
->>>>>>> 0de3242deb5b94057b46e0df13f1e85339921fd5
+  constructor(private route: ActivatedRoute,private requestservice: RequestService,private f_service:FileserviceService, private router: Router) {}
 
   protected interview_id: any;
   protected interview: any;
@@ -72,24 +60,16 @@ export class InterviewHrComponent {
       });
   }
 
-<<<<<<< HEAD
 edit(id_interview :number){
 console.log("edit -->"+id_interview)
 }
-delete(id_interview :number){
-console.log("delete -->"+id_interview)
-}
+
 view_resume(id_user:number,name :string){
   this.requestservice.get_user_resume(id_user).subscribe((data: any) => {
     this.f_service.get_base64_file(data.resume.resume,id_user+name+".pdf")
   });
 
 }
-=======
-  edit(id_interview: number) {
-    console.log('edit -->' + id_interview);
-  }
->>>>>>> 0de3242deb5b94057b46e0df13f1e85339921fd5
 
   changeState(user: any, item: any) {
     let idState = this.stateId(item);
