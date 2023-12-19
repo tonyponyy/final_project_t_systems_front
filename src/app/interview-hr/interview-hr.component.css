@@ -7,3 +7,23 @@
 .actions button{
     margin-right: 3px;
 }
+.photo_a_u{
+    width: 50px;
+    height: 50px;
+    border-radius: 99px;
+    border: 1px solid black;
+  }
+
+table tr{
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+}
+
+.action_buttons{
+    text-align: right;
+}
+
+td button{
+    margin-left: 3px;
+}

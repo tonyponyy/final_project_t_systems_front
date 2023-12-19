@@ -143,21 +143,18 @@
             <div class="field">
                 <label class="label">Skills</label>
                 <div class="content">
-                <span class="tag is-success">
-                    CSS
-                    <button class="delete is-small"></button>
-                </span>
-                <span class="tag is-warning">
-                    HTML
-                    <button class="delete is-small"></button>
-                </span>
+                    @for (skill of skillsa; track $index) {
+                    <button
+                        class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
+                    >
+                        {{ skill?.skill_name }}<button class="delete is-small ml-2"></button>
+                    </button>
+                    }
                 </div>
-                <button class="button is-link is-small is-responsive">
-                Añadir skill
-                </button>
             </div>
+            <app-interview-skills (arrayEnviado)="recibirArray($event)"></app-interview-skills>
 
-            <div id="files" class="row">
+            <div id="files" class="row mt-3">
                 <div class="field">
                 <label class="label">Añadir curriculum</label>
                 <div class="file is-small">
