@@ -38,6 +38,10 @@ export class InterviewSkillsComponent {
     }
   }
 
+  isSkillAdded(item: any): boolean {
+    return this.interviewSkills.includes(item);
+}
+
   addSkill(item: any) {
     if (!this.interviewSkills.includes(item)) {
       this.interviewSkills.push(item);
