@@ -9,16 +9,22 @@ import {
 import { RequestService } from '../service/request.service';
 import { DatePipe } from '@angular/common';
 import { FileserviceService } from '../service/fileservice.service';
+import { CommentComponent } from '../modals/comment/comment.component';
 
 @Component({
   selector: 'app-interview-hr',
   standalone: true,
   templateUrl: './interview-hr.component.html',
   styleUrl: './interview-hr.component.css',
-  imports: [LateralBarComponent, DatePipe, RouterModule],
+  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent],
 })
 export class InterviewHrComponent {
-  constructor(private route: ActivatedRoute,private requestservice: RequestService,private f_service:FileserviceService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private requestservice: RequestService,
+    private f_service: FileserviceService,
+    private router: Router
+  ) {}
 
   protected interview_id: any;
   protected interview: any;
@@ -60,24 +66,29 @@ export class InterviewHrComponent {
       });
   }
 
-edit(id_interview :number){
-console.log("edit -->"+id_interview)
-}
+  edit(id_interview: number) {
+    console.log('edit -->' + id_interview);
+  }
 
-view_resume(id_user:number,name :string){
-  this.requestservice.get_user_resume(id_user).subscribe((data: any) => {
-    this.f_service.get_base64_file(data.resume.resume,id_user+name+".pdf")
-  });
-
-}
+  view_resume(id_user: number, name: string) {
+    this.requestservice.get_user_resume(id_user).subscribe((data: any) => {
+      this.f_service.get_base64_file(
+        data.resume.resume,
+        id_user + name + '.pdf'
+      );
+    });
+  }
 
   changeState(user: any, item: any) {
     let idState = this.stateId(item);
-    this.requestservice.change_state(user.id,idState).subscribe((data:any) => {
-      console.log(data);
-    }, error => {
-      console.log(error);
-    })
+    this.requestservice.change_state(user.id, idState).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   stateId(item: string): number {
@@ -97,9 +108,9 @@ view_resume(id_user:number,name :string){
       case 'Hired':
         return 5;
         break;
-        default:
-        return 0 ;
-        break
+      default:
+        return 0;
+        break;
     }
   }
   delete(id_interview: number) {

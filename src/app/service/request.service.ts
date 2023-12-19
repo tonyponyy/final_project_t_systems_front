@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Skill } from '../skills/skills.component';
 import { Interview } from '../edit-interview/edit-interview.component';
+import { Comment } from '../modals/comment/comment.component';
 
 @Injectable({
   providedIn: 'root'
@@ -124,9 +125,12 @@ export class RequestService {
 
   change_state(id_ui : number, state : number){
     let url: string = this.api_url+'userinterviews/changeState/'+id_ui+'/'+state;
-    
     return this.http.put(url, "{}", { responseType: 'text' });
   }
 
+  change_comment(id_ui : number, comment : Comment){    
+    let url: string = this.api_url+'userinterviews/changeComment/'+id_ui;
+    return this.http.put<any[]>(url, comment);
+  }
 
 }

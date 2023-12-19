@@ -154,7 +154,8 @@
                                     }
                                 </td>
                                 <td class="action_buttons" >
-                                    <button  (click)="edit(interview.id)" class="button is-info is-small" >Add comment</button>
+                                    <!-- <button  (click)="changeComment()" class="button is-info is-small" >Add comment</button> -->
+                                    <app-comment [interview]="user"></app-comment>
                                     <button class="button is-success is-small"  id="dropdownUser2" data-bs-toggle="dropdown">Change state</button>
                                     <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
                                       @for (item of states; track $index) {
