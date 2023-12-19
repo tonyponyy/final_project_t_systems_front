@@ -12,7 +12,7 @@ export class InterviewSkillsComponent {
   @Output() arrayEnviado = new EventEmitter<any[]>();
 
   protected skills : any[] = [];
-   interviewSkills : any[] = []
+  interviewSkills : any[] = []
   protected pagination={current_page: 0,total_pages: 0, total_items: 0};
 
   constructor(public request: RequestService){}
