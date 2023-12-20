@@ -32,15 +32,6 @@ export class InterviewSkillsComponent {
   }
   openModal() {
     console.log('abriendo modal');
-
-    for (let i = 0; i < this.skills2.length; i++) {
-      const found = this.skills.find((x) => x.id == this.skills2[i].id)
-      console.log('FOUNDDDD', found);
-      this.skills.splice(found, 1);
-    }
-
-    console.log(this.skills);
-    
     
     const modalElement = document.getElementById('myModal');
     if (modalElement) {
@@ -63,7 +54,9 @@ export class InterviewSkillsComponent {
 
   enviarArray() {
     this.arrayEnviado.emit(this.interviewSkills);
+    this.interviewSkills =  [];
     this.closeModal();
+    this.ngOnInit();
   }
 
   closeModal() {
