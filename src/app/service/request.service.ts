@@ -180,6 +180,11 @@ export class RequestService {
     let url: string = this.api_url+'tests/deleteTest/'+id_test;
     return this.http.delete<any[]>(url);
   }
+  
+  delete_user_test(id_user_test : number){
+    let url: string = this.api_url+'usertests/delete_user_test/'+id_user_test;
+    return this.http.delete<any[]>(url);
+  }
 
   asign_test_user(id_user: number, id_test: number){
     let url: string = this.api_url+'usertests/user_test/'+id_test+'/'+id_user;

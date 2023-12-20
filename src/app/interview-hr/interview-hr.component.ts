@@ -76,9 +76,10 @@ export class InterviewHrComponent {
       });
   }
 
-  delete_user_test(user_test: number) {
-    //this.requestservice.delete
-    
+  delete_user_test(user_test: any) {
+    this.requestservice.delete_user_test(user_test.id).subscribe((data:any) => {
+      this.ngOnInit();
+    }, error => {       this.ngOnInit();    })
   }
 
   view_resume(id_user: number, name: string) {
