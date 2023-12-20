@@ -11,6 +11,7 @@ import { FileserviceService } from '../service/fileservice.service';
 import { CommentComponent } from '../modals/comment/comment.component';
 import { UserskillmodalComponent } from '../modals/userskills-modal/userskillmodal.component';
 import { CreateTestComponent } from '../modals/create-test/create-test.component';
+import { TestusersComponent } from '../modals/testusers/testusers.component';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { CreateTestComponent } from '../modals/create-test/create-test.component
   standalone: true,
   templateUrl: './interview-hr.component.html',
   styleUrl: './interview-hr.component.css',
-  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent,UserskillmodalComponent,CreateTestComponent],
+  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent,UserskillmodalComponent,CreateTestComponent,TestusersComponent],
 
 })
 export class InterviewHrComponent {

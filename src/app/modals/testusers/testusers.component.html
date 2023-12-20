@@ -1,0 +1,28 @@
+<div class="modal" id="testusermodal{{this.id_modal}}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Test user</p>
+            <button class="delete" aria-label="close" (click)="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+            <form [formGroup]="testUserForm">
+                <div class="mb-3">
+                    <label for="exampleInputComment" class="form-label">Qualification</label>
+                    <input type="number" class="form-control" id="exampleInputComment1" formControlName="calification">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputComment" class="form-label">Do at:</label>
+                    <input type="date" class="form-control" id="exampleInputComment1" formControlName="do_at">
+                </div>
+            </form>
+            
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" (click)="sendData()">Save changes</button>
+            <button class="button" (click)="closeModal()">Cancel</button>
+        </footer>
+    </div>
+</div>
+
+<button class="button is-info is-small" (click)="openModal()">Qualificate</button>
