@@ -143,7 +143,7 @@ export class InterviewHrComponent {
 
   delete_test(test_id: any){
     this.requestservice.delete_test(test_id).subscribe((data: any) => {
-      console.log(data);
+      this.ngOnInit();
     }, error=>{console.log(error);
     })
   }
