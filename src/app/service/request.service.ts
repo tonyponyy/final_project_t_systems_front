@@ -103,9 +103,15 @@ export class RequestService {
     return this.http.get<any[]>(url);
   }
 
+
   edit_user(item: any, user_id : number) {
     let url: string = this.api_url+'users/change_user_info/'+user_id;
     return this.http.put<any[]>(url,item);
+  }
+  
+  qualificate_user_test(id :number,data :any){
+    let url: string = this.api_url+'usertests/qualificate/'+id;
+    return this.http.post<any[]>(url,data);
   }
 
   //admin
@@ -157,6 +163,11 @@ export class RequestService {
   create_test(test: Test){
     let url: string = this.api_url+'tests/addTest';
     return this.http.post<any[]>(url, test);
+  }
+
+  asign_test_user(id_user: number, id_test: number){
+    let url: string = this.api_url+'usertests/user_test/'+id_test+'/'+id_user;
+    return this.http.post<any[]>(url, "{}");
   }
 
 }

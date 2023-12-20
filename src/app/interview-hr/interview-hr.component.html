@@ -44,6 +44,7 @@
                             <div class="actions">
                                 <button (click)="edit(interview.id)" class="button is-warning is-small">Edit</button>
                                 <button (click)="delete(interview.id)" class="button is-danger is-small">Delete</button>
+                                
                             </div>
                             </div>
                             
@@ -91,8 +92,11 @@
                       }
                       <br>
                       <div class="actions">
-                        <app-userskillmodal [id_user]="user_skill.user.id" [id_skill]="user_skill.skill.id"></app-userskillmodal>
-                        <button (click)="delete(user_skill)" class="button is-danger is-small">Delete Skill</button>
+
+                        <app-userskillmodal [id_modal]="user_skill.id"  [id_user]="user_skill.user.id" [id_skill]="user_skill.skill.id"></app-userskillmodal>
+                        <button (click)="delete(user_skill.id)" class="button is-danger is-small">Delete Skill</button>
+                       
+
                     </div>
                     </div>
  
@@ -134,11 +138,10 @@
                               <b>Calification:</b> {{user_test.calification}}
                             }
                             <br><br>
-                            <button  (click)="edit(interview.id)" class=" user-meets-button button is-info is-small" >Set day</button>
-                            <button  (click)="edit(interview.id)" class=" user-meets-button button is-success is-small" >Calificate</button>
+                            <app-testusers  [id_modal]="user_test.id" [id_testuser]="user_test.id" ></app-testusers>
                             <button  (click)="edit(interview.id)" class=" user-meets-button button is-danger is-small" >Cancel meet</button>
-                  
-                          </div>
+                          
+                        </div>
                         </article>
                       }
 
@@ -208,7 +211,13 @@
                                         <li><hr class="dropdown-divider" /></li>
                                       }
                                     </ul>
-                                    <button  (click)="edit(interview.id)" class="button is-link is-small" >Assign meeting / test</button>
+                                    <button  (click)="edit(interview.id)" class="button is-link is-small" id="dropdownTest" data-bs-toggle="dropdown">Assign meeting / test</button>
+                                    <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownTest">
+                                      @for (test of meetingTest; track $index) {
+                                        <li><a class="dropdown-item" (click)="asignTest(test,user.user)">{{test.name}}</a></li>
+                                        <li><hr class="dropdown-divider" /></li>
+                                      }
+                                    </ul>
                                 </td>
                             </tr>
                         }

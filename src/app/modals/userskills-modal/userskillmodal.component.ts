@@ -16,6 +16,7 @@ import {
   styleUrl: './userskillmodal.component.css',
 })
 export class UserskillmodalComponent {
+  @Input() id_modal: any;
   @Input() id_user: any;
   @Input() id_skill: any;
   userSkillForm: FormGroup;
@@ -33,7 +34,7 @@ export class UserskillmodalComponent {
 
   openModal() {
     console.log('abriendo modal');
-    const modalElement = document.getElementById('userskills');
+    const modalElement = document.getElementById('userskills'+this.id_modal);
     if (modalElement) {
       modalElement.classList.add('is-active');
     }
@@ -56,7 +57,7 @@ export class UserskillmodalComponent {
   }
 
   closeModal() {
-    const modalElement = document.getElementById('userskills');
+    const modalElement = document.getElementById('userskills'+this.id_modal);
     if (modalElement) {
       modalElement.classList.remove('is-active');
     }
