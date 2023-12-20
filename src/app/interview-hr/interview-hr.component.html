@@ -93,7 +93,7 @@
                       <br>
                       <div class="actions">
 
-                        <app-userskillmodal   [id_user]="user_skill.user.id" [id_skill]="user_skill.skill.id"></app-userskillmodal>
+                        <app-userskillmodal [id_modal]="user_skill.id"  [id_user]="user_skill.user.id" [id_skill]="user_skill.skill.id"></app-userskillmodal>
                         <button (click)="delete(user_skill.id)" class="button is-danger is-small">Delete Skill</button>
                        
 
