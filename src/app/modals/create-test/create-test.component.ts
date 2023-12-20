@@ -28,7 +28,6 @@ export class CreateTestComponent {
   }
 
   openModal() {
-    console.log('abriendo modal');
 
     const modalElement = document.getElementById('myModal');
     if (modalElement) {
@@ -43,14 +42,13 @@ export class CreateTestComponent {
       this.test.id_interview = this.interview.id;
       this.test.end_date = this.createTest.value.end_date;
 
-      console.log(this.test);
 
       this.request.create_test(this.test).subscribe((data: any) =>{
+
         this.ngOnInit.emit();
         this.closeModal();
       },
       error =>{
-        console.log(error);
       })
       
     }

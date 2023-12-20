@@ -40,7 +40,6 @@ export class LoginComponent {
     if (this.formGroup.valid) {
       this.authService.login(this.formGroup.value).subscribe(
         (result) => {
-          console.log(result);
           this.iservice.destroy_image();
           this.tokenService.saveToken(result.token);
           this.tokenService.saveRole(result.role);          
@@ -56,7 +55,6 @@ export class LoginComponent {
             this.formGroup.get('password')?.reset();
           } else {
             this.errorMessage = 'Error en la autenticación';
-            console.log(error);
             
             this.formGroup.reset();
 

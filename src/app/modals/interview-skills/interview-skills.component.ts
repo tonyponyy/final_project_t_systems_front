@@ -31,7 +31,6 @@ export class InterviewSkillsComponent {
     });
   }
   openModal() {
-    console.log('abriendo modal');
     
     const modalElement = document.getElementById('myModal');
     if (modalElement) {
@@ -46,9 +45,9 @@ export class InterviewSkillsComponent {
   addSkill(item: any) {
     if (!this.interviewSkills.includes(item)) {
       this.interviewSkills.push(item);
-      console.log(this.interviewSkills);
+
     } else {
-      console.log('El item ya está en el array.');
+
     }
   }
 

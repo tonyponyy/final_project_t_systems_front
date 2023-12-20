@@ -14,7 +14,6 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token !=null){
       final_request = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY,'Bearer '+ token)})
     }
-    console.warn("INTERCEPTOR OK");
     return next.handle(final_request);
   }
 }

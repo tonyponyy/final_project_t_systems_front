@@ -23,10 +23,10 @@ protected states :string[] =['You have not passed the process','You are enrolled
 
 ngOnInit() {
   this.requestservice.get_user_interviews().subscribe((data: any) => {
-    console.log(data);
+
     this.positions = data.interviews;
     this.user_tests = data.user_test;
-    console.info(this.user_tests);
+
   });
 }
 

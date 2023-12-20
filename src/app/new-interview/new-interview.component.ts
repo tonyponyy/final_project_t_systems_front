@@ -29,23 +29,22 @@ export class NewInterviewComponent {
   onSubmit(){
     if (this.newInterview.valid){
       this.request.new_interview(this.newInterview.value).subscribe((data : any) => {
-        console.log(data);
         this.addSkillsToInterview(data)
       },
       error => {
-        console.log('error'+error);
+
       })
     }
   }
 
   addSkillsToInterview(interview : any){
-    console.log(interview.id);
+
     for (let i = 0; i < this.arraySkills.length; i++) {
       this.request.add_skill_interview(interview.id,this.arraySkills[i].id).subscribe((data :any) => {
-        console.log('funciona');
+
       },
       error => {
-        console.log('error');
+
       })
     }
 
@@ -58,16 +57,16 @@ export class NewInterviewComponent {
 
     if (indexToDelete !== -1) {
       this.arraySkills.splice(indexToDelete, 1);
-      console.log(this.arraySkills);
+
       
     } else {
-        console.log('error');
+
     }
 
   }
 
   recibirArray(array: any[]) {
     this.arraySkills = array;
-    console.log(this.arraySkills);
+
   }
 }
