@@ -9,14 +9,17 @@ import { RequestService } from '../service/request.service';
 import { DatePipe } from '@angular/common';
 import { FileserviceService } from '../service/fileservice.service';
 import { CommentComponent } from '../modals/comment/comment.component';
+import { UserskillmodalComponent } from '../modals/userskills-modal/userskillmodal.component';
 import { CreateTestComponent } from '../modals/create-test/create-test.component';
+
 
 @Component({
   selector: 'app-interview-hr',
   standalone: true,
   templateUrl: './interview-hr.component.html',
   styleUrl: './interview-hr.component.css',
-  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent, CreateTestComponent],
+  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent,UserskillmodalComponent,CreateTestComponent],
+
 })
 export class InterviewHrComponent {
 
@@ -30,6 +33,7 @@ export class InterviewHrComponent {
   protected interview_id: any;
   protected interview: any;
   protected user_interview: any;
+  protected user_skills: any;
   protected tests: any;
   protected loaded: boolean = false;
   public states: string[] = [
@@ -61,7 +65,7 @@ export class InterviewHrComponent {
         console.log(data);
         this.interview = data.interview;
         this.user_interview = data.users;
-        console.log('userinterview', this.user_interview);
+        this.user_skills = data.user_skills;
         this.tests = data.tests;
         this.loaded = true;
       });

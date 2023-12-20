@@ -54,7 +54,7 @@
             }
           
             @if (role == "hr" || role == "user") {
-              <li class="{{ (route == 'interviews' || route == 'interview' )? 'active' : '' }}" >
+              <li class="{{ (route == 'interviews' || route == 'interview' || route == 'interview_hr' )? 'active' : '' }}" >
                 <a [routerLink]="['/interviews']" class="nav-link px-2 text-truncate">
                   <i class="bi bi-house fs-5"><img src="../../assets/img/file-circle-exclamation-solid.svg" alt="user" width="28"
                       height="32" /></i>

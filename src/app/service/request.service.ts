@@ -73,6 +73,11 @@ export class RequestService {
     return this.http.put<any[]>(url,interview);
   }
 
+  qualificate_userskill(id_user :number,id_skill :number,data :object){
+    let url: string = this.api_url+'userskills/qualificate/'+id_user+'/'+id_skill
+    return this.http.post<any[]>(url,data);
+  }
+
   //datos del usuario
   get_user(){
     let url: string = this.api_url+'users/current_user/info';

@@ -1,0 +1,26 @@
+<div class="modal" id="userskills">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">User Skill</p>
+            <button class="delete" aria-label="close" (click)="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+            <form [formGroup]="userSkillForm">
+                <div class="mb-3">
+                    <label for="exampleInputComment" class="form-label">Qualification</label>
+                    <input type="number" class="form-control" id="exampleInputComment1" formControlName="qualification">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputComment" class="form-label">Comment</label>
+                    <input type="text" class="form-control" id="exampleInputComment1" formControlName="comment">
+                </div>
+            </form>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" (click)="send()">Save changes</button>
+            <button class="button" (click)="closeModal()">Cancel</button>
+        </footer>
+    </div>
+</div>
+<button (click)="openModal()" class="button is-warning is-small">Edit</button>
