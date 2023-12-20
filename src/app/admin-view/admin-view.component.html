@@ -29,16 +29,16 @@
           <td ><b>{{ user.role.name | titlecase}}</b></td>
           <td  class="text-end">
             @if (user.role.name != "user"){
-              <button (click)="change_role(user.id,'user')" class="button is-link is-small">Set to ser</button>
+              <button (click)="change_role(user.id,'user')" class="button is-link is-small"><i class="fa-solid fa-user mr-2"></i> Set to User</button>
             }
             @if (user.role.name != "hr"){
-              <button (click)="change_role(user.id,'hr')" class="button is-info is-small">Set to Human resources</button>
+              <button (click)="change_role(user.id,'hr')" class="button is-info is-small"><i class="fa-solid fa-arrow-up mr-2"></i> Set to Human resources</button>
             }
             @if (user.role.name != "admin"){
-              <button (click)="change_role(user.id,'admin')" class="button is-warning is-small">Set to Administrator</button>
+              <button (click)="change_role(user.id,'admin')" class="button is-warning is-small"><i class="fa-solid fa-arrow-up mr-2"></i> Set to Administrator</button>
             }
             @if (user.role.name != "admin"){
-            <button (click)="delete_user(user.id)" class=" text-center button is-danger is-small">Delete</button>
+            <button (click)="delete_user(user.id)" class=" text-center button is-danger is-small "><i class="fa-regular fa-trash-can mr-2"></i> Delete</button>
             }
           </td>
         </tr>
