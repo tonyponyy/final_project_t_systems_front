@@ -64,6 +64,8 @@ export class EditInterviewComponent {
             this.interview = data.interview;
             console.log(this.interview);
             this.arraySkills = this.interview.skills;
+            console.log("Array skills :")
+            console.log(this.arraySkills)
             const originalEndDate = new Date(this.interview.end_date);
             const formattedEndDate = originalEndDate
               .toISOString()
@@ -96,7 +98,7 @@ export class EditInterviewComponent {
       this.request.edit_interview(interview).subscribe(
         (data: any) => {
           console.log('si');
-          this.addSkillsToInterview(interview);
+          this.router.navigate(['/interviews']);
         },
         (error) => {
           console.log('error' + error);
@@ -105,54 +107,41 @@ export class EditInterviewComponent {
     }
   }
 
-  addSkillsToInterview(interview: any) {
-    console.log('edit',this.arraySkills);
-    
-    for (let i = 0; i < this.arraySkills.length; i++) {
-      this.request
-        .add_skill_interview(interview.id, this.arraySkills[i].id)
+
+  deleteSkill(skill_id :number) {
+    this.request
+        .delete_skill_interview(this.interview.id, skill_id)
         .subscribe(
           (data: any) => {
             console.log('funciona');
+            this.ngOnInit()
+          },
+          (error) => {
+            console.log('error');
+          }
+    );}
+  
+  recibirArray(array: any[]) {
+    let resultado = array.filter(obj1 => !this.arraySkills.some(obj2 => obj2.id === obj1.id));
+
+    for (let i = 0; i < resultado.length; i++) {
+      const newSkill = resultado[i];
+      
+      this.request
+        .add_skill_interview(this.interview.id, newSkill.id)
+        .subscribe(
+          (data: any) => {
+           this.ngOnInit();
           },
           (error) => {
             console.log('error');
           }
         );
     }
-    this.router.navigate(['/interviews']);
   }
-
-  deleteSkill(skillDelete: any) {
-    const indexToDelete = this.arraySkills.findIndex(
-      (skill) => skill.id === skillDelete.id
-    );
-
-    if (indexToDelete !== -1) {
-      this.arraySkills.splice(indexToDelete, 1);
-      console.log(this.arraySkills);
-      this.request
-        .delete_skill_interview(
-          this.interviewId,
-          this.arraySkills[indexToDelete].id
-        )
-        .subscribe((data: any) => {
-          console.log('adios skill');
-        });
-    } else {
-      console.log('error');
-    }
-  }
-
-  recibirArray(array: any[]) {
-    this.arraySkills = array;
-    // for (let index = 0; index < array.length; index++) {
-    //   this.arraySkills.push(array[index])
-    // }
-    // this.arraySkills=[... new Set(this.arraySkills)]
-    // console.log(this.arraySkills)
-  }
+  
 }
+
 
 export class Interview {
   id?: number;
