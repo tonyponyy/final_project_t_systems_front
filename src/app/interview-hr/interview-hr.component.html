@@ -16,8 +16,8 @@
   </div>
   <br>
   <div class="actions">
-    <button [routerLink]="['/edit_interview', interview.id]" class="button is-warning is-small">Edit</button>
-    <button (click)="delete_interview(interview.id)" class="button is-danger is-small">Delete</button>
+    <button [routerLink]="['/edit_interview', interview.id]" class="button is-warning is-small"><i class="fa-solid fa-pencil mr-2"></i>Edit</button>
+    <button (click)="delete_interview(interview.id)" class="button is-danger is-small"><i class="fa-regular fa-trash-can mr-2"></i>Delete</button>
   </div>
   <br>
   <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -43,7 +43,7 @@
               <div class="actions">
                 <app-edit-test (ngOnInit)="ngOnInit()" [id_modal]="test.id" [test]="test"
                   [id_interview]="interview"></app-edit-test>
-                <button (click)="delete_test(test.id)" class="button is-danger is-small">Delete</button>
+                <button (click)="delete_test(test.id)" class="button is-danger is-small"><i class="fa-solid fa-trash-can mr-2"></i>Delete</button>
 
               </div>
             </div>
@@ -146,7 +146,7 @@
               <br><br>
               <app-testusers (ngOnInit)="ngOnInit()" [id_modal]="user_test.id"
                 [id_testuser]="user_test.id"></app-testusers>
-              <button (click)="delete_user_test(user_test)" class=" user-meets-button button is-danger is-small">Cancel meet</button>
+              <button (click)="delete_user_test(user_test)" class=" user-meets-button button is-danger is-small"><i class="fa-solid fa-xmark mr-2"></i>Cancel meet</button>
 
             </div>
           </article>
@@ -178,7 +178,7 @@
                 <tr>
                   <th class="d-none d-lg-block">Image</th>
                   <th>Name</th>
-                  <th class="d-none d-lg-block">skills</th>
+                  <th class="d-none d-lg-block">Skills</th>
                   <th>Resume</th>
                   <th>Actions</th>
                 </tr>
@@ -203,16 +203,16 @@
                   </td>
                   <td>
                     @if(user.user.resume !=null) {
-                    <button (click)="view_resume(user.user.id,user.user.name)" class="button is-info is-small">View
+                    <button (click)="view_resume(user.user.id,user.user.name)" class="button is-info is-small"> <i class="fa-solid fa-file-pdf mr-2"></i>View
                       resume</button>
                     }@else {
-                    <button class="button is-info is-small" disabled>No resume available</button>
+                    <button class="button is-info is-small" disabled><i class="fa-solid fa-file-excel mr-2"></i>No resume available</button>
                     }
                   </td>
                   <td class="action_buttons">
                     <!-- <button  (click)="changeComment()" class="button is-info is-small" >Add comment</button> -->
                     <app-comment [id_modal]="user.id" [interview]="user"></app-comment>
-                    <button class="button is-success is-small" id="dropdownUser2" data-bs-toggle="dropdown">Change
+                    <button class="button is-success is-small" id="dropdownUser2" data-bs-toggle="dropdown"><i class="fa-solid fa-pen mr-2"></i>Change
                       state</button>
                     <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
                       @for (item of states; track $index) {
@@ -223,7 +223,7 @@
                       }
                     </ul>
                     <button class="button is-link is-small" id="dropdownTest"
-                      data-bs-toggle="dropdown">Assign meeting / test</button>
+                      data-bs-toggle="dropdown"><i class="fa-solid fa-handshake mr-2"></i>Assign meeting / test</button>
                     <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownTest">
                       @for (test of meetingTest; track $index) {
                       <li><a class="dropdown-item" (click)="asignTest(test,user.user)">{{test.name}}</a></li>
