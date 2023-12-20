@@ -77,8 +77,9 @@ export class InterviewHrComponent {
       });
   }
 
-  edit(id_interview: number) {
-    console.log('edit -->' + id_interview);
+  delete_user_test(user_test: number) {
+    //this.requestservice.delete
+    
   }
 
   view_resume(id_user: number, name: string) {
@@ -147,7 +148,7 @@ export class InterviewHrComponent {
 
   delete_test(test_id: any){
     this.requestservice.delete_test(test_id).subscribe((data: any) => {
-      console.log(data);
+      this.ngOnInit();
     }, error=>{console.log(error);
     })
   }
