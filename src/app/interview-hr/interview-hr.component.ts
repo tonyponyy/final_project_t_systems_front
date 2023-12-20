@@ -66,6 +66,7 @@ export class InterviewHrComponent {
     this.requestservice
       .get_hr_interview(id_interview)
       .subscribe((data: any) => {
+        
         this.interview = data.interview;
         this.meetingTest = this.interview.tests;
         this.user_interview = data.users;

@@ -33,7 +33,6 @@ export class ProfileComponent {
   protected file_validation: boolean = true;
   protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
   protected selectedFile: any ;
-  protected resume :any;
   protected current_role :string ="";
   protected resume_succes :boolean = false;
 
@@ -46,9 +45,6 @@ export class ProfileComponent {
       this.commentForm.value.lastname = this.user.lastname;
       this.commentForm.value.lastname2 = this.user.lastname2;
       this.skillsa=data.skills;
-      if (this.user.resume !=null){
-        this.resume = this.user.resume.resume
-      }
 
     },error =>{
       console.log("error")
@@ -76,7 +72,13 @@ export class ProfileComponent {
   }
 
   view_resume(){
-    this.f_service.get_base64_file(this.resume,"resume.pdf")
+
+    this.request.get_self_resume().subscribe((data: any) => {
+      this.f_service.get_base64_file(
+        data.resume.resume,
+        'myresume.pdf'
+      );
+    });
   }
 
   

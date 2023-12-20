@@ -109,6 +109,11 @@ export class RequestService {
     return this.http.get<any[]>(url);
   }
 
+  get_self_resume(){
+    let url: string = this.api_url+'users/my_resume'
+    return this.http.get<any[]>(url);
+  }
+
 
   edit_user(item: any, user_id : number) {
     let url: string = this.api_url+'users/change_user_info/'+user_id;
