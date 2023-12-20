@@ -40,11 +40,11 @@ export class NewUserComponent {
             
       this.request.register(register).subscribe(
         (data: any) => {
-          console.log('loged');
+
           this.router.navigate(['/login']);
         },
         (error) => {
-          console.log('error' + error);
+
         }
       );
     }

@@ -35,7 +35,7 @@ export class UserskillmodalComponent {
   }
 
   openModal() {
-    console.log('abriendo modal');
+
     const modalElement = document.getElementById('userskills'+this.id_modal);
     if (modalElement) {
       modalElement.classList.add('is-active');
@@ -43,8 +43,7 @@ export class UserskillmodalComponent {
   }
 
   send() {
-    console.log('id_user:' + this.id_user + '  id_skill' + this.id_skill);
-    console.log(this.userSkillForm.value);
+
     this.request
       .qualificate_userskill(this.id_user, this.id_skill, this.userSkillForm.value)
       .subscribe(
@@ -53,7 +52,7 @@ export class UserskillmodalComponent {
           this.closeModal();
         },
         (error) => {
-          console.log(error);
+
         }
       );
   }

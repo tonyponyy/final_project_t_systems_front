@@ -41,7 +41,6 @@ get_page(n_page : number){
       this.get_page(0);
     }else{
       this.requestservice.search_interviews(query).subscribe((data: any) => {
-        console.log(data)
         this.interviews = data.interviews;
         this.pagination.current_page = data.currentPage
         this.pagination.total_pages = data.totalPages

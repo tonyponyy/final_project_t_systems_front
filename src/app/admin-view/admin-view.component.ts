@@ -22,7 +22,6 @@ this.get_page(0);
 
 get_page(n_page : number){
   this.requestservice.get_users(n_page).subscribe((data: any) => {
-    console.log(data)
     this.all_users = data.users;
     this.pagination.current_page = data.currentPage
     this.pagination.total_pages = data.totalPages
@@ -36,7 +35,6 @@ change_role(id_user :number, role_name:string){
       this.refresh();
     },
     (error: any) => {
-      console.error('Error updationg user:', error);
   });
   this.refresh
 }
@@ -46,12 +44,10 @@ delete_user(id_user: number) {
       this.refresh();
     },
     (error: any) => {
-      console.error('Error deleting user:', error);
     }
   );
 }
 refresh(){
-  console.log("refresh")
   this.get_page(this.pagination.current_page)
 }
 
