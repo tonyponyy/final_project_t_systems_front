@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RequestService } from '../../service/request.service';
 
@@ -11,6 +11,8 @@ import { RequestService } from '../../service/request.service';
 })
 export class CreateTestComponent {
   @Input() interview: any;
+  @Output("ngOnInit") ngOnInit: EventEmitter<any> = new EventEmitter
+
   createTest: FormGroup;
   test: Test = new Test;
 
@@ -44,7 +46,7 @@ export class CreateTestComponent {
       console.log(this.test);
 
       this.request.create_test(this.test).subscribe((data: any) =>{
-        console.log(data);
+        this.ngOnInit.emit();
         this.closeModal();
       },
       error =>{

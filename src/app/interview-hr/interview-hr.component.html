@@ -1,242 +1,257 @@
 <app-lateral-bar>
-    @if (loaded){
-        <div class="text-center">
-        <h1 class="title">{{ interview?.title }}</h1>
-          </div>
-          <br />
-          <p><b>Description :</b></p>
-          <p>{{ interview?.description }}</p>
-          <br />
-          <div class="skill_boxes">
-            @for (skill of interview?.skills; track $index) {
-            <button
-              class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
-            >
-              {{ skill.skill_name }}
-            </button>
-            }
-          </div>
-          <br>
-          <div class="actions">
-          <button [routerLink]="['/edit_interview', interview.id]" class="button is-warning is-small">Edit</button>
-          <button (click)="delete(interview.id)" class="button is-danger is-small">Delete</button>
-          </div>
-          <br>
-          <div class="accordion" id="accordionPanelsStayOpenExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                  Meetings / Test
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                <div class="accordion-body">
-                  @if (interview?.tests.length >0){
-                    @for (test of interview.tests; track $index) {
-                        <article class="message is-link">
-                            <div class="message-header">
-                              <p>{{test.name}}</p>
-                            </div>
-                            <div class="message-body">
-                              <b>Description: </b> {{test.description}}<p>
-                              <br>
-                            </p>
-                            <div class="actions">
-                                <app-edit-test (ngOnInit)="ngOnInit()" [id_modal]="test.id" [test]="test" [id_interview]="interview"></app-edit-test>
-                                <button (click)="delete_test(test.id)" class="button is-danger is-small">Delete</button>
-                                
-                            </div>
-                            </div>
-                            
-                          </article>
-
-                    }
-                  }@else {
-                    
-                    <p>This position doesn't have meetings</p>
-                    <br>
-                  }
-                  <app-create-test [interview]="interview"></app-create-test>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  User Skils
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                  @for (skill of interview?.skills; track $index) {
-                  @for (user_skill of user_skills; track $index) {
-                  @if (skill.skill_name == user_skill.skill.skill_name){
-
-                  <article class="message is-warning">
-                    <div class="message-header">
-                      <p>{{user_skill.skill.skill_name}} {{user_skill.user.name}} {{user_skill.user.lastname}} {{user_skill.user.lastname2}} </p>
-                      @if (user_skill.user.photo  == null){
-                        <img class="photo_a_u" src="../../assets/img/profile.jpg" />
-                      }@else{
-                        <img class="photo_a_u" src="data:image/jpeg;base64,{{user_skill.user.photo}}" />
-                      }
-                      
-                    </div>
-                    <div class="message-body">
-                      <p>{{user_skill.skill.description}}</p><br>
-                      @if (user_skill.qualification !=null){
-                        <p><b>Qualification: </b>{{user_skill.qualification}}</p>
-                      }
-                      @if (user_skill.comment !=null){
-                        <p><b>Comment: </b>{{user_skill.comment}}</p>
-                      }
-                      <br>
-                      <div class="actions">
-
-                        <app-userskillmodal (ngOnInit)="ngOnInit()" [id_modal]="user_skill.id"  [id_user]="user_skill.user.id" [id_skill]="user_skill.skill.id"></app-userskillmodal>
-                        <button (click)="delete(user_skill.id)" class="button is-danger is-small">Delete Skill</button>
-                       
-
-                    </div>
-                    </div>
- 
-                  </article>
-
-                }}}
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                  User meetings / tests
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                  @if (tests.length > 0){
-
-                    @for (user_test of tests; track $index) {
-                        <article class="message is-link ">
-                          <div class="message-header">
-                            @if (user_test.user.photo  == null){
-                              <img class="photo_a_u" src="../../assets/img/profile.jpg" />
-                            }@else{
-                              <img class="photo_a_u" src="data:image/jpeg;base64,{{user_test.user.photo}}" />
-                            }
-                            <p>{{user_test.test.name}}</p>
-                          </div>
-                          <div class="message-body">
-                            <b>Description: </b> {{user_test.test.description}}<p>
-                            <br>
-                    
-                            <p><b>Assigned to:</b> {{user_test.user.name}} {{user_test.user.lastname}} {{user_test.user.lastname2}} </p>
-                            @if (user_test.do_at !=null){
-                              <b>Do at:</b> {{user_test.do_at | date : "dd-MM-yyyy"}}<br>
-                            }
-                            @if (user_test.calification !=null){
-                              <b>Calification:</b> {{user_test.calification}}
-                            }
-                            <br><br>
-                            <app-testusers (ngOnInit)="ngOnInit()" [id_modal]="user_test.id" [id_testuser]="user_test.id" ></app-testusers>
-                            <button  (click)="edit(interview.id)" class=" user-meets-button button is-danger is-small" >Cancel meet</button>
-                          
-                        </div>
-                        </article>
-                      }
-
-                  }@else {
-                    <div>
-                      <p> No meetings assigned to users</p>
-                    </div>
-                  }
-
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                  Users enrolled
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
-                <div class="accordion-body">
-
-                    <div class="table-responsive-xl">
-                        <table class="table table-striped is-bordered">
-                          <thead>
-                            <tr>
-                              <th class="d-none d-lg-block">Image</th>
-                              <th >Name</th>
-                              <th class="d-none d-lg-block">skills</th>
-                              <th >Resume</th>
-                              <th >Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            @for (user of user_interview; track $index) {
-                            <tr>
-                                <td class="d-none d-lg-block">
-                                @if (user.user.photo  == null){
-                                    <img class="photo_a_u" src="../../assets/img/profile.jpg" />
-                                  }@else{
-                                    <img class="photo_a_u" src="data:image/jpeg;base64,{{user.user.photo}}" />
-                                  }
-                                </td>
-                                <td >{{user.user.name}}  {{user.user.lastname}} {{user.user.lastname2}}</td>
-                                <td class="">
-                                        @for (skill of user.user.skills; track $index) {
-                                        <button
-                                          class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
-                                        >
-                                          {{ skill.skill_name }}
-                                        </button>
-                                        }
-                                </td>
-                                <td >
-                                    @if(user.user.resume !=null) {
-                                        <button (click)="view_resume(user.user.id,user.user.name)" class="button is-info is-small">View resume</button>
-                                    }@else {
-                                        <button  class="button is-info is-small" disabled>No resume available</button>
-                                    }
-                                </td>
-                                <td class="action_buttons" >
-                                    <!-- <button  (click)="changeComment()" class="button is-info is-small" >Add comment</button> -->
-                                    <app-comment [interview]="user"></app-comment>
-                                    <button class="button is-success is-small"  id="dropdownUser2" data-bs-toggle="dropdown">Change state</button>
-                                    <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
-                                      @for (item of states; track $index) {
-                                        <li><a class="dropdown-item" (click)="changeState(user,item)">{{item}}</a></li>
-                                        <li><hr class="dropdown-divider" /></li>
-                                      }
-                                    </ul>
-                                    <button  (click)="edit(interview.id)" class="button is-link is-small" id="dropdownTest" data-bs-toggle="dropdown">Assign meeting / test</button>
-                                    <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownTest">
-                                      @for (test of meetingTest; track $index) {
-                                        <li><a class="dropdown-item" (click)="asignTest(test,user.user)">{{test.name}}</a></li>
-                                        <li><hr class="dropdown-divider" /></li>
-                                      }
-                                    </ul>
-                                </td>
-                            </tr>
-                        }
-                        </tbody>
-                        </table>
-                    </div>
-                    
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        }@else {
-          <div class="d-flex justify-content-center">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
+  @if (loaded){
+  <div class="text-center">
+    <h1 class="title">{{ interview?.title }}</h1>
+  </div>
+  <br />
+  <p><b>Description :</b></p>
+  <p>{{ interview?.description }}</p>
+  <br />
+  <div class="skill_boxes">
+    @for (skill of interview?.skills; track $index) {
+    <button class="button {{ class[skill.id % 5] }} is-small is-light is-responsive">
+      {{ skill.skill_name }}
+    </button>
     }
+  </div>
+  <br>
+  <div class="actions">
+    <button [routerLink]="['/edit_interview', interview.id]" class="button is-warning is-small">Edit</button>
+    <button (click)="delete_interview(interview.id)" class="button is-danger is-small">Delete</button>
+  </div>
+  <br>
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          Meetings / Test
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+        <div class="accordion-body">
+          @if (interview?.tests.length >0){
+          @for (test of interview.tests; track $index) {
+          <article class="message is-link">
+            <div class="message-header">
+              <p>{{test.name}}</p>
+            </div>
+            <div class="message-body">
+              <b>Description: </b> {{test.description}}<p>
+                <br>
+              </p>
+              <div class="actions">
+                <app-edit-test (ngOnInit)="ngOnInit()" [id_modal]="test.id" [test]="test"
+                  [id_interview]="interview"></app-edit-test>
+                <button (click)="delete_test(test.id)" class="button is-danger is-small">Delete</button>
+
+              </div>
+            </div>
+
+          </article>
+
+          }
+          }@else {
+
+          <p>This position doesn't have meetings</p>
+          <br>
+          }
+          <app-create-test (ngOnInit)="ngOnInit()" [interview]="interview"></app-create-test>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          User Skils
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          @for (skill of interview?.skills; track $index) {
+          @for (user_skill of user_skills; track $index) {
+          @if (skill.skill_name == user_skill.skill.skill_name){
+
+          <article class="message is-warning">
+            <div class="message-header">
+              <p>{{user_skill.skill.skill_name}} {{user_skill.user.name}} {{user_skill.user.lastname}}
+                {{user_skill.user.lastname2}} </p>
+              @if (user_skill.user.photo == null){
+              <img class="photo_a_u" src="../../assets/img/profile.jpg" />
+              }@else{
+              <img class="photo_a_u" src="data:image/jpeg;base64,{{user_skill.user.photo}}" />
+              }
+
+            </div>
+            <div class="message-body">
+              <p>{{user_skill.skill.description}}</p><br>
+              @if (user_skill.qualification !=null){
+              <p><b>Qualification: </b>{{user_skill.qualification}}</p>
+              }
+              @if (user_skill.comment !=null){
+              <p><b>Comment: </b>{{user_skill.comment}}</p>
+              }
+              <br>
+              <div class="actions">
+
+                <app-userskillmodal (ngOnInit)="ngOnInit()" [id_modal]="user_skill.id" [id_user]="user_skill.user.id"
+                  [id_skill]="user_skill.skill.id"></app-userskillmodal>
+                <button (click)="delete(user_skill.id)" class="button is-danger is-small">Delete Skill</button>
+
+
+              </div>
+            </div>
+
+          </article>
+
+          }}}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+          aria-controls="panelsStayOpen-collapseThree">
+          User meetings / tests
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          @if (tests.length > 0){
+
+          @for (user_test of tests; track $index) {
+          <article class="message is-link ">
+            <div class="message-header">
+              @if (user_test.user.photo == null){
+              <img class="photo_a_u" src="../../assets/img/profile.jpg" />
+              }@else{
+              <img class="photo_a_u" src="data:image/jpeg;base64,{{user_test.user.photo}}" />
+              }
+              <p>{{user_test.test.name}}</p>
+            </div>
+            <div class="message-body">
+              <b>Description: </b> {{user_test.test.description}}<p>
+                <br>
+
+              <p><b>Assigned to:</b> {{user_test.user.name}} {{user_test.user.lastname}} {{user_test.user.lastname2}}
+              </p>
+              @if (user_test.do_at !=null){
+              <b>Do at:</b> {{user_test.do_at | date : "dd-MM-yyyy"}}<br>
+              }
+              @if (user_test.calification !=null){
+              <b>Calification:</b> {{user_test.calification}}
+              }
+              <br><br>
+              <app-testusers (ngOnInit)="ngOnInit()" [id_modal]="user_test.id"
+                [id_testuser]="user_test.id"></app-testusers>
+              <button (click)="edit(interview.id)" class=" user-meets-button button is-danger is-small">Cancel
+                meet</button>
+
+            </div>
+          </article>
+          }
+
+          }@else {
+          <div>
+            <p> No meetings assigned to users</p>
+          </div>
+          }
+
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+          aria-controls="panelsStayOpen-collapseFour">
+          Users enrolled
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+        <div class="accordion-body">
+
+          <div class="table-responsive-xl">
+            <table class="table table-striped is-bordered">
+              <thead>
+                <tr>
+                  <th class="d-none d-lg-block">Image</th>
+                  <th>Name</th>
+                  <th class="d-none d-lg-block">skills</th>
+                  <th>Resume</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (user of user_interview; track $index) {
+                <tr>
+                  <td class="d-none d-lg-block">
+                    @if (user.user.photo == null){
+                    <img class="photo_a_u" src="../../assets/img/profile.jpg" />
+                    }@else{
+                    <img class="photo_a_u" src="data:image/jpeg;base64,{{user.user.photo}}" />
+                    }
+                  </td>
+                  <td>{{user.user.name}} {{user.user.lastname}} {{user.user.lastname2}}</td>
+                  <td class="">
+                    @for (skill of user.user.skills; track $index) {
+                    <button class="button {{ class[skill.id % 5] }} is-small is-light is-responsive">
+                      {{ skill.skill_name }}
+                    </button>
+                    }
+                  </td>
+                  <td>
+                    @if(user.user.resume !=null) {
+                    <button (click)="view_resume(user.user.id,user.user.name)" class="button is-info is-small">View
+                      resume</button>
+                    }@else {
+                    <button class="button is-info is-small" disabled>No resume available</button>
+                    }
+                  </td>
+                  <td class="action_buttons">
+                    <!-- <button  (click)="changeComment()" class="button is-info is-small" >Add comment</button> -->
+                    <app-comment [interview]="user"></app-comment>
+                    <button class="button is-success is-small" id="dropdownUser2" data-bs-toggle="dropdown">Change
+                      state</button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownUser2">
+                      @for (item of states; track $index) {
+                      <li><a class="dropdown-item" (click)="changeState(user,item)">{{item}}</a></li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      }
+                    </ul>
+                    <button (click)="edit(interview.id)" class="button is-link is-small" id="dropdownTest"
+                      data-bs-toggle="dropdown">Assign meeting / test</button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownTest">
+                      @for (test of meetingTest; track $index) {
+                      <li><a class="dropdown-item" (click)="asignTest(test,user.user)">{{test.name}}</a></li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      }
+                    </ul>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  }@else {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  }
 
 </app-lateral-bar>
