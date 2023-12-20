@@ -100,7 +100,8 @@ export class EditInterviewComponent {
     if (indexToDelete !== -1) {
       this.arraySkills.splice(indexToDelete, 1);
       console.log(this.arraySkills);
-      
+      this.request.delete_skill_interview(this.interviewId,this.arraySkills[indexToDelete].id).subscribe(
+        (data:any) =>{ console.log('adios skill')})
     } else {
         console.log('error');
     }
