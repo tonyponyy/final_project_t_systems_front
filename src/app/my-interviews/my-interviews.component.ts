@@ -16,6 +16,7 @@ export class MyInterviewsComponent {
 constructor(public requestservice: RequestService){}
 protected positions :any[] =[];
 protected user_tests :any[] = [];
+protected faimg : string[] = ["fa-briefcase", "fa-code", "fa-laptop-code","fa-terminal","fa-paperclip"]
 protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
 protected pagination={current_page: 0,total_pages: 0, total_items: 0};
 protected states :string[] =['You have not passed the process','You are enrolled','First interview','In selection process','Hired']

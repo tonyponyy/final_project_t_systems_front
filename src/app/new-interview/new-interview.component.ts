@@ -15,6 +15,7 @@ import { Route, Router } from '@angular/router';
 export class NewInterviewComponent {
   newInterview: FormGroup;
   arraySkills : any[] = [];
+
   protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
 
   constructor(private formBuilder: FormBuilder, private request : RequestService, private router : Router) {

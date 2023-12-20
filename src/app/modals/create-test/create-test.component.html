@@ -1,0 +1,42 @@
+<div class="modal" id="myModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title label">Create test</p>
+            <button class="delete" aria-label="close" (click)="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+            <form [formGroup]="createTest">
+                <div class="mb-3">
+                    <label for="exampleInputTestTitle1" class="form-label">Test title</label>
+                    <input type="text" class="form-control" id="exampleInputTestTitle1" formControlName="title">
+                    @if (createTest.get('title')?.invalid && createTest.get('title')?.touched ) {
+                        <p class="has-text-danger">Required field</p>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputTestDescription1" class="form-label">Test Description</label>
+                    <textarea class="form-control" id="exampleInputTestDescription1" formControlName="description"></textarea>
+                    @if (createTest.get('description')?.invalid && createTest.get('description')?.touched ) {
+                        <p class="has-text-danger">Required field</p>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">End Date</label>
+                    <div class="control">
+                        <input class="input" type="date" formControlName="end_date">
+                    </div>
+                    @if (createTest.get('end_date')?.invalid && createTest.get('end_date')?.touched ) {
+                        <p class="has-text-danger">Required field</p>
+                    }
+                </div>
+            </form>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" (click)="sendComment()">Create Test</button>
+            <button class="button" (click)="closeModal()">Cancel</button>
+        </footer>
+    </div>
+</div>
+
+<button class="button is-success is-small" (click)="openModal()">Create test</button>

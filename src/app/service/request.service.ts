@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Skill } from '../skills/skills.component';
 import { Interview } from '../edit-interview/edit-interview.component';
 import { Comment } from '../modals/comment/comment.component';
+import { Test } from '../modals/create-test/create-test.component';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +73,11 @@ export class RequestService {
     return this.http.put<any[]>(url,interview);
   }
 
+  qualificate_userskill(id_user :number,id_skill :number,data :object){
+    let url: string = this.api_url+'userskills/qualificate/'+id_user+'/'+id_skill
+    return this.http.post<any[]>(url,data);
+  }
+
   //datos del usuario
   get_user(){
     let url: string = this.api_url+'users/current_user/info';
@@ -131,6 +137,11 @@ export class RequestService {
   change_comment(id_ui : number, comment : Comment){    
     let url: string = this.api_url+'userinterviews/changeComment/'+id_ui;
     return this.http.put<any[]>(url, comment);
+  }
+  
+  create_test(test: Test){
+    let url: string = this.api_url+'tests/addTest';
+    return this.http.post<any[]>(url, test);
   }
 
 }

@@ -16,7 +16,7 @@
                             <p class="subtitle is-6">{{item.description}}</p>
                         </div>
                         <div class="mx-5 my-3">
-                            <button class="button is-small is-link is-link mx-1" (click)="addSkill(item)">Add</button>
+                            <button class="button is-small is-link is-link mx-1" (click)="addSkill(item)" [disabled]="isSkillAdded(item)">Add</button>
                         </div>
                     </div>
                 </div>

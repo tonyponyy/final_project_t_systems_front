@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
 export class InterviewsComponent {
 constructor(public requestservice: RequestService, public tokenservice: TokenService){}
 protected interviews :any[] =[];
+protected faimg : string[] = ["fa-briefcase", "fa-code", "fa-laptop-code","fa-terminal","fa-paperclip"]
 protected class :string[] = ["is-success","is-primary","is-link","is-info","is-warning","is-danger"];
 protected pagination={current_page: 0,total_pages: 0, total_items: 0};
 public role :string ="";
