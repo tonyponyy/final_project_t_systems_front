@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RequestService } from '../../service/request.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { RequestService } from '../../service/request.service';
   styleUrl: './interview-skills.component.css'
 })
 export class InterviewSkillsComponent {
+  @Input() skills2: any[] = [];
   @Output() arrayEnviado = new EventEmitter<any[]>();
 
   protected skills : any[] = [];
@@ -18,7 +19,7 @@ export class InterviewSkillsComponent {
   constructor(public request: RequestService){}
 
   ngOnInit(){
-    this.get_page(0);
+    this.get_page(0);    
   }
 
   get_page(n_page : number){
@@ -31,6 +32,15 @@ export class InterviewSkillsComponent {
   }
   openModal() {
     console.log('abriendo modal');
+
+    for (let i = 0; i < this.skills2.length; i++) {
+      const found = this.skills.find((x) => x.id == this.skills2[i].id)
+      console.log('FOUNDDDD', found);
+      this.skills.splice(found, 1);
+    }
+
+    console.log(this.skills);
+    
     
     const modalElement = document.getElementById('myModal');
     if (modalElement) {
@@ -40,7 +50,7 @@ export class InterviewSkillsComponent {
 
   isSkillAdded(item: any): boolean {
     return this.interviewSkills.includes(item);
-}
+  }
 
   addSkill(item: any) {
     if (!this.interviewSkills.includes(item)) {

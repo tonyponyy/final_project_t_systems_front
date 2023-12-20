@@ -27,7 +27,7 @@
                     <p class="m-auto fw-bolder">SKILLS</p>
                 </div>
                 <div class="control">
-                    <app-interview-skills (arrayEnviado)="recibirArray($event)"></app-interview-skills>
+                    <app-interview-skills [skills2]="arraySkills" (arrayEnviado)="recibirArray($event)"></app-interview-skills>
                 </div>
             </div>
 
