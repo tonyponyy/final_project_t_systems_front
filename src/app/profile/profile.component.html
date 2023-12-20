@@ -36,12 +36,15 @@
                 </div>
             </div>
 
+            <form [formGroup]="commentForm">
+
             <div class="field">
-                <label class="label">Name</label>
+                <label class="label form-label">Name</label>
                 <div class="control has-icons-left">
                 <input
-                    class="input"
+                    class="input form-control"
                     type="text"
+                    formControlName="name"
                     placeholder="userName"
                     value="{{user?.name}}"
                 />
@@ -55,11 +58,12 @@
             </div>
 
             <div class="field">
-                <label class="label">Lastname</label>
+                <label class="label form-label">Lastname</label>
                 <div class="control has-icons-left">
                 <input
-                    class="input"
+                    class="input form-control"
                     type="text"
+                    formControlName="lastname"
                     placeholder="userLastName"
                     value="{{user?.lastname}}"
                 />
@@ -72,14 +76,16 @@
                 <p class="help is-danger"></p>
             </div>
             <div class="field">
-                <label class="label">Second Lastname</label>
+                <label class="label form-label">Second Lastname</label>
                 <div class="control has-icons-left">
                 <input
-                    class="input"
+                    class="input form-control"
+                    formControlName="lastname2"
                     type="text"
                     placeholder="Optional second lastname"
                     value="{{user?.lastname2}}"
                 />
+                
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>
@@ -87,6 +93,8 @@
                 <!-- Aquí va la validación (dejar en blanco si todo está bien) -->
                 <p class="help is-danger"></p>
             </div>
+
+            </form>
 
             <div class="field">
                 <label class="label">Email</label>
@@ -122,7 +130,7 @@
 
             <div id="files" class="row mt-3">
                 <div class="field">
-                <label class="label">Añadir curriculum</label>
+                <label class="label">Upload Curriculum</label>
                 <div class="file is-small">
                     <label class="file-label">
                     <input class="file-input" #resume_input  (change)="upload_resume($event)" type="file"  name="resume" />
@@ -130,7 +138,7 @@
                         <span class="file-icon">
                         <i class="fas fa-upload"></i>
                         </span>
-                        <span class="file-label"> Elige un archivo </span>
+                        <span class="file-label"> Add archive </span>
                     </span>
                     @if (user?.resume !=null){
                         <div class="control">
@@ -153,7 +161,7 @@
         }
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-link">Guardar</button>
+                    <button class="button is-link" (click)="onSubmit()">Save Changes</button>
                 </div>
             </div>
             </div>
