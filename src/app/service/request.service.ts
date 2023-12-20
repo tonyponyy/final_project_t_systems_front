@@ -154,6 +154,16 @@ export class RequestService {
     return this.http.post<any[]>(url, test);
   }
 
+  edit_test(id_test : number, test : Test){
+    let url: string = this.api_url+'tests/editTest/'+id_test;
+    return this.http.put<any[]>(url, test);
+  }
+
+  delete_test(id_test : number){
+    let url: string = this.api_url+'tests/deleteTest/'+id_test;
+    return this.http.delete<any[]>(url);
+  }
+
   asign_test_user(id_user: number, id_test: number){
     let url: string = this.api_url+'usertests/user_test/'+id_test+'/'+id_user;
     return this.http.post<any[]>(url, "{}");

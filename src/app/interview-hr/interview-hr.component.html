@@ -42,8 +42,8 @@
                               <br>
                             </p>
                             <div class="actions">
-                                <button (click)="edit(interview.id)" class="button is-warning is-small">Edit</button>
-                                <button (click)="delete(interview.id)" class="button is-danger is-small">Delete</button>
+                                <app-edit-test [id_modal]="test.id" [test]="test" [id_interview]="interview"></app-edit-test>
+                                <button (click)="delete_test(test.id)" class="button is-danger is-small">Delete</button>
                                 
                             </div>
                             </div>

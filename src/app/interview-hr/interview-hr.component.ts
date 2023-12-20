@@ -12,6 +12,7 @@ import { CommentComponent } from '../modals/comment/comment.component';
 import { UserskillmodalComponent } from '../modals/userskills-modal/userskillmodal.component';
 import { CreateTestComponent } from '../modals/create-test/create-test.component';
 import { TestusersComponent } from '../modals/testusers/testusers.component';
+import { EditTestComponent } from '../modals/edit-test/edit-test.component';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { TestusersComponent } from '../modals/testusers/testusers.component';
   standalone: true,
   templateUrl: './interview-hr.component.html',
   styleUrl: './interview-hr.component.css',
-  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent,UserskillmodalComponent,CreateTestComponent,TestusersComponent],
+  imports: [LateralBarComponent, DatePipe, RouterModule, CommentComponent,UserskillmodalComponent,CreateTestComponent,TestusersComponent, EditTestComponent],
 
 })
 export class InterviewHrComponent {
@@ -134,6 +135,14 @@ export class InterviewHrComponent {
         break;
     }
   }
+
+  delete_test(test_id: any){
+    this.requestservice.delete_test(test_id).subscribe((data: any) => {
+      console.log(data);
+    }, error=>{console.log(error);
+    })
+  }
+
   delete(skill_user: any) {
     this.requestservice.delete_skill_user(skill_user.user.id,skill_user.skill.id).subscribe((data:any) => {
       this.ngOnInit();
