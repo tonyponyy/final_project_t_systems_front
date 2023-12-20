@@ -17,6 +17,7 @@ import {
 })
 export class CommentComponent {
   @Input() interview: any;
+  @Input() id_modal: any;
   commentForm: FormGroup;
   commentUser: Comment = new Comment(); 
 
@@ -30,9 +31,9 @@ export class CommentComponent {
   }
 
   openModal() {
-    console.log('abriendo modal');
+    console.log('abriendo modal-->'+this.id_modal);
 
-    const modalElement = document.getElementById('myModal');
+    const modalElement = document.getElementById('messageModal'+this.id_modal);
     if (modalElement) {
       modalElement.classList.add('is-active');
     }
@@ -41,7 +42,7 @@ export class CommentComponent {
   sendComment() {
     if (this.commentForm) {
       this.commentUser.comment = this.commentForm.value.comment;
-
+      
       this.request.change_comment(this.interview.id, this.commentUser).subscribe(
         (data: any) => {
           console.log(data);
@@ -55,7 +56,7 @@ export class CommentComponent {
   }
 
   closeModal() {
-    const modalElement = document.getElementById('myModal');
+    const modalElement = document.getElementById('messageModal'+this.id_modal);
     if (modalElement) {
       modalElement.classList.remove('is-active');
     }
