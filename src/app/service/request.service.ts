@@ -129,6 +129,11 @@ export class RequestService {
     return this.http.delete<any[]>(url);
   }
 
+  delete_skill_user(id_user: number, id_skill : number){
+    let url: string = this.api_url+'userskills/delete_by/'+id_user+'/'+id_skill;
+    return this.http.delete<any[]>(url);
+  }
+
   delete_interview(id_interview: number){
     let url: string = this.api_url+'interviews/deleteInterview/'+id_interview;
     return this.http.delete<any[]>(url);

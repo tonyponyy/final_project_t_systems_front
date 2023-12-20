@@ -53,6 +53,8 @@ export class InterviewHrComponent {
   ];
 
   ngOnInit(): void {
+    console.log(this.user_skills);
+    
     this.route.paramMap.subscribe((params) => {
       this.interview_id = params.get('id');
       this.get_interview(this.interview_id);
@@ -118,15 +120,11 @@ export class InterviewHrComponent {
         break;
     }
   }
-  delete(id_interview: number) {
-    this.requestservice.delete_interview(id_interview).subscribe(
-      (data: any) => {
-        console.log(data);
-        this.router.navigate(['/interviews']);
-      },
-      (error) => {
-        console.log('error');
-      }
-    );
+  delete(skill_user: any) {
+    this.requestservice.delete_skill_user(skill_user.user.id,skill_user.skill.id).subscribe((data:any) => {
+      this.ngOnInit();
+    }, error => {
+      console.log(error);
+    });
   }
 }

@@ -19,7 +19,7 @@ export class UserskillmodalComponent {
   @Input() id_user: any;
   @Input() id_skill: any;
   userSkillForm: FormGroup;
-  userSkillFormUser: userSkillForm = new userSkillForm(); 
+  userSkillFormUser: userSkillForm = new userSkillForm();
 
   constructor(
     public request: RequestService,
@@ -27,11 +27,9 @@ export class UserskillmodalComponent {
   ) {
     this.userSkillForm = this.formBuilder.group({
       qualification: ['', Validators.required],
-      comment: ['', Validators.required]
+      comment: ['', Validators.required],
     });
   }
-
-  
 
   openModal() {
     console.log('abriendo modal');
@@ -41,22 +39,20 @@ export class UserskillmodalComponent {
     }
   }
 
-
-  send(){
-    console.log("id_user:"+this.id_user+"  id_skill"+this.id_skill)
-    console.log(this.userSkillForm.value)
-      let data :any = {
-         qualification : this.userSkillForm.value.qualification,
-         comment : this.userSkillForm.value.comment
-      }
-      this.request.qualificate_userskill(this.id_user,this.id_skill,data).subscribe((data: any) =>{
-        console.log(data);
-        this.closeModal();
-      },
-      error =>{
-        console.log(error);
-      })
-      
+  send() {
+    console.log('id_user:' + this.id_user + '  id_skill' + this.id_skill);
+    console.log(this.userSkillForm.value);
+    this.request
+      .qualificate_userskill(this.id_user, this.id_skill, this.userSkillForm.value)
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.closeModal();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   closeModal() {
