@@ -92,9 +92,11 @@
                       }
                       <br>
                       <div class="actions">
+
                         <app-userskillmodal   [id_user]="user_skill.user.id" [id_skill]="user_skill.skill.id"></app-userskillmodal>
                         <button (click)="delete(user_skill.id)" class="button is-danger is-small">Delete Skill</button>
                        
+
                     </div>
                     </div>
  
@@ -209,7 +211,13 @@
                                         <li><hr class="dropdown-divider" /></li>
                                       }
                                     </ul>
-                                    <button  (click)="edit(interview.id)" class="button is-link is-small" >Assign meeting / test</button>
+                                    <button  (click)="edit(interview.id)" class="button is-link is-small" id="dropdownTest" data-bs-toggle="dropdown">Assign meeting / test</button>
+                                    <ul class="dropdown-menu dropdown-menu-end shadow ztop" aria-labelledby="dropdownTest">
+                                      @for (test of meetingTest; track $index) {
+                                        <li><a class="dropdown-item" (click)="asignTest(test,user.user)">{{test.name}}</a></li>
+                                        <li><hr class="dropdown-divider" /></li>
+                                      }
+                                    </ul>
                                 </td>
                             </tr>
                         }

@@ -10,7 +10,6 @@ export class SkillService {
   constructor(private modalSkill: ModalSkillService) {}
 
   metodoDeOtraClase() {
-    console.log('Método de otra clase llamado');
     this.modalSkill.triggerSkillAdded();
   }
 }
