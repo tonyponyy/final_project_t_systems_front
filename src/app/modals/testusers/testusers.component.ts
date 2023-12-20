@@ -30,7 +30,6 @@ export class TestusersComponent {
   }
 
   openModal() {
-    console.log('abriendo modal');
 
     const modalElement = document.getElementById('testusermodal'+this.id_modal);
     if (modalElement) {
@@ -42,16 +41,12 @@ export class TestusersComponent {
 
     let data =this.testUserForm.value;
 
-    console.log("id_testuser-->"+this.id_testuser)
-    console.log(data)
-
     this.request.qualificate_user_test(this.id_testuser, data).subscribe(
       (data: any) => {
         this.ngOnInit.emit();
         this.closeModal();
       },
       (error) => {
-        console.log(error);
       }
     );
 

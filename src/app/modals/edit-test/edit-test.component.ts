@@ -59,14 +59,12 @@ export class EditTestComponent {
       this.testToEdit.description = this.editTestForm.value.description;
       this.testToEdit.id_interview = this.id_interview.id
       this.testToEdit.end_date = this.editTestForm.value.end_date;
-
-      console.log(this.testToEdit);
-      
+    
       this.request.edit_test(this.test.id,this.testToEdit).subscribe((data:any) => {
         this.ngOnInit.emit();
         this.closeModal();
       }, error => {
-        console.log(error);
+
       })
     }
   }

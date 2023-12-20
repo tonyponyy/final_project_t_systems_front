@@ -28,13 +28,11 @@ export class LateralBarComponent {
     this.route = this.router.url.split("/")[1];
   }
   singOut(){
-    console.log("me desconecto");
     this.tokenService.singOut();
   }
 
   get_image(){
     this.image = this.iservice.get_image();
-    console.log("peticion 0")
     if (this.image == null){
       this.http.get_user().subscribe((data:any)=>{
         if (data.photo == null){
@@ -45,7 +43,6 @@ export class LateralBarComponent {
           this.image = data.photo;
         }
       },error =>{
-        console.log("error")
       });
     }
   }

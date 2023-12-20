@@ -51,7 +51,6 @@ export class EditInterviewComponent {
   }
 
   ngOnInit(): void {
-    console.log('on init character');
     this.ruta.paramMap.subscribe((params) => {
       const idFromParams = params.get('id');
       const idAsNumber = Number(idFromParams);
@@ -62,10 +61,7 @@ export class EditInterviewComponent {
         this.request.get_hr_interview(this.interviewId).subscribe(
           (data: any) => {
             this.interview = data.interview;
-            console.log(this.interview);
             this.arraySkills = this.interview.skills;
-            console.log("Array skills :")
-            console.log(this.arraySkills)
             const originalEndDate = new Date(this.interview.end_date);
             const formattedEndDate = originalEndDate
               .toISOString()
@@ -78,12 +74,9 @@ export class EditInterviewComponent {
             });
           },
           (error) => {
-            console.log('no');
           }
         );
-        console.log(this.interviewId);
       } else {
-        console.error('No se encontró el parámetro "id" en la URL.');
       }
     });
   }
@@ -93,15 +86,12 @@ export class EditInterviewComponent {
       const interview = this.editInterview.value as Interview;
       interview.id = this.interviewId;
 
-      console.log(interview);
 
       this.request.edit_interview(interview).subscribe(
         (data: any) => {
-          console.log('si');
           this.router.navigate(['/interviews']);
         },
         (error) => {
-          console.log('error' + error);
         }
       );
     }
@@ -113,11 +103,9 @@ export class EditInterviewComponent {
         .delete_skill_interview(this.interview.id, skill_id)
         .subscribe(
           (data: any) => {
-            console.log('funciona');
             this.ngOnInit()
           },
           (error) => {
-            console.log('error');
           }
     );}
   
@@ -131,10 +119,9 @@ export class EditInterviewComponent {
         .add_skill_interview(this.interview.id, newSkill.id)
         .subscribe(
           (data: any) => {
-           this.ngOnInit();
+            this.ngOnInit();
           },
           (error) => {
-            console.log('error');
           }
         );
     }

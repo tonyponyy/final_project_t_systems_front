@@ -30,7 +30,6 @@ export class CommentComponent {
   }
 
   openModal() {
-    console.log('abriendo modal');
 
     const modalElement = document.getElementById('myModal');
     if (modalElement) {
@@ -44,11 +43,9 @@ export class CommentComponent {
 
       this.request.change_comment(this.interview.id, this.commentUser).subscribe(
         (data: any) => {
-          console.log(data);
           this.closeModal();
         },
         (error) => {
-          console.log(error);
         }
       );
     }

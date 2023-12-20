@@ -66,7 +66,6 @@ export class InterviewHrComponent {
     this.requestservice
       .get_hr_interview(id_interview)
       .subscribe((data: any) => {
-        console.log(data);
         this.interview = data.interview;
         this.meetingTest = this.interview.tests;
         this.user_interview = data.users;
@@ -78,7 +77,6 @@ export class InterviewHrComponent {
   }
 
   edit(id_interview: number) {
-    console.log('edit -->' + id_interview);
   }
 
   view_resume(id_user: number, name: string) {
@@ -91,13 +89,10 @@ export class InterviewHrComponent {
   }
 
   asignTest(test: any, user: any){
-    console.log(test.id);
-    console.log(user.id);
 
     this.requestservice.asign_test_user(user.id, test.id).subscribe((data: any) => {
       this.ngOnInit();
     }, error => {
-      console.log(error);
     })
   }
 
@@ -105,10 +100,8 @@ export class InterviewHrComponent {
     let idState = this.stateId(item);
     this.requestservice.change_state(user.id, idState).subscribe(
       (data: any) => {
-        console.log(data);
       },
       (error) => {
-        console.log(error);
       }
     );
   }
@@ -138,8 +131,8 @@ export class InterviewHrComponent {
 
   delete_test(test_id: any){
     this.requestservice.delete_test(test_id).subscribe((data: any) => {
-      console.log(data);
-    }, error=>{console.log(error);
+
+    }, error=>{
     })
   }
 
@@ -147,7 +140,6 @@ export class InterviewHrComponent {
     this.requestservice.delete_skill_user(skill_user.user.id,skill_user.skill.id).subscribe((data:any) => {
       this.ngOnInit();
     }, error => {
-      console.log(error);
     });
   }
 }
