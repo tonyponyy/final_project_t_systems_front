@@ -103,6 +103,11 @@ export class RequestService {
     return this.http.get<any[]>(url);
   }
 
+  qualificate_user_test(id :number,data :any){
+    let url: string = this.api_url+'usertests/qualificate/'+id;
+    return this.http.post<any[]>(url,data);
+  }
+
   //admin
   delete_user(id_user :number){
     let url: string = this.api_url+'users/deleteUser/'+id_user;

@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RequestService } from '../../service/request.service';
+import { InterviewHrComponent } from '../../interview-hr/interview-hr.component';
 
 @Component({
   selector: 'app-testusers',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,InterviewHrComponent],
   templateUrl: './testusers.component.html',
   styleUrl: './testusers.component.css'
 })
@@ -14,7 +15,7 @@ export class TestusersComponent {
   @Input() id_modal: any;
   testUserForm: FormGroup;
   commentUser: Comment = new Comment(); 
-
+  @ViewChild(InterviewHrComponent) parentComponent!: InterviewHrComponent;
   constructor(
     public request: RequestService,
     private formBuilder: FormBuilder
@@ -37,18 +38,19 @@ export class TestusersComponent {
   sendData() {
 
     let data =this.testUserForm.value;
+
     console.log("id_testuser-->"+this.id_testuser)
-/*
-    this.request.qualificate_user_test(id_testuser, data).subscribe(
+    console.log(data)
+
+    this.request.qualificate_user_test(this.id_testuser, data).subscribe(
       (data: any) => {
-        console.log(data);
+       // this.parentComponent.ngOnInit();
         this.closeModal();
       },
       (error) => {
         console.log(error);
       }
     );
-*/
 
   }
 
