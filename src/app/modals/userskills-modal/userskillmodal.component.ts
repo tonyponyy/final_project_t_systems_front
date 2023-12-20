@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RequestService } from '../../service/request.service';
 import {
   FormBuilder,
@@ -19,6 +19,8 @@ export class UserskillmodalComponent {
   @Input() id_modal: any;
   @Input() id_user: any;
   @Input() id_skill: any;
+  @Output("ngOnInit") ngOnInit: EventEmitter<any> = new EventEmitter
+
   userSkillForm: FormGroup;
   userSkillFormUser: userSkillForm = new userSkillForm();
 
@@ -47,7 +49,7 @@ export class UserskillmodalComponent {
       .qualificate_userskill(this.id_user, this.id_skill, this.userSkillForm.value)
       .subscribe(
         (data: any) => {
-          console.log(data);
+          this.ngOnInit.emit();
           this.closeModal();
         },
         (error) => {

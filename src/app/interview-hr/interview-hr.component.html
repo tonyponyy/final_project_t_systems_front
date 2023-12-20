@@ -42,7 +42,7 @@
                               <br>
                             </p>
                             <div class="actions">
-                                <app-edit-test [id_modal]="test.id" [test]="test" [id_interview]="interview"></app-edit-test>
+                                <app-edit-test (ngOnInit)="ngOnInit()" [id_modal]="test.id" [test]="test" [id_interview]="interview"></app-edit-test>
                                 <button (click)="delete_test(test.id)" class="button is-danger is-small">Delete</button>
                                 
                             </div>
@@ -93,7 +93,7 @@
                       <br>
                       <div class="actions">
 
-                        <app-userskillmodal [id_modal]="user_skill.id"  [id_user]="user_skill.user.id" [id_skill]="user_skill.skill.id"></app-userskillmodal>
+                        <app-userskillmodal (ngOnInit)="ngOnInit()" [id_modal]="user_skill.id"  [id_user]="user_skill.user.id" [id_skill]="user_skill.skill.id"></app-userskillmodal>
                         <button (click)="delete(user_skill.id)" class="button is-danger is-small">Delete Skill</button>
                        
 
@@ -138,7 +138,7 @@
                               <b>Calification:</b> {{user_test.calification}}
                             }
                             <br><br>
-                            <app-testusers  [id_modal]="user_test.id" [id_testuser]="user_test.id" ></app-testusers>
+                            <app-testusers (ngOnInit)="ngOnInit()" [id_modal]="user_test.id" [id_testuser]="user_test.id" ></app-testusers>
                             <button  (click)="edit(interview.id)" class=" user-meets-button button is-danger is-small" >Cancel meet</button>
                           
                         </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RequestService } from '../../service/request.service';
 import {
   FormBuilder,
@@ -19,6 +19,7 @@ export class EditTestComponent {
   @Input() test: any;
   @Input() id_modal: any;
   @Input() id_interview: any;
+  @Output("ngOnInit") ngOnInit: EventEmitter<any> = new EventEmitter
 
   editTestForm: FormGroup;
   testToEdit : Test = new Test;
@@ -33,8 +34,6 @@ export class EditTestComponent {
       end_date: ['', Validators.required],
     });
   }
-
-  ngOnInit() {}
 
   openModal() {
     const originalEndDate = new Date(this.test.end_date);
@@ -63,9 +62,9 @@ export class EditTestComponent {
 
       console.log(this.testToEdit);
       
-      
       this.request.edit_test(this.test.id,this.testToEdit).subscribe((data:any) => {
-        console.log(data);
+        this.ngOnInit.emit();
+        this.closeModal();
       }, error => {
         console.log(error);
       })

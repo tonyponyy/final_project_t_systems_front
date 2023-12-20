@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RequestService } from '../../service/request.service';
 import { InterviewHrComponent } from '../../interview-hr/interview-hr.component';
@@ -13,9 +13,12 @@ import { InterviewHrComponent } from '../../interview-hr/interview-hr.component'
 export class TestusersComponent {
   @Input() id_testuser: any;
   @Input() id_modal: any;
+  @Output("ngOnInit") ngOnInit: EventEmitter<any> = new EventEmitter
+  
   testUserForm: FormGroup;
   commentUser: Comment = new Comment(); 
-  @ViewChild(InterviewHrComponent) parentComponent!: InterviewHrComponent;
+
+
   constructor(
     public request: RequestService,
     private formBuilder: FormBuilder
@@ -44,7 +47,7 @@ export class TestusersComponent {
 
     this.request.qualificate_user_test(this.id_testuser, data).subscribe(
       (data: any) => {
-       // this.parentComponent.ngOnInit();
+        this.ngOnInit.emit();
         this.closeModal();
       },
       (error) => {
