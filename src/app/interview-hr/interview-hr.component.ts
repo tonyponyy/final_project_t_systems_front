@@ -33,6 +33,7 @@ export class InterviewHrComponent {
   protected interview_id: any;
   protected interview: any;
   protected user_interview: any;
+  protected meetingTest: any;
   protected user_skills: any;
   protected tests: any;
   protected loaded: boolean = false;
@@ -52,24 +53,25 @@ export class InterviewHrComponent {
     'is-danger',
   ];
 
-  ngOnInit(): void {
-    console.log(this.user_skills);
-    
+  ngOnInit(): void {    
     this.route.paramMap.subscribe((params) => {
       this.interview_id = params.get('id');
       this.get_interview(this.interview_id);
     });
   }
+
   get_interview(id_interview: any) {
     this.requestservice
       .get_hr_interview(id_interview)
       .subscribe((data: any) => {
         console.log(data);
         this.interview = data.interview;
+        this.meetingTest = this.interview.tests;
         this.user_interview = data.users;
         this.user_skills = data.user_skills;
         this.tests = data.tests;
         this.loaded = true;
+        
       });
   }
 
@@ -84,6 +86,17 @@ export class InterviewHrComponent {
         id_user + name + '.pdf'
       );
     });
+  }
+
+  asignTest(test: any, user: any){
+    console.log(test.id);
+    console.log(user.id);
+
+    this.requestservice.asign_test_user(user.id, test.id).subscribe((data: any) => {
+      this.ngOnInit();
+    }, error => {
+      console.log(error);
+    })
   }
 
   changeState(user: any, item: any) {
