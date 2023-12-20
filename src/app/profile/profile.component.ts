@@ -100,12 +100,25 @@ export class ProfileComponent {
         })
   }
   recibirArray(array: any[]){
-    for (let index = 0; index < array.length; index++) {
-      this.skillsa.push(array[index])
+    console.log("que vienen todas")
+    console.log(array)
+    let resultado = array.filter(obj1 => !this.skillsa.some(obj2 => obj2.id === obj1.id));
+
+    for (let i = 0; i < resultado.length; i++) {
+      const newSkill = resultado[i];
       
+      this.request
+        .add_skill_user(newSkill.id)
+        .subscribe(
+          (data: any) => {
+           this.ngOnInit();
+          },
+          (error) => {
+            this.ngOnInit();
+          }
+        );
     }
-    this.skillsa=[... new Set(this.skillsa)]
-    console.log(this.skillsa)
+    
   }
 
   onSubmit() {

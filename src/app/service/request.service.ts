@@ -58,6 +58,12 @@ export class RequestService {
     return this.http.post<any[]>(url,data);
   }
 
+  add_skill_user(id_skill: any) :Observable<any>{
+    let url: string = this.api_url+'userskills/add_by/'+id_skill;
+    return this.http.post(url, { responseType: 'text' });
+    //return this.http.post<any[]>(url,{});
+  }
+
   delete_skill (item : any) {
     let url: string = this.api_url+'skills/deleteSkill/'+item.id;
     return this.http.delete<any[]>(url);
