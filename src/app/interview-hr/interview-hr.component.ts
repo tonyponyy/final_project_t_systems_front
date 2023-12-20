@@ -129,6 +129,15 @@ export class InterviewHrComponent {
     }
   }
 
+  delete_interview(id_interview:number){    
+    this.requestservice.delete_interview(id_interview).subscribe((data: any)=>{
+      console.log('borrado');
+      this.router.navigate(['/interviews'])
+    }, error => {
+      console.log(error);
+    })
+  }
+
   delete_test(test_id: any){
     this.requestservice.delete_test(test_id).subscribe((data: any) => {
 
