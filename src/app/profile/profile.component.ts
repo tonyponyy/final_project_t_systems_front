@@ -39,7 +39,6 @@ export class ProfileComponent {
   ngOnInit():void {
     this.request.get_user().subscribe((data:any)=>{
       this.current_role = this.t_service.getUser();
-      console.log(this.current_role)
       this.user = data;
       this.commentForm.value.name = this.user.name;
       this.commentForm.value.lastname = this.user.lastname;
@@ -47,13 +46,11 @@ export class ProfileComponent {
       this.skillsa=data.skills;
 
     },error =>{
-      console.log("error")
     });
   }
 
   upload_resume(event :any){
     this.selectedFile = event.target.files[0]
-    console.log(event.target.files[0].name)
     let file_extension = event.target.files[0].name.split(".")[1].toUpperCase()
     if (file_extension == "PDF"){
     this.file_validation = true;
@@ -64,7 +61,6 @@ export class ProfileComponent {
           this.resume_succes = true
         },
         (err) => {
-          console.log("error-->"+err)
         })
       }else{
         this.file_validation = false;
@@ -94,16 +90,12 @@ export class ProfileComponent {
             this.user.photo = data.photo;
             this.iservice.save_image(data.photo);
           },error =>{
-            console.log("error")
           });
         },
         (err) => {
-          console.log("error-->"+err)
         })
   }
   recibirArray(array: any[]){
-    console.log("que vienen todas")
-    console.log(array)
     let resultado = array.filter(obj1 => !this.skillsa.some(obj2 => obj2.id === obj1.id));
 
     for (let i = 0; i < resultado.length; i++) {
@@ -125,19 +117,19 @@ export class ProfileComponent {
 
   onSubmit() {
     if(this.commentForm){
-      console.log(this.commentForm)
+
       this.user.name = this.commentForm.value.name;
-      console.log(this.commentForm.value.name)
+
       this.user.lastname = this.commentForm.value.lastname;
       this.user.lastname2 = this.commentForm.value.lastname2;
     }
     this.request.edit_user(this.user, this.user.id).subscribe(
       (data: any)=>{
-        console.log('entra');
+
         
       },
       (error)=>{
-        console.log('error' + error);
+
       }) 
   }
 }
