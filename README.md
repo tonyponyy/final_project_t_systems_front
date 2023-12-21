@@ -1,27 +1,72 @@
-# FrontDeepcodeskill
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+# DeepCodeSkill API ![App logo](/src/assets/img/deepcodeskill.png) 
 
-## Development server
+Este proyecto ha sigo generado con [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Lista de Rutas
 
-## Code scaffolding
+1. **Login**
+   - Ruta: `/login`
+   - Componente: `LoginComponent`
+   - Descripción: Página de inicio de sesión para los usuarios.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. **Inicio (por defecto)**
+   - Ruta: `/`
+   - Componente: `LoginComponent`
+   - Descripción: Página de inicio predeterminada, redirige a la página de inicio de sesión.
 
-## Build
+3. **Mis Entrevistas**
+   - Ruta: `/myinterviews`
+   - Componente: `MyInterviewsComponent`
+   - Descripción: Lista de entrevistas asociadas al usuario actual.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+4. **Entrevistas**
+   - Ruta: `/interviews`
+   - Componente: `InterviewsComponent`
+   - Descripción: Lista de todas las entrevistas (accesible solo para usuarios con rol de recursos humanos).
 
-## Running unit tests
+5. **Detalle de Entrevista**
+   - Ruta: `/interview/:id`
+   - Componente: `InterviewComponent`
+   - Descripción: Detalles de una entrevista específica (accesible solo para usuarios con rol de recursos humanos).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+6. **Detalle de Entrevista (Recursos Humanos)**
+   - Ruta: `/interview_hr/:id`
+   - Componente: `InterviewHrComponent`
+   - Descripción: Detalles de una entrevista específica para usuarios con rol de recursos humanos.
 
-## Running end-to-end tests
+7. **Registro**
+   - Ruta: `/register`
+   - Componente: `NewUserComponent`
+   - Descripción: Página de registro de nuevos usuarios.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+8. **Perfil**
+   - Ruta: `/profile`
+   - Componente: `ProfileComponent`
+   - Descripción: Página de perfil del usuario (accesible solo para usuarios autenticados).
 
-## Further help
+9. **Vista de Administrador**
+   - Ruta: `/admin`
+   - Componente: `AdminViewComponent`
+   - Descripción: Vista de administrador para la gestión de la aplicación (accesible solo para usuarios con rol de administrador).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+10. **Nueva Entrevista**
+    - Ruta: `/new_interview`
+    - Componente: `NewInterviewComponent`
+    - Descripción: Creación de una nueva entrevista (accesible solo para usuarios con rol de recursos humanos).
+
+11. **Editar Entrevista**
+    - Ruta: `/edit_interview/:id`
+    - Componente: `EditInterviewComponent`
+    - Descripción: Edición de una entrevista existente (accesible solo para usuarios autenticados).
+
+12. **Habilidades**
+    - Ruta: `/skills`
+    - Componente: `SkillsComponent`
+    - Descripción: Gestión de habilidades (accesible solo para usuarios con rol de recursos humanos).
+
+13. **Página No Encontrada**
+    - Ruta: `/**`
+    - Componente: `NotFoundComponent`
+    - Descripción: Página mostrada cuando no se encuentra la ruta especificada.
+
