@@ -191,6 +191,7 @@
                   <th>Name</th>
                   <th class="d-none d-lg-block">Skills</th>
                   <th>Resume</th>
+                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -219,6 +220,9 @@
                     }@else {
                     <button class="button is-info is-small" disabled><i class="fa-solid fa-file-excel mr-2"></i>No resume available</button>
                     }
+                  </td>
+                  <td>
+                    {{states[user.state]}}
                   </td>
                   <td class="action_buttons">
                     <!-- <button  (click)="changeComment()" class="button is-info is-small" >Add comment</button> -->

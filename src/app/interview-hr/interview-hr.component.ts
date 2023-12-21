@@ -40,8 +40,8 @@ export class InterviewHrComponent {
   protected tests: any;
   protected loaded: boolean = false;
   public states: string[] = [
-    'You have not passed the process',
-    'You are enrolled',
+    'Not passed the process',
+    'Enrolled',
     'First interview',
     'In selection process',
     'Hired',
@@ -104,6 +104,7 @@ export class InterviewHrComponent {
     let idState = this.stateId(item);
     this.requestservice.change_state(user.id, idState).subscribe(
       (data: any) => {
+        this.ngOnInit();
       },
       (error) => {
       }
@@ -112,10 +113,10 @@ export class InterviewHrComponent {
 
   stateId(item: string): number {
     switch (item) {
-      case 'You have not passed the process':
+      case 'Not passed the process':
         return 0;
         break;
-      case 'You are enrolled':
+      case 'Enrolled':
         return 1;
         break;
       case 'First interview':
