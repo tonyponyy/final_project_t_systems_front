@@ -18,7 +18,7 @@
                             </span>
                         </div>
                         @if (registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched) {
-                        <p class="has-text-danger">Campo obligatorio</p>
+                        <p class="has-text-danger">Obligatory field</p>
                         }
                     </div>
                     <div class="field">
@@ -32,7 +32,7 @@
                             </span>
                         </div>
                         @if (registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched) {
-                        <p class="has-text-danger">Campo obligatorio</p>
+                        <p class="has-text-danger">Obligatory field</p>
                         }
                     </div>
                     <!-- 
@@ -71,7 +71,7 @@
                         </div>
                         @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
 
-                        <p class="has-text-danger">Email incorrecto</p>
+                        <p class="has-text-danger">Email incorrect</p>
 
                         }
                     </div>
@@ -83,7 +83,7 @@
                             </span>
                         </div>
                         @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
-                        <p class="has-text-danger">Campo obligatorio</p>
+                        <p class="has-text-danger">Obligatory field</p>
                         }
                     </div>
                     <div class="field">
@@ -95,10 +95,10 @@
                             </span>
                         </div>
                         @if (registerForm.get('newPassword')?.invalid && registerForm.get('newPassword')?.touched) {
-                            <p class="has-text-danger">Campo obligatorio</p>
+                            <p class="has-text-danger">Obligatory field</p>
                         } @else {
                             @if (registerForm.get('password')?.value !== registerForm.get('newPassword')?.value) {
-                                <p class="has-text-danger">Las contraseñas no coinciden</p>
+                                <p class="has-text-danger">Passwords do not match</p>
                             }
                         }
                         

@@ -19,7 +19,7 @@
                             </span>
                         </div>
                         @if (formGroup.get('userName')?.invalid && formGroup.get('userName')?.touched) {
-                            <p class="has-text-danger">Email incorrecto</p>
+                            <p class="has-text-danger">Email incorrect</p>
                             }
                     </div>
 
@@ -31,7 +31,7 @@
                             </span>
                         </div>
                         @if (formGroup.get('password')?.invalid && formGroup.get('password')?.touched && errorMessage == '') {
-                            <p class="has-text-danger">Campo Obligatorio</p>
+                            <p class="has-text-danger">bligatory field</p>
                             }
                     </div>
                     @if(errorMessage != '' && formGroup.get('password')?.invalid){
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="field text-center">
-                        <p>No tienes cuenta, registrate <a [routerLink]="['/register']">aqui</a></p>
+                        <p>You don't have an account, register <a [routerLink]="['/register']">here</a></p>
                     </div>
                 </form>
             </div>
