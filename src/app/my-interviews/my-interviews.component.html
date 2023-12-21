@@ -2,75 +2,82 @@
   <div class="d-flex me-1 row" role="search">
     <div class="row justify-content-end">
     </div>
-    <p class="title text-center">My Positions:</p><br>
+    <p class="title text-center mt-2">My Positions:</p><br>
   </div>
   <div class="row ">
-    @for (position of positions; track $index) {
-      <div class="col-12 col-md-12">
-      <div class=" card  card-separation ">
-        <div class="pad-card" >
-        <header class="card-header ">
-          <p class="card-header-title">
-            <i class="fa-solid {{ faimg[position.id%5]}}"></i>
-            {{ position.interview.title }}
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            <b>Description: </b><p>{{position.interview.description}}</p>
-          <p><b>State: </b>{{states[position.state]}}</p>
-          <progress class="progress is-link" value="{{position.state}}" max="4">{{position.state}}</progress>
-            @for (skill of position.interview.skills; track $index) {
-              <button
-                class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
-              >
-                {{ skill.skill_name }}
-              </button>
+    @if (positions.length == 0) {
+      <br>
+      <p class="m-5">You haven't signed up for any interview!</p>
+      <br>
+    } @else {
+      @for (position of positions; track $index) {
+        <div class="col-12 col-md-12">
+        <div class=" card  card-separation ">
+          <div class="pad-card" >
+          <header class="card-header ">
+            <p class="card-header-title">
+              <i class="fa-solid {{ faimg[position.id%5]}}"></i>
+              {{ position.interview.title }}
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <b>Description: </b><p>{{position.interview.description}}</p>
+            <p><b>State: </b>{{states[position.state]}}</p>
+            <progress class="progress is-link" value="{{position.state}}" max="4">{{position.state}}</progress>
+              @for (skill of position.interview.skills; track $index) {
+                <button
+                  class="button {{ class[skill.id % 5] }} is-small is-light is-responsive"
+                >
+                  {{ skill.skill_name }}
+                </button>
+              }
+              <br> <br>
+             @for (user_test of user_tests; track $index) {
+              @for (interview_test of position.interview.tests; track $index) {
+              @if ( interview_test.id === user_test.test.id){
+                <article class="message is-link">
+                  <div class="message-header">
+                    <p>{{user_test.test.name}}</p>
+                  </div>
+                  <div class="message-body">
+                    <b>Description: </b> {{user_test.test.description}}<p>
+                    <br>
+                    @if (user_test.do_at !=null){
+                      <b>Do at:</b> {{user_test.do_at}}<br>
+                    }
+                    @if (user_test.calification !=null){
+                      <b>Calification:</b> {{user_test.calification}}
+                    }
+                  </p>
+                  </div>
+                </article>
+              }
             }
-            <br> <br>
-           @for (user_test of user_tests; track $index) {
-            @for (interview_test of position.interview.tests; track $index) {
-            @if ( interview_test.id === user_test.test.id){
-              <article class="message is-link">
-                <div class="message-header">
-                  <p>{{user_test.test.name}}</p>
+              }
+              @if (position.internal_comment !=null){
+                <div class="content">
+                  <p><b>Comments :</b></p>{{position.internal_comment}}
                 </div>
-                <div class="message-body">
-                  <b>Description: </b> {{user_test.test.description}}<p>
-                  <br>
-                  @if (user_test.do_at !=null){
-                    <b>Do at:</b> {{user_test.do_at}}<br>
-                  }
-                  @if (user_test.calification !=null){
-                    <b>Calification:</b> {{user_test.calification}}
-                  }
-                </p>
-                </div>
-              </article>
-            }
-          }
-            }
-            @if (position.internal_comment !=null){
-              <div class="content">
-                <p><b>Comments :</b></p>{{position.internal_comment}}
+              }
+              <div class=" content-right">
+                <i class="fa-regular fa-calendar"></i>
+                <time datetime="">{{
+                  position.interview.end_date | date : "dd-MM-yyyy"
+                }}</time>
               </div>
-            }
-            <div class=" content-right">
-              <i class="fa-regular fa-calendar"></i>
-              <time datetime="">{{
-                position.interview.end_date | date : "dd-MM-yyyy"
-              }}</time>
             </div>
           </div>
+          <footer class="card-footer">
+            <a [routerLink]="['/interview', position.interview.id]" class="card-footer-item"
+              ><i class="fa-solid fa-eye mr-2"></i>View position</a
+            >
+          </footer>
         </div>
-        <footer class="card-footer">
-          <a [routerLink]="['/interview', position.interview.id]" class="card-footer-item"
-            ><i class="fa-solid fa-eye mr-2"></i>View position</a
-          >
-        </footer>
       </div>
     </div>
-  </div>
+      }
     }
+    
   </div>
 </app-lateral-bar>
