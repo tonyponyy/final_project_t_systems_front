@@ -5,14 +5,14 @@
             <p class="modal-card-title">User Skill</p>
             <button class="delete" aria-label="close" (click)="closeModal()"></button>
         </header>
-        <section class="modal-card-body">
+        <section class="modal-card-body ">
             <form [formGroup]="userSkillForm">
                 <div class="mb-3">
-                    <label for="exampleInputComment" class="form-label">Qualification</label>
+                    <label for=" exampleInputComment" class="form-label"><span class="default_color" >Qualification</span></label>
                     <input type="number" class="form-control" id="exampleInputComment1" formControlName="qualification">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputComment" class="form-label">Comment</label>
+                    <label for="exampleInputComment" class="form-label"><span class="default_color" >Comment</span></label>
                     <input type="text" class="form-control" id="exampleInputComment1" formControlName="comment">
                 </div>
             </form>

@@ -1,3 +1,7 @@
 * {
     text-align: start;
 }
+
+.default_color{
+    color:black !important;
+}
